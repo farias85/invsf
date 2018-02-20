@@ -1,0 +1,35 @@
+{% if app.session.flashBag.has('success') %}
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <i class="fa fa-question-circle"></i>
+        {% for msg in app.session.flashBag.get('success') %}
+            <p>{{ msg }}</p>
+        {% endfor %}
+    </div>
+{% endif %}
+
+{% if app.session.flashBag.has('danger') %}
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <i class="fa fa-question-circle"></i>
+        <strong>Oh snap!</strong>
+        {% for msg in app.session.flashBag.get('danger') %}
+            <p>{{ msg }}</p>
+        {% endfor %}
+    </div>
+{% endif %}
+
+
+<div id="frontend-error-box" class="alert alert-danger alert-dismissible d-none"
+     role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <i class="fa fa-question-circle"></i>
+    <strong>Oh snap!</strong>
+    <p id="frontend-error-text">Error</p>
+</div>

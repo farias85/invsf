@@ -1,0 +1,38 @@
+{% extends ':frontend:frontend.html.twig' %}
+
+{% block nav %} {% endblock %}
+
+{% block content_about %}
+
+    <section id="about">
+        <div class="container">
+            <div class="row about-container">
+
+                <div class="col-lg-12 content order-lg-1 order-2" style="padding-top: 20px"></div>
+
+                {% set fades = ['fadeInDown', 'fadeInUp', 'fadeInLeft', 'fadeInRight'] %}
+
+                <div class="col-lg-12 order-lg-2 order-1 wow {{ random(fades) }}">
+                    {% block wrapper_header %} {% endblock %}
+                </div>
+
+                <div class="col-lg-12 order-lg-2 order-1 wow {{ random(fades) }}">
+                    {% include 'FrontendBundle:Layout:messages.html.twig' %}
+                </div>
+
+                <div class="col-lg-12 order-lg-2 order-1 wow {{ random(fades) }}">
+                    {% block wrapper %} {% endblock %}
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block content_action %} {% endblock %}
+{% block content_services %} {% endblock %}
+{% block content_facts %} {% endblock %}
+{#{% block content_contact %} {% endblock %}#}
+{% block content_portafolio %} {% endblock %}
+{% block content_team %} {% endblock %}

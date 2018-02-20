@@ -1,0 +1,22 @@
+{% extends ':frontend:frontend.html.twig' %}
+
+{% block content_about %}
+
+    <section id="about">
+        <div class="container">
+            <div class="row about-container">
+
+                {% include 'FrontendBundle:Layout:messages.html.twig' %}
+
+                <div class="col-lg-12 content order-lg-1 order-2"></div>
+
+                <div class="col-lg-6 background order-lg-2 order-1 wow fadeInUp">
+                    {% block wrapper %} {% endblock %}
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+{% endblock %}
+
