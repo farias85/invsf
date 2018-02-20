@@ -8,3 +8,7 @@ backend_security_login:
 
 backend_security_logout:
     path:     /logout
+
+backend_estado:
+    resource: "@BackendBundle/Resources/config/routing/estado.yml"
+    prefix:   /estado

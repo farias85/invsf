@@ -1,0 +1,24 @@
+estado_index:
+    path:     /
+    defaults: { _controller: "BackendBundle:Estado:index" }
+    methods:  GET
+
+estado_show:
+    path:     /{id}/show
+    defaults: { _controller: "BackendBundle:Estado:show" }
+    methods:  GET
+
+estado_new:
+    path:     /new
+    defaults: { _controller: "BackendBundle:Estado:new" }
+    methods:  [GET, POST]
+
+estado_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BackendBundle:Estado:edit" }
+    methods:  [GET, POST]
+
+estado_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BackendBundle:Estado:delete" }
+    methods:  [GET]

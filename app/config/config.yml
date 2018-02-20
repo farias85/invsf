@@ -44,8 +44,8 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
-#    globals:
-#        util: '@bct.util'
+    globals:
+        util: '@inv.util'
 
 # Doctrine Configuration
 doctrine:

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+    <file source-language="es" target-language="es" datatype="plaintext" original="file.ext">
+        <header>
+            <tool tool-id="symfony" tool-name="Symfony"/>
+        </header>
+        <body>
+            <trans-unit id="5aa00007897e80c9b46379028b0c90dc" resname="crud.edit">
+                <source>crud.edit</source>
+                <target>Editar</target>
+            </trans-unit>
+            <trans-unit id="7c6b531f7e95c362680b478f313cb13b" resname="crud.list">
+                <source>crud.list</source>
+                <target>Listar</target>
+            </trans-unit>
+            <trans-unit id="506f8b7f570dcec324e5a5552f89efb3" resname="crud.traducciones">
+                <source>crud.traducciones</source>
+                <target>Traducciones</target>
+            </trans-unit>
+            <trans-unit id="871e834656ee548311422332aec13657" resname="crud.info">
+                <source>crud.info</source>
+                <target>Info</target>
+            </trans-unit>
+            <trans-unit id="0ee77a1572d8d9bf0e66714338fee5f5" resname="crud.delete">
+                <source>crud.delete</source>
+                <target>Eliminar</target>
+            </trans-unit>
+            <trans-unit id="baedc3b5498cd84947393dce4809879f" resname="crud.create">
+                <source>crud.create</source>
+                <target>Crear</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

@@ -15,18 +15,49 @@
                     </a>
                 </li>
 
-                <li class="treeview {% block li_postgrado_bundle_tree_active %}{% endblock %}">
-                    <a href="#"><i class="fa fa-list"></i> <span>Módulo Postgrado</span>
+                <li class="treeview {% block li_configuracion_tree_active %}{% endblock %}">
+                    <a href="#"><i class="fa fa-list"></i> <span>Configuración</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li class="{% block li_estudio_all_active %}{% endblock %}">
-                            <a href=""><i class="fa fa-arrow-right"></i> <span>Estudio</span></a>
+                        <li class="{% block li_estado_all_active %}{% endblock %}">
+                            <a href=""><i class="fa fa-arrow-right"></i> <span>Estado</span></a>
                         </li>
-                        <li class="{% block li_modo_curso_all_active %}{% endblock %}">
-                            <a href=""><i class="fa fa-arrow-right"></i> <span>Modo Curso</span></a>
+                        <li class="{% block li_local_all_active %}{% endblock %}">
+                            <a href=""><i class="fa fa-arrow-right"></i> <span>Local</span></a>
+                        </li>
+                        <li class="{% block li_responsable_all_active %}{% endblock %}">
+                            <a href=""><i class="fa fa-arrow-right"></i> <span>Responsable</span></a>
+                        </li>
+                        <li class="{% block li_tipo_activo_all_active %}{% endblock %}">
+                            <a href=""><i class="fa fa-arrow-right"></i> <span>Tipo de Activo</span></a>
+                        </li>
+                        <li class="{% block li_tipo_resultado_all_active %}{% endblock %}">
+                            <a href=""><i class="fa fa-arrow-right"></i> <span>Tipo de Resultado</span></a>
+                        </li>
+                        <li class="{% block li_usuario_all_active %}{% endblock %}">
+                            <a href=""><i class="fa fa-arrow-right"></i> <span>Usuario</span></a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="treeview {% block li_revision_tree_active %}{% endblock %}">
+                    <a href="#"><i class="fa fa-list"></i> <span>Revisiones</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="{% block li_revision_all_active %}{% endblock %}">
+                            <a href=""><i class="fa fa-arrow-right"></i> <span>Revisión</span></a>
+                        </li>
+                        <li class="{% block li_metadata_all_active %}{% endblock %}">
+                            <a href=""><i class="fa fa-arrow-right"></i> <span>Metadata</span></a>
+                        </li>
+                        <li class="{% block li_auditoria_all_active %}{% endblock %}">
+                            <a href=""><i class="fa fa-arrow-right"></i> <span>Auditoría</span></a>
                         </li>
                     </ul>
                 </li>

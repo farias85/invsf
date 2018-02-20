@@ -9,6 +9,8 @@ php bin/console doctrine:schema:update --force --dump-sql --complete
 
 php bin/console generate:doctrine:crud --entity=ProyectoBundle:CuidadorEstado --route-prefix=cuidador_estado --with-write --format=yml --no-interaction
 
+php bin/console generate:doctrine:crud --entity=CommonBundle:CuidadorEstado --with-write --format=yml --no-interaction
+
 php bin/console doctrine:mapping:import CommonBundle annotation --filter=Cms
 
 console doctrine:generate:entities CommonBundle:CmsCategoria
