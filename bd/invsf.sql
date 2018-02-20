@@ -94,13 +94,13 @@ CREATE TABLE `activo_fijo` (
   `estado` bigint(20) NOT NULL,
   `responsable` bigint(20) NOT NULL,
   `local` bigint(20) NOT NULL,
-  `tipo_activo` int(11) DEFAULT NULL,
+  `tipo_activo` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `Refrevision2` (`revision`),
-  KEY `Refestado12` (`estado`),
-  KEY `Refresponsable14` (`responsable`),
-  KEY `Reflocal15` (`local`),
-  KEY `tipo_activo` (`tipo_activo`),
+  KEY `IDX_75EBC93E265DE1E3` (`estado`),
+  KEY `IDX_75EBC93E8BD688E8` (`local`),
+  KEY `IDX_75EBC93E52520D07` (`responsable`),
+  KEY `IDX_75EBC93E6D6315CC` (`revision`),
+  KEY `IDX_75EBC93E3E72E304` (`tipo_activo`),
   CONSTRAINT `Refestado12` FOREIGN KEY (`estado`) REFERENCES `estado` (`id`),
   CONSTRAINT `Reflocal15` FOREIGN KEY (`local`) REFERENCES `local` (`id`),
   CONSTRAINT `Refresponsable14` FOREIGN KEY (`responsable`) REFERENCES `responsable` (`id`),
@@ -133,7 +133,7 @@ CREATE TABLE `apunte` (
   `observacion` text COLLATE latin1_spanish_ci NOT NULL,
   `usuario` bigint(20) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `Refusuario27` (`usuario`),
+  KEY `IDX_E39B02322265B05D` (`usuario`),
   CONSTRAINT `Refusuario27` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
@@ -146,11 +146,10 @@ CREATE TABLE `auditoria` (
   `fecha` date NOT NULL,
   `hora` datetime NOT NULL,
   `rotulo` varchar(18) COLLATE latin1_spanish_ci NOT NULL,
-  `activo_antes` text COLLATE latin1_spanish_ci NOT NULL,
-  `activo_despues` text COLLATE latin1_spanish_ci NOT NULL,
   `usuario` bigint(20) NOT NULL,
+  `activo` text COLLATE latin1_spanish_ci NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `Refusuario16` (`usuario`),
+  KEY `IDX_AF4BB49D2265B05D` (`usuario`),
   CONSTRAINT `Refusuario16` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
@@ -187,13 +186,44 @@ CREATE TABLE `chequeo` (
   `tipo_resultado` int(11) NOT NULL,
   `informe` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `Refapunte24` (`apunte`),
-  KEY `Reftipo_resultado25` (`tipo_resultado`),
-  KEY `Refinforme26` (`informe`),
+  KEY `IDX_D6797265E39B0232` (`apunte`),
+  KEY `IDX_D67972657E75E1D9` (`informe`),
+  KEY `IDX_D6797265E9406652` (`tipo_resultado`),
   CONSTRAINT `Refapunte24` FOREIGN KEY (`apunte`) REFERENCES `apunte` (`id`),
   CONSTRAINT `Refinforme26` FOREIGN KEY (`informe`) REFERENCES `informe` (`id`),
   CONSTRAINT `Reftipo_resultado25` FOREIGN KEY (`tipo_resultado`) REFERENCES `tipo_resultado` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+#
+# Structure for the `tipo_media` table : 
+#
+
+CREATE TABLE `tipo_media` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `slug` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `descripcion` text COLLATE utf8_unicode_ci,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+#
+# Structure for the `media` table : 
+#
+
+CREATE TABLE `media` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tipo_media` int(11) DEFAULT NULL,
+  `name` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `alt` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `path` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `created_at` datetime NOT NULL,
+  `entity_id` int(11) NOT NULL,
+  `entity_name` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `Reftipo_media103` (`tipo_media`),
+  CONSTRAINT `FK_6A2CA10C6C903BC4` FOREIGN KEY (`tipo_media`) REFERENCES `tipo_media` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 #
 # Structure for the `metadata` table : 
@@ -211,7 +241,7 @@ CREATE TABLE `metadata` (
   `revisado` varchar(200) COLLATE latin1_spanish_ci DEFAULT NULL,
   `revision` bigint(20) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `Refrevision3` (`revision`),
+  KEY `IDX_4F1434146D6315CC` (`revision`),
   CONSTRAINT `Refrevision3` FOREIGN KEY (`revision`) REFERENCES `revision` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
@@ -238,9 +268,9 @@ CREATE TABLE `sobrante` (
   `local` bigint(20) NOT NULL,
   `estado` bigint(20) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `Refresponsable31` (`responsable`),
-  KEY `Reflocal32` (`local`),
-  KEY `Refestado33` (`estado`),
+  KEY `IDX_4B753781265DE1E3` (`estado`),
+  KEY `IDX_4B7537818BD688E8` (`local`),
+  KEY `IDX_4B75378152520D07` (`responsable`),
   CONSTRAINT `Refestado33` FOREIGN KEY (`estado`) REFERENCES `estado` (`id`),
   CONSTRAINT `Reflocal32` FOREIGN KEY (`local`) REFERENCES `local` (`id`),
   CONSTRAINT `Refresponsable31` FOREIGN KEY (`responsable`) REFERENCES `responsable` (`id`)
@@ -254,7 +284,7 @@ CREATE TABLE `usuario_rol` (
   `usuario` bigint(20) NOT NULL,
   `rol` bigint(20) NOT NULL,
   PRIMARY KEY (`usuario`,`rol`),
-  KEY `Refrol22` (`rol`),
+  KEY `IDX_72EDD1A4E553F37` (`rol`),
   CONSTRAINT `Refrol22` FOREIGN KEY (`rol`) REFERENCES `rol` (`id`),
   CONSTRAINT `Refusuario21` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
