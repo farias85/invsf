@@ -1,6 +1,6 @@
 media:
     resource: "@MediaBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /media
 
 frontend:
     resource: "@FrontendBundle/Resources/config/routing.yml"
@@ -8,24 +8,24 @@ frontend:
 
 backend:
     resource: "@BackendBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /backend
 
 common:
     resource: "@CommonBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /common
 
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 
-#__backend:
-#    path:     /admin/
-#    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: backend_homepage }
-#
-#_backend:
-#    path:     /backend/
-#    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: backend_homepage }
-#
-#_frontend:
-#    path:     /
-#    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: frontend_homepage }
+__backend:
+    path:     /admin/
+    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: backend_homepage }
+
+_backend:
+    path:     /backend/
+    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: backend_homepage }
+
+_frontend:
+    path:     /
+    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: frontend_homepage }
 

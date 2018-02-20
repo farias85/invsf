@@ -1,0 +1,20 @@
+{% extends 'BackendBundle:Layout:backend.html.twig' %}
+
+{% block wrapper %}
+
+    <div class="col-lg-6">
+        {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+        <input class="btn btn-success mt-10" type="submit" value="{{ 'crud.edit' | trans }}"/>
+        {{ form_end(edit_form) }}
+    </div>
+
+{% endblock %}
+
+{% block footer %}
+    <ul class="list-inline">
+        <li>
+            <a class="btn btn-primary" href="{{ path(router['index']) }}">{{ 'crud.list' | trans }}</a>
+        </li>
+    </ul>
+{% endblock %}
