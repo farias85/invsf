@@ -1,0 +1,18 @@
+services:
+#    media.example:
+#        class: INV\MediaBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+    inv.media.file.uploader:
+        class: INV\MediaBundle\Service\FileUploader
+
+    inv.media.media.upload.listener:
+        class: INV\MediaBundle\EventListener\MediaUploadListener
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }
+        arguments: ['@inv.media.file.uploader']
+
+    inv.media.manager:
+        class: INV\MediaBundle\Manager\MediaManager
+        arguments: ['@doctrine.orm.entity_manager', '@service_container', 'getEntityName']

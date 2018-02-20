@@ -1,0 +1,41 @@
+{% extends ":backend:backend.layout2.header.html.twig" %}
+
+{% block backend_aside %}
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <!-- Sidebar Menu -->
+            <ul class="sidebar-menu" data-widget="tree">
+                <li class="header">MENÚ</li>
+                <!-- Optionally, you can add icons to the links -->
+                <li class="{% block dashboard_active %}{% endblock %}">
+                    <a href="{{ path('backend_homepage') }}">
+                        <i class="fa fa-link"></i> <span>Dashboard</span>
+                    </a>
+                </li>
+
+                <li class="treeview {% block li_postgrado_bundle_tree_active %}{% endblock %}">
+                    <a href="#"><i class="fa fa-list"></i> <span>Módulo Postgrado</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="{% block li_estudio_all_active %}{% endblock %}">
+                            <a href=""><i class="fa fa-arrow-right"></i> <span>Estudio</span></a>
+                        </li>
+                        <li class="{% block li_modo_curso_all_active %}{% endblock %}">
+                            <a href=""><i class="fa fa-arrow-right"></i> <span>Modo Curso</span></a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+            <!-- /.sidebar-menu -->
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+{% endblock %}
+
+

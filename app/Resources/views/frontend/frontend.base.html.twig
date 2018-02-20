@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html ng-app="BCT" lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %} CENPIS/BCT {% endblock %}</title>
+
+    {% block seo %}
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+    {% endblock %}
+
+    <!-- Favicons -->
+    <link href="{{ asset('bundles/frontend/regna/img/favicon.png') }}" rel="icon">
+    <link href="{{ asset('bundles/frontend/regna/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+    {% block stylesheets %}
+        <!-- Google Fonts -->
+        {#<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700"#}
+              {#rel="stylesheet">#}
+
+        <!-- Bootstrap CSS File -->
+        <link rel="stylesheet" href="{{ asset('bundles/common/js/angular/multiselect/bootstrap-combined.min.css') }}"/>
+        {#<link data-require="bootstrap-css@2.3.2" data-semver="2.3.2" rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />#}
+        {#<script>document.write('<base href="' + document.location + '" />');</script>#}
+
+        <link href="{{ asset('bundles/frontend/regna/lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+        <!-- Libraries CSS Files -->
+        <link href="{{ asset('bundles/frontend/regna/lib/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('bundles/frontend/regna/lib/animate/animate.css') }}" rel="stylesheet">
+        <link href="{{ asset('bundles/common/js/angular/multiselect/style.css') }}" rel="stylesheet">
+
+        <!-- Main Stylesheet File -->
+        <link href="{{ asset('bundles/frontend/regna/css/style.css') }}" rel="stylesheet">
+
+        <!-- Main Angular Files -->
+        <script src="{{ asset('bundles/common/js/angular-1.6.9/angular.js') }}"></script>
+        <script src="{{ asset('bundles/common/js/angular-1.6.9/angular-animate.js') }}"></script>
+        <script src="{{ asset('bundles/common/js/angular-1.6.9/angular-cookies.js') }}"></script>
+        <script src="{{ asset('bundles/common/js/angular-1.6.9/angular-resource.js') }}"></script>
+        <script src="{{ asset('bundles/common/js/angular-1.6.9/angular-route.js') }}"></script>
+        <script src="{{ asset('bundles/common/js/angular-1.6.9/angular-sanitize.js') }}"></script>
+
+        <script src="{{ asset('bundles/common/js/bApp/bApp.js') }}"></script>
+        <script src="{{ asset('bundles/common/js/bApp/config/config.js') }}"></script>
+        <script src="{{ asset('bundles/common/js/bApp/service/ApiService.js') }}"></script>
+
+        <style>
+            .mt-10 {
+                margin-top: 10px
+            }
+
+            .mt-20 {
+                margin-top: 20px
+            }
+
+            .mb-10 {
+                margin-bottom: 10px
+            }
+
+            .mb-20 {
+                margin-bottom: 20px
+            }
+
+            .action-button {
+                width: 100px;
+            }
+        </style>
+
+    {% endblock %}
+</head>
+
+<body>
+{% block body %} {% endblock %}
+
+{% block javascripts %}
+    <!-- JavaScript Libraries -->
+    <script src="{{ asset('bundles/frontend/regna/lib/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/regna/lib/jquery/jquery-migrate.min.js') }}"></script>
+
+    <script src="{{ asset('bundles/backend/lte/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/regna/lib/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+    <script src="{{ asset('bundles/frontend/regna/lib/easing/easing.min.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/regna/lib/wow/wow.min.js') }}"></script>
+
+    {#<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8HeI8o-c1NppZA-92oYlXakhDPYR7XMY"></script>#}
+
+    <script src="{{ asset('bundles/frontend/regna/lib/waypoints/waypoints.min.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/regna/lib/counterup/counterup.min.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/regna/lib/superfish/hoverIntent.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/regna/lib/superfish/superfish.min.js') }}"></script>
+
+    <!-- Contact Form JavaScript File -->
+    <script src="{{ asset('bundles/frontend/regna/contactform/contactform.js') }}"></script>
+
+    <!-- Template Main Javascript File -->
+    <script src="{{ asset('bundles/frontend/regna/js/main.js') }}"></script>
+
+    <!-- Seconds Angular Files -->
+    <script src="{{ asset('bundles/common/js/angular/chartjs/Chart.min.js') }}"></script>
+    <script src="{{ asset('bundles/common/js/angular/chartjs/angular-chart.min.js') }}"></script>
+    <script src="{{ asset('bundles/common/js/angular/multiselect/multiselect.js') }}"></script>
+
+    <!-- Include Required Prerequisites -->
+    <script type="text/javascript" src="{{ asset('bundles/backend/bower_components/moment/moment.js') }}"></script>
+    <!-- Include Date Range Picker -->
+    <script type="text/javascript"
+            src="{{ asset('bundles/backend/bower_components/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+    <link href="{{ asset('bundles/backend/bower_components/bootstrap-daterangepicker/daterangepicker.css') }}"
+          rel="stylesheet">
+
+{% endblock %}
+
+</body>
+</html>

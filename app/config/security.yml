@@ -1,0 +1,80 @@
+# To get started with security, check out the documentation:
+# https://symfony.com/doc/current/security.html
+security:
+    # http://symfony.com/doc/current/book/security.html#encoding-the-user-s-password
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+#        BCT\ProfesorBundle\Entity\Profesor: bcrypt
+
+    # http://symfony.com/doc/current/book/security.html#hierarchical-roles
+    role_hierarchy:
+        ROLE_PROFESOR:    [ROLE_PROFESOR]
+        ROLE_ADMIN:       [ROLE_ADMIN]
+
+    # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    providers:
+        administradores:
+            memory:
+                users:
+                    admin: { password: bct2018, roles: [ 'ROLE_ADMIN' ] }
+        usuarios:
+            memory:
+                users:
+                    profesor: { password: bct2018, roles: [ 'ROLE_PROFESOR' ] }
+#        profesores:
+#            entity: { class: BCT\ProfesorBundle\Entity\Profesor, property: email }
+
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        backend:
+            pattern:        ^/backend/*
+            provider:       administradores
+            anonymous:      ~
+            form_login:
+                login_path: backend_security_login
+                check_path: backend_security_login
+                default_target_path: backend_homepage
+                always_use_default_target_path: false
+            logout:
+                path:       /backend/logout
+                target:     backend_security_login
+            switch_user: { role: ROLE_ADMIN }
+#        main:
+#            pattern:        ^/*
+#            provider:       profesores
+#            anonymous:      ~
+#            form_login:
+#                login_path: frontend_security_login
+#                check_path: frontend_security_login
+#                default_target_path: proyecto_homepage
+#                always_use_default_target_path: false
+#            logout:
+#                path:       /logout
+#                target:     frontend_homepage
+#            remember_me:
+#                secret: "%secret%"
+#                lifetime:   604800  # 604.800 = 3.600 * 24 * 7 = 1 semana
+#            switch_user: { role: ROLE_PROFESOR }
+        other:
+            anonymous: ~
+            
+    # with these settings you can restrict or allow access for different parts
+    # of your application based on roles, ip, host or methods
+    # http://symfony.com/doc/current/cookbook/security/access_control.html
+    access_control:
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+#        - { path: ^/backend/security/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+#        - { path: ^/backend/*, roles: ROLE_ADMIN }
+#        - { path: ^/profesor/*, roles: [ROLE_PROFESOR] }
+#        - { path: ^/pregrado/*, roles: [ROLE_PROFESOR] }
+#        - { path: ^/postgrado/*, roles: [ROLE_PROFESOR] }
+#        - { path: ^/proyecto/*, roles: [ROLE_PROFESOR] }
+#        - { path: ^/area-personal, roles: [ROLE_PROFESOR] }
+#        - { path: ^/*, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+
+    access_decision_manager:
+        strategy: consensus

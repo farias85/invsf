@@ -1,0 +1,33 @@
+services:
+#    common.example:
+#        class: INV\CommonBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+    inv.util:
+        class: INV\CommonBundle\Util\Util
+
+    inv.entitysetter:
+        class: INV\CommonBundle\Service\EntitySetter
+        arguments: ['@service_container']
+
+    inv.common.media.setter.listener:
+        class: INV\CommonBundle\EventListener\MediaSetterListener
+        arguments: ['@service_container']
+        tags:
+            - { name: doctrine.event_listener, event: postLoad }
+
+    inv.manager:
+        class: INV\CommonBundle\Manager\Manager
+        arguments: ['@doctrine.orm.entity_manager', '@service_container']
+
+    inv.nomenclature.manager:
+        parent: inv.manager
+        class: INV\CommonBundle\Manager\NomenclatureManager
+
+    inv.base.api.manager:
+        parent: inv.manager
+        class: INV\CommonBundle\Manager\BaseApiManager
+
+    inv.mail.manager:
+        class:     INV\CommonBundle\Manager\MailManager
+        arguments: ["@mailer", "@twig",'@service_container']

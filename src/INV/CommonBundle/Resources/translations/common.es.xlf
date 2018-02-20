@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+    <file source-language="es" target-language="es" datatype="plaintext" original="file.ext">
+        <header>
+            <tool tool-id="symfony" tool-name="Symfony"/>
+        </header>
+        <body>
+            <trans-unit id="1" resname="nomenclador.id">
+                <source>nomenclador.id</source>
+                <target>Id</target>
+            </trans-unit>
+            <trans-unit id="2" resname="nomenclador.nombre">
+                <source>nomenclador.nombre</source>
+                <target>Nombre</target>
+            </trans-unit>
+            <trans-unit id="3" resname="nomenclador.descripcion">
+                <source>nomenclador.descripcion</source>
+                <target>Descripción</target>
+            </trans-unit>
+            <trans-unit id="4" resname="operation.fail">
+                <source>operation.fail</source>
+                <target>Se ha producido un error ejecutando la acción solicitada!</target>
+            </trans-unit>
+            <trans-unit id="5" resname="operation.success">
+                <source>operation.success</source>
+                <target>Operación completada satisfactoriamente!</target>
+            </trans-unit>
+            <trans-unit id="6" resname="operation.delete.fail">
+                <source>operation.delete.fail</source>
+                <target>El elemento que intenta eliminar está siendo utilizado, no se puede eliminar!</target>
+            </trans-unit>
+            <trans-unit id="7" resname="verb.create">
+                <source>verb.create</source>
+                <target>Crear</target>
+            </trans-unit>
+            <trans-unit id="8" resname="verb.show">
+                <source>verb.show</source>
+                <target>Mostrar</target>
+            </trans-unit>
+            <trans-unit id="9" resname="verb.list">
+                <source>verb.list</source>
+                <target>Listar</target>
+            </trans-unit>
+            <trans-unit id="10" resname="verb.edit">
+                <source>verb.edit</source>
+                <target>Editar</target>
+            </trans-unit>
+            <trans-unit id="11" resname="step.confirmacion.message">
+                <source>step.confirmacion.message</source>
+                <target>Gracias por confirmar su correo ahora puede acceder al área de cuidadores y completar sus datos.</target>
+            </trans-unit>
+            <trans-unit id="12" resname="step.confirmacion.error.message">
+                <source>step.confirmacion.error.message</source>
+                <target>Upss!!! A ocurrido un error por favor pongase en contacto con el equipo de soporte.</target>
+            </trans-unit>
+            <trans-unit id="13" resname="operation.new.fail.default">
+                <source>operation.new.fail.default</source>
+                <target>Upss!!! El elemento que intenta crear no puede guardarse.</target>
+            </trans-unit>
+            <trans-unit id="14" resname="operation.new.fail">
+                <source>operation.new.fail</source>
+                <target>Upss!!! Ya existe un elemento de '%clazz%' que contiene un atributo '%attr%' con valor '%value%'. El elemento no puede repetirse.</target>
+            </trans-unit>
+            <trans-unit id="15" resname="operation.edit.fail.default">
+                <source>operation.edit.fail.default</source>
+                <target>Upss!!! El elemento que intenta editar no puede guardarse.</target>
+            </trans-unit>
+            <trans-unit id="16" resname="operation.edit.fail">
+                <source>operation.edit.fail</source>
+                <target>Upss!!! Ya existe un elemento de '%clazz%' que contiene un atributo '%attr%' con valor '%value%'. El elemento no puede repetirse.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

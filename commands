@@ -1,0 +1,18 @@
+cd C:\xampp7.1\htdocs\invsf
+php bin/console assets:install web --symlink --relative
+
+php bin/console sf:socket:init
+
+php bin/console doctrine:schema:validate
+
+php bin/console doctrine:schema:update --force --dump-sql --complete
+
+php bin/console generate:doctrine:crud --entity=ProyectoBundle:CuidadorEstado --route-prefix=cuidador_estado --with-write --format=yml --no-interaction
+
+php bin/console doctrine:mapping:import CommonBundle annotation --filter=Cms
+
+console doctrine:generate:entities CommonBundle:CmsCategoria
+
+php bin/console translation:update --dump-messages --force --clean --output-format=xlf es UserBundle
+
+php bin/console security:encode-password
