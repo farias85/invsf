@@ -12,3 +12,7 @@ backend_security_logout:
 backend_estado:
     resource: "@BackendBundle/Resources/config/routing/estado.yml"
     prefix:   /estado
+
+backend_local:
+    resource: "@BackendBundle/Resources/config/routing/local.yml"
+    prefix:   /local

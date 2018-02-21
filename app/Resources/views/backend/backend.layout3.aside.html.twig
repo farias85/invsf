@@ -23,19 +23,19 @@
                     </a>
                     <ul class="treeview-menu">
                         <li class="{% block li_estado_all_active %}{% endblock %}">
-                            <a href=""><i class="fa fa-arrow-right"></i> <span>Estado</span></a>
+                            <a href="{{ path('estado_index') }}"><i class="fa fa-arrow-right"></i> <span>Estado</span></a>
                         </li>
                         <li class="{% block li_local_all_active %}{% endblock %}">
-                            <a href=""><i class="fa fa-arrow-right"></i> <span>Local</span></a>
-                        </li>
-                        <li class="{% block li_responsable_all_active %}{% endblock %}">
-                            <a href=""><i class="fa fa-arrow-right"></i> <span>Responsable</span></a>
+                            <a href="{{ path('local_index') }}"><i class="fa fa-arrow-right"></i> <span>Local</span></a>
                         </li>
                         <li class="{% block li_tipo_activo_all_active %}{% endblock %}">
                             <a href=""><i class="fa fa-arrow-right"></i> <span>Tipo de Activo</span></a>
                         </li>
                         <li class="{% block li_tipo_resultado_all_active %}{% endblock %}">
                             <a href=""><i class="fa fa-arrow-right"></i> <span>Tipo de Resultado</span></a>
+                        </li>
+                        <li class="{% block li_responsable_all_active %}{% endblock %}">
+                            <a href=""><i class="fa fa-arrow-right"></i> <span>Responsable</span></a>
                         </li>
                         <li class="{% block li_usuario_all_active %}{% endblock %}">
                             <a href=""><i class="fa fa-arrow-right"></i> <span>Usuario</span></a>

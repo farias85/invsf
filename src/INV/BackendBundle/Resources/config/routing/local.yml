@@ -1,0 +1,24 @@
+local_index:
+    path:     /
+    defaults: { _controller: "BackendBundle:Local:index" }
+    methods:  GET
+
+local_show:
+    path:     /{id}/show
+    defaults: { _controller: "BackendBundle:Local:show" }
+    methods:  GET
+
+local_new:
+    path:     /new
+    defaults: { _controller: "BackendBundle:Local:new" }
+    methods:  [GET, POST]
+
+local_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BackendBundle:Local:edit" }
+    methods:  [GET, POST]
+
+local_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BackendBundle:Local:delete" }
+    methods:  [GET]
