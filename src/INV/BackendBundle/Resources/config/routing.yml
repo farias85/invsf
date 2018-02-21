@@ -20,3 +20,11 @@ backend_local:
 backend_tipo_activo:
     resource: "@BackendBundle/Resources/config/routing/tipo-activo.yml"
     prefix:   /tipo-activo
+
+backend_tipo_resultado:
+    resource: "@BackendBundle/Resources/config/routing/tipo-resultado.yml"
+    prefix:   /tipo-resultado
+
+backend_rol:
+    resource: "@BackendBundle/Resources/config/routing/rol.yml"
+    prefix:   /rol

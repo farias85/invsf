@@ -32,13 +32,16 @@
                             <a href="{{ path('tipo_activo_index') }}"><i class="fa fa-arrow-right"></i> <span>Tipo de Activo</span></a>
                         </li>
                         <li class="{% block li_tipo_resultado_all_active %}{% endblock %}">
-                            <a href=""><i class="fa fa-arrow-right"></i> <span>Tipo de Resultado</span></a>
+                            <a href="{{ path('tipo_resultado_index') }}"><i class="fa fa-arrow-right"></i> <span>Tipo de Resultado</span></a>
                         </li>
                         <li class="{% block li_responsable_all_active %}{% endblock %}">
                             <a href=""><i class="fa fa-arrow-right"></i> <span>Responsable</span></a>
                         </li>
                         <li class="{% block li_usuario_all_active %}{% endblock %}">
                             <a href=""><i class="fa fa-arrow-right"></i> <span>Usuario</span></a>
+                        </li>
+                        <li class="{% block li_rol_all_active %}{% endblock %}">
+                            <a href="{{ path('rol_index') }}"><i class="fa fa-arrow-right"></i> <span>Rol</span></a>
                         </li>
                     </ul>
                 </li>

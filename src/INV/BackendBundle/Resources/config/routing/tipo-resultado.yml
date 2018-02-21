@@ -1,0 +1,24 @@
+tipo_resultado_index:
+    path:     /
+    defaults: { _controller: "BackendBundle:TipoResultado:index" }
+    methods:  GET
+
+tipo_resultado_show:
+    path:     /{id}/show
+    defaults: { _controller: "BackendBundle:TipoResultado:show" }
+    methods:  GET
+
+tipo_resultado_new:
+    path:     /new
+    defaults: { _controller: "BackendBundle:TipoResultado:new" }
+    methods:  [GET, POST]
+
+tipo_resultado_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BackendBundle:TipoResultado:edit" }
+    methods:  [GET, POST]
+
+tipo_resultado_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BackendBundle:TipoResultado:delete" }
+    methods:  [GET]
