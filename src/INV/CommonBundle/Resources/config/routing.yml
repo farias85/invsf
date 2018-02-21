@@ -1,3 +1,7 @@
+common_metadata:
+    resource: "@CommonBundle/Resources/config/routing/metadata.yml"
+    prefix:   /metadata
+
 common_homepage:
     path:     /
     defaults: { _controller: CommonBundle:Default:index }

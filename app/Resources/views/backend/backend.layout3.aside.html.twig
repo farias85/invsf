@@ -54,10 +54,10 @@
                     </a>
                     <ul class="treeview-menu">
                         <li class="{% block li_revision_all_active %}{% endblock %}">
-                            <a href=""><i class="fa fa-arrow-right"></i> <span>Revisión</span></a>
+                            <a href="{{ path('revision_index') }}"><i class="fa fa-arrow-right"></i> <span>Revisión</span></a>
                         </li>
                         <li class="{% block li_metadata_all_active %}{% endblock %}">
-                            <a href=""><i class="fa fa-arrow-right"></i> <span>Metadata</span></a>
+                            <a href="{{ path('metadata_index') }}"><i class="fa fa-arrow-right"></i> <span>Metadata</span></a>
                         </li>
                         <li class="{% block li_auditoria_all_active %}{% endblock %}">
                             <a href=""><i class="fa fa-arrow-right"></i> <span>Auditoría</span></a>
