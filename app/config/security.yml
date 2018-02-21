@@ -4,12 +4,13 @@ security:
     # http://symfony.com/doc/current/book/security.html#encoding-the-user-s-password
     encoders:
         Symfony\Component\Security\Core\User\User: plaintext
-#        BCT\ProfesorBundle\Entity\Profesor: bcrypt
+        INV\CommonBundle\Entity\Usuario: bcrypt
 
     # http://symfony.com/doc/current/book/security.html#hierarchical-roles
     role_hierarchy:
-        ROLE_PROFESOR:    [ROLE_PROFESOR]
-        ROLE_ADMIN:       [ROLE_ADMIN]
+        ROLE_USUARIO:    [ROLE_USUARIO]
+        ROLE_EDITOR:     [ROLE_EDITOR]
+        ROLE_ADMIN:      [ROLE_ADMIN]
 
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
@@ -21,8 +22,8 @@ security:
             memory:
                 users:
                     profesor: { password: inv2018, roles: [ 'ROLE_PROFESOR' ] }
-#        profesores:
-#            entity: { class: BCT\ProfesorBundle\Entity\Profesor, property: email }
+        editores:
+            entity: { class: INV\CommonBundle\Entity\Usuario, property: email }
 
 
     firewalls:
@@ -43,22 +44,22 @@ security:
                 path:       /backend/logout
                 target:     backend_security_login
             switch_user: { role: ROLE_ADMIN }
-#        main:
-#            pattern:        ^/*
-#            provider:       profesores
-#            anonymous:      ~
-#            form_login:
-#                login_path: frontend_security_login
-#                check_path: frontend_security_login
-#                default_target_path: proyecto_homepage
-#                always_use_default_target_path: false
-#            logout:
-#                path:       /logout
-#                target:     frontend_homepage
-#            remember_me:
-#                secret: "%secret%"
-#                lifetime:   604800  # 604.800 = 3.600 * 24 * 7 = 1 semana
-#            switch_user: { role: ROLE_PROFESOR }
+        main:
+            pattern:        ^/*
+            provider:       editores
+            anonymous:      ~
+            form_login:
+                login_path: frontend_security_login
+                check_path: frontend_security_login
+                default_target_path: frontend_homepage
+                always_use_default_target_path: false
+            logout:
+                path:       /logout
+                target:     frontend_homepage
+            remember_me:
+                secret: "%secret%"
+                lifetime:   604800  # 604.800 = 3.600 * 24 * 7 = 1 semana
+            switch_user: { role: ROLE_EDITOR }
         other:
             anonymous: ~
             
@@ -69,12 +70,7 @@ security:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/backend/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/backend/*, roles: ROLE_ADMIN }
-#        - { path: ^/profesor/*, roles: [ROLE_PROFESOR] }
-#        - { path: ^/pregrado/*, roles: [ROLE_PROFESOR] }
-#        - { path: ^/postgrado/*, roles: [ROLE_PROFESOR] }
-#        - { path: ^/proyecto/*, roles: [ROLE_PROFESOR] }
-#        - { path: ^/area-personal, roles: [ROLE_PROFESOR] }
-#        - { path: ^/*, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/*, roles: IS_AUTHENTICATED_ANONYMOUSLY }
 
     access_decision_manager:
         strategy: consensus

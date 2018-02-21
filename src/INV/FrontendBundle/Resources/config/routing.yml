@@ -1,3 +1,10 @@
 frontend_homepage:
     path:     /
     defaults: { _controller: FrontendBundle:Default:index }
+
+frontend_security_login:
+    path:     /login
+    defaults: { _controller: "FrontendBundle:Security:login" }
+
+frontend_security_logut:
+    path:     /logout

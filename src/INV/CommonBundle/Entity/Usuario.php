@@ -3,6 +3,7 @@
 namespace INV\CommonBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 
 /**
  * Usuario
@@ -10,7 +11,10 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="usuario")
  * @ORM\Entity
  */
-class Usuario {
+class Usuario implements AdvancedUserInterface, \Serializable {
+
+    const ROLE_DEFAULT = 'ROLE_EDITOR';
+
     /**
      * @var int
      *
@@ -64,10 +68,51 @@ class Usuario {
     private $rol;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="salt", type="text", nullable=true)
+     */
+    private $salt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="latest_connection", type="datetime", nullable=true)
+     */
+    private $latestConnection;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_active", type="boolean", nullable=false)
+     */
+    private $isActive;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_confirm", type="boolean", nullable=false)
+     */
+    private $isConfirm;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="slug", type="string", length=100, nullable=false)
+     */
+    private $slug;
+
+    /**
+     * @var array
+     */
+    protected $roles;
+
+    /**
      * Constructor
      */
     public function __construct() {
         $this->rol = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->roles = [static::ROLE_DEFAULT];
     }
 
 
@@ -199,5 +244,145 @@ class Usuario {
      */
     public function getRol() {
         return $this->rol;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSalt() {
+        return $this->salt;
+    }
+
+    /**
+     * @param string $salt
+     */
+    public function setSalt($salt) {
+        $this->salt = $salt;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getLatestConnection() {
+        return $this->latestConnection;
+    }
+
+    /**
+     * @param \DateTime $latestConnection
+     */
+    public function setLatestConnection($latestConnection) {
+        $this->latestConnection = $latestConnection;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isActive() {
+        return $this->isActive;
+    }
+
+    /**
+     * @param bool $isActive
+     */
+    public function setIsActive($isActive) {
+        $this->isActive = $isActive;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isConfirm() {
+        return $this->isConfirm;
+    }
+
+    /**
+     * @param bool $isConfirm
+     */
+    public function setIsConfirm($isConfirm) {
+        $this->isConfirm = $isConfirm;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlug() {
+        return $this->slug;
+    }
+
+    /**
+     * @param string $slug
+     */
+    public function setSlug($slug) {
+        $this->slug = $slug;
+    }
+
+
+    public function getUsername() {
+        return $this->getEmail();
+    }
+
+    public function eraseCredentials() {
+    }
+
+    public function isAccountNonExpired() {
+        return true;
+    }
+
+    public function isAccountNonLocked() {
+        return true;
+    }
+
+    public function isCredentialsNonExpired() {
+        return true;
+    }
+
+    public function isEnabled() {
+        return $this->isActive;
+    }
+
+    /** @see \Serializable::serialize() */
+    public function serialize() {
+        return serialize(array(
+            $this->id,
+            $this->email,
+            $this->contrasenna,
+            $this->isActive,
+            // see section on salt below
+            // $this->salt,
+        ));
+    }
+
+    /** @see \Serializable::unserialize() */
+    public function unserialize($serialized) {
+        list (
+            $this->id,
+            $this->email,
+            $this->contrasenna,
+            $this->isActive,
+            // see section on salt below
+            // $this->salt
+            ) = unserialize($serialized);
+    }
+
+    public function getRoles() {
+        $roles = $this->roles;
+        $roles[] = static::ROLE_DEFAULT;
+        return array_unique($roles);
+    }
+
+    /**
+     * Returns the password used to authenticate the user.
+     *
+     * This should be the encoded password. On authentication, a plain-text
+     * password will be salted, encoded, and then compared to this value.
+     *
+     * @return string The password
+     */
+    public function getPassword() {
+        return $this->getContrasenna();
+    }
+
+    function __toString() {
+        return $this->getNombre();
     }
 }

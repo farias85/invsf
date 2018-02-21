@@ -5,36 +5,46 @@
         <div class="container">
 
             <div id="logo" class="pull-left">
-                <a href="#hero"><img src="img/logo.png" alt="" title=""/></a>
+                <a href="{{ path('frontend_homepage') }}"><img src="{{ asset('bundles/frontend/regna/img/logo.png') }}"
+                                                               alt="" title=""/></a>
                 <!-- Uncomment below if you prefer to use a text logo -->
                 <!--<h1><a href="#hero">Regna</a></h1>-->
             </div>
 
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
-                    <li class="menu-active"><a href="#hero">Home</a></li>
+                    <li class="menu-active"><a href="{{ path('frontend_homepage') }}">Home</a></li>
+                    {#<li><a href="#about">About Us</a></li>#}
+                    {#<li><a href="#services">Services</a></li>#}
+                    {#<li><a href="#portfolio">Portfolio</a></li>#}
+                    {#<li><a href="#team">Team</a></li>#}
 
-                    {#{% if app.user is not null %}#}
-                        {#<li class="menu-has-children" title="Profesor: {{ app.user }}">#}
-                            {#<a href="#">#}
-                                {#{{ app.user [:25] ~ '...' }}#}
-                            {#</a>#}
-                            {#<ul>#}
-                                {#<li><a href="{{ path('frontend_area_personal') }}">Mi perfil</a></li>#}
-                                {#<li><a href="#">Deep Drop Down 2</a></li>#}
-                                {#<li><a href="#">Deep Drop Down 3</a></li>#}
-                                {#<li><a href="#">Deep Drop Down 4</a></li>#}
-                                {#<li><a href="{{ path('frontend_security_logut') }}">Salir</a></li>#}
-                            {#</ul>#}
-                        {#</li>#}
-                        {#{% else %}#}
-                            {#<li><a href="{{ path('frontend_area_personal') }}">Mi perfil</a></li>#}
-                    {#{% endif %}#}
+                    <li class="menu-has-children" title="{{ app.user }}">
+                        <a href="#">ATF</a>
+                        <ul>
+                            <li><a href="#">Activos</a></li>
+                            <li><a href="#">Sobrantes</a></li>
+                            <li><a href="#">Informes</a></li>
+                        </ul>
+                    </li>
 
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#team">Team</a></li>
+                    <li><a href="#">Apuntes</a></li>
+
+                    {% if app.user is not null %}
+                        <li class="menu-has-children" title="{{ app.user }}">
+                            <a href="#">
+                                {{ app.user [:25] }}
+                            </a>
+                            <ul>
+                                <li><a href="#">Deep Drop Down 2</a></li>
+                                <li><a href="#">Deep Drop Down 3</a></li>
+                                <li><a href="#">Deep Drop Down 4</a></li>
+                                <li><a href="{{ path('frontend_security_logut') }}">Salir</a></li>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li><a href="{{ path('frontend_security_login') }}">Login</a></li>
+                    {% endif %}
                 </ul>
             </nav><!-- #nav-menu-container -->
         </div>
