@@ -1,0 +1,24 @@
+tipo_activo_index:
+    path:     /
+    defaults: { _controller: "BackendBundle:TipoActivo:index" }
+    methods:  GET
+
+tipo_activo_show:
+    path:     /{id}/show
+    defaults: { _controller: "BackendBundle:TipoActivo:show" }
+    methods:  GET
+
+tipo_activo_new:
+    path:     /new
+    defaults: { _controller: "BackendBundle:TipoActivo:new" }
+    methods:  [GET, POST]
+
+tipo_activo_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BackendBundle:TipoActivo:edit" }
+    methods:  [GET, POST]
+
+tipo_activo_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BackendBundle:TipoActivo:delete" }
+    methods:  [GET]

@@ -16,3 +16,7 @@ backend_estado:
 backend_local:
     resource: "@BackendBundle/Resources/config/routing/local.yml"
     prefix:   /local
+
+backend_tipo_activo:
+    resource: "@BackendBundle/Resources/config/routing/tipo-activo.yml"
+    prefix:   /tipo-activo
