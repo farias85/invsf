@@ -28,3 +28,7 @@ backend_tipo_resultado:
 backend_rol:
     resource: "@BackendBundle/Resources/config/routing/rol.yml"
     prefix:   /rol
+
+backend_responsable:
+    resource: "@BackendBundle/Resources/config/routing/responsable.yml"
+    prefix:   /responsable
