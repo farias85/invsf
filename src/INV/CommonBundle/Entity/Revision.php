@@ -145,4 +145,8 @@ class Revision {
     public function getExcelUrl() {
         return $this->excelUrl;
     }
+
+    function __toString() {
+        return 'Subido: ' . $this->fechaEnSistema->format('Y-m-d') . ' -> Excel: ' . $this->fechaExcel->format('Y-m-d');
+    }
 }

@@ -33,6 +33,10 @@ backend_responsable:
     resource: "@BackendBundle/Resources/config/routing/responsable.yml"
     prefix:   /responsable
 
-common_revision:
+backend_revision:
     resource: "@BackendBundle/Resources/config/routing/revision.yml"
     prefix:   /revision
+
+backend_metadata:
+    resource: "@BackendBundle/Resources/config/routing/metadata.yml"
+    prefix:   /metadata
