@@ -9,21 +9,22 @@
 namespace INV\BackendBundle\Controller;
 
 use INV\CommonBundle\Controller\NomenclatureController;
+use INV\CommonBundle\Form\AuditoriaType;
 use INV\CommonBundle\Form\MetadataType;
 use INV\CommonBundle\Util\Entity;
 
-class MetadataController extends NomenclatureController {
+class AuditoriaController extends NomenclatureController {
 
     /**
      * ¿Cómo desea nombrar la página?
      * @return string
      */
     public function getTitle() {
-        return 'Metadata';
+        return 'Auditoria';
     }
 
     public function getEntityName() {
-        return Entity::METADATA;
+        return Entity::AUDITORIA;
     }
 
     /**
@@ -31,19 +32,20 @@ class MetadataController extends NomenclatureController {
      * @return string
      */
     public function getRoutePrefix() {
-        return 'metadata';
+        return 'auditoria';
     }
 
     public function getResourceViewPath() {
-        return 'BackendBundle:Metadata';
+        return 'BackendBundle:Auditoria';
     }
 
     public function getFormTypeClass() {
-        return MetadataType::class;
+        return AuditoriaType::class;
     }
 
     public function defaultKeysFilter() {
         return ['totalActivos' => 'text', 'valorTotal' => 'text', 'valorTotalMc' => 'text',
-            'depAcuTotal' => 'text', 'depAcuTotalMc' => 'text', 'revision' => 'text'];
+            'depAcuTotal' => 'text', 'depAcuTotalMc' => 'text', 'elaborado' => 'text', 'responsable' => 'text',
+            'revisado' => 'text', 'revision' => 'text'];
     }
 }

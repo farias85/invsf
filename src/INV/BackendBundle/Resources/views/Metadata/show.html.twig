@@ -3,3 +3,11 @@
 {% block li_revision_tree_active %} active {% endblock %}
 {% block li_metadata_all_active %} active {% endblock %}
 
+{% block footer %}
+    <ul class="list-inline">
+        <li>
+            <a class="btn btn-primary" href="{{ path(router['index']) }}">{{ 'crud.list' | trans }}</a>
+        </li>
+    </ul>
+{% endblock %}
+

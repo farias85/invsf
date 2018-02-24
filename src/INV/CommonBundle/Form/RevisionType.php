@@ -24,24 +24,24 @@ class RevisionType extends EntityGetterType {
                     ]
                 ]
             )
-            ->add('fechaEnSistema', TextType::class,
-                [
-                    'label' => $this->display('fechaEnSistema'),
-                    'attr' => [
-                        'class' => 'form-control',
-                        'value' => $this->getDateText($this->get('fechaEnSistema'))
-                    ]
-                ]
-            )
-            ->add('fechaExcel', TextType::class,
-                [
-                    'label' => $this->display('fechaExcel'),
-                    'attr' => [
-                        'class' => 'form-control',
-                        'value' => $this->getDateText($this->get('fechaExcel'))
-                    ]
-                ]
-            )
+//            ->add('fechaEnSistema', TextType::class,
+//                [
+//                    'label' => $this->display('fechaEnSistema'),
+//                    'attr' => [
+//                        'class' => 'form-control',
+//                        'value' => $this->getDateText($this->get('fechaEnSistema'))
+//                    ]
+//                ]
+//            )
+//            ->add('fechaExcel', TextType::class,
+//                [
+//                    'label' => $this->display('fechaExcel'),
+//                    'attr' => [
+//                        'class' => 'form-control',
+//                        'value' => $this->getDateText($this->get('fechaExcel'))
+//                    ]
+//                ]
+//            )
             ->add('excelUrl', TextType::class,
                 [
                     'label' => $this->display('excelUrl'),
@@ -50,7 +50,8 @@ class RevisionType extends EntityGetterType {
                         'value' => $this->get('excelUrl')
                     ]
                 ]
-            );
+            )
+        ;
     }
 
     /**

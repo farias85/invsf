@@ -8,17 +8,17 @@ revision_show:
     defaults: { _controller: "BackendBundle:Revision:show" }
     methods:  GET
 
-revision_new:
-    path:     /new
-    defaults: { _controller: "BackendBundle:Revision:new" }
-    methods:  [GET, POST]
+#revision_new:
+#    path:     /new
+#    defaults: { _controller: "BackendBundle:Revision:new" }
+#    methods:  [GET, POST]
 
 revision_edit:
     path:     /{id}/edit
     defaults: { _controller: "BackendBundle:Revision:edit" }
     methods:  [GET, POST]
 
-revision_delete:
-    path:     /{id}/delete
-    defaults: { _controller: "BackendBundle:Revision:delete" }
-    methods:  [GET]
+#revision_delete:
+#    path:     /{id}/delete
+#    defaults: { _controller: "BackendBundle:Revision:delete" }
+#    methods:  [GET]

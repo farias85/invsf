@@ -3,3 +3,71 @@
 {% block li_revision_tree_active %} active {% endblock %}
 {% block li_metadata_all_active %} active {% endblock %}
 
+{% block wrapper %}
+
+    <table class="table table-striped table-bordered dtable" cellspacing="0" width="100%">
+        <thead>
+        <tr>
+            {% for key, filter in viewParams.entityKeys %}
+                <th>{{ attribute(attribute(display, key), 'trans') }}</th>
+            {% endfor %}
+
+            {% for key, filter in viewParams.entityLangKeys %}
+                <th>{{ attribute(attribute(display, key), 'trans') }}</th>
+            {% endfor %}
+
+            {% if viewParams.hasTrans %}
+                <th>{{ 'crud.traducciones' | trans }}</th>
+            {% endif %}
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            {% if viewParams.hasEl %}
+                {% set entityAny = entity.any %}
+            {% endif %}
+            <tr>
+                {% for key, filter in viewParams.entityKeys %}
+                    {% if util.equals(filter, 'date') %}
+                        <td>{{ attribute(entity, key) | date('Y-m-d') }}</td>
+                    {% elseif util.equals(filter, 'bool') %}
+                        <td>{% if attribute(entity, key) %} Yes {% else %} No {% endif %}</td>
+                    {% else %}
+                        <td>{{ attribute(entity, key) }}</td>
+                    {% endif %}
+                {% endfor %}
+
+                {% for key, filter in viewParams.entityLangKeys %}
+                    {% if util.equals(filter, 'date') %}
+                        <td>{{ attribute(entityAny, key) | date('Y-m-d') }}</td>
+                    {% elseif util.equals(filter, 'bool') %}
+                        <td>{% if attribute(entityAny, key) %} Yes {% else %} No {% endif %}</td>
+                    {% else %}
+                        <td>{{ attribute(entityAny, key) }}</td>
+                    {% endif %}
+                {% endfor %}
+
+                {% if viewParams.hasTrans %}
+                    <td>{{ attribute(entity, 'translates') }}</td>
+                {% endif %}
+
+                <td>
+                    <ul class="list-inline">
+                        <li>
+                            <a href="{{ path(router['show'], { 'id': attribute(entity, 'id') }) }}"
+                               title="{{ 'crud.info' | trans }}">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+
+{% block footer %} {% endblock %}
+
