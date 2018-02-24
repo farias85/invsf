@@ -3,7 +3,7 @@
 {% block wrapper_header %}
 
     <div class="section-header">
-        <h3 class="section-title">AFT</h3>
+        <h3 class="section-title">AFT Total: {{ activoFijos | length }}</h3>
         <p class="section-description">Lista de activos de la revisión activa</p>
     </div>
 
@@ -13,23 +13,19 @@
 
     <table class="table data-tbl-boxy responsive stable">
         <thead>
-            <tr>
-                <th>#</th>
-                <th>r#</th>
-                <th>Rótulo</th>
-                <th>Descripción</th>
-                <th>Responsable ATM</th>
-                <th>Estado</th>
-                <th>Alta</th>
-                <th>Estado Actual</th>
-                <th>Actions</th>
-            </tr>
+        <tr>
+            <th>Rótulo</th>
+            <th>Descripción</th>
+            <th>Resp. ATM</th>
+            <th>Estado</th>
+            <th>Alta</th>
+            <th>Actual</th>
+            <th>&nbsp;&nbsp;&nbsp;Acciones&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        </tr>
         </thead>
         <tbody>
         {% for activoFijo in activoFijos %}
-            <tr>
-                <td>{{ loop.index }} </td>
-                <td>{{ loop.revindex }}</td>
+            <tr style="{{ cycle(['background-color: aliceblue', 'background-color: inherit'], loop.index) }}">
                 <td>{{ activoFijo.rotulo }}</td>
                 <td>{{ activoFijo.descripcion }}</td>
                 <td>{{ activoFijo.responsableText }}</td>
@@ -37,23 +33,30 @@
                 <td>{% if activoFijo.fechaAlta %}{{ activoFijo.fechaAlta|date('Y-m-d') }}{% endif %}</td>
                 <td>{% if activoFijo.fechaEstadoActual %}{{ activoFijo.fechaEstadoActual|date('Y-m-d') }}{% endif %}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('activo_fijo_show', { 'id': activoFijo.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('activo_fijo_edit', { 'id': activoFijo.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                    <div class="btn-toolbar" role="toolbar">
+                        <div class="btn-group-sm">
+                            <a class="btn btn-small show-tooltip" title="Ver"
+                               href="{{ path('activo_fijo_show', { 'id': activoFijo.id }) }}">
+                                <i class="icon-zoom-in"></i>
+                            </a>
+                            {% if app.user is not empty %}
+                                <a class="btn btn-small show-tooltip"
+                                   title="Editar"
+                                   href="{{ path('activo_fijo_edit', { 'id': activoFijo.id }) }}">
+                                    <i class="icon-edit"></i>
+                                </a>
+                                <a class="btn btn-small btn-success show-tooltip" title="Control"
+                                   onclick="return confirm('¿Desear crear un apunte de control para el AFT {{ activoFijo.rotulo }}?')"
+                                   href="{{ path('apunte_new_control', { 'idActivo': activoFijo.id }) }}">
+                                    <i class="icon-plus-sign"></i>
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('activo_fijo_new') }}">Create a new activoFijo</a>
-        </li>
-    </ul>
 {% endblock %}

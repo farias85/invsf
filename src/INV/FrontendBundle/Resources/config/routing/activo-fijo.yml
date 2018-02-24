@@ -8,17 +8,17 @@ activo_fijo_show:
     defaults: { _controller: "FrontendBundle:ActivoFijo:show" }
     methods:  GET
 
-activo_fijo_new:
-    path:     /new
-    defaults: { _controller: "FrontendBundle:ActivoFijo:new" }
-    methods:  [GET, POST]
+#activo_fijo_new:
+#    path:     /new
+#    defaults: { _controller: "FrontendBundle:ActivoFijo:new" }
+#    methods:  [GET, POST]
 
 activo_fijo_edit:
     path:     /{id}/edit
     defaults: { _controller: "FrontendBundle:ActivoFijo:edit" }
     methods:  [GET, POST]
 
-activo_fijo_delete:
-    path:     /{id}/delete
-    defaults: { _controller: "FrontendBundle:ActivoFijo:delete" }
-    methods:  DELETE
+#activo_fijo_delete:
+#    path:     /{id}/delete
+#    defaults: { _controller: "FrontendBundle:ActivoFijo:delete" }
+#    methods:  DELETE

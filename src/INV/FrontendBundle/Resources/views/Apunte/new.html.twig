@@ -1,16 +1,30 @@
-{% extends 'base.html.twig' %}
+{% extends 'FrontendBundle:Layout:frontend-basic.html.twig' %}
 
-{% block body %}
-    <h1>Apunte creation</h1>
+{% block wrapper_header %}
 
-    {{ form_start(form) }}
+    <div class="section-header">
+        <h3 class="section-title">AFT: {{ activoFijo.rotulo }}</h3>
+        <p class="section-description">Crear Apunte</p>
+    </div>
+
+{% endblock %}
+
+
+{% block wrapper %}
+
+    <form action="{{ path('apunte_new', {'idActivo': activoFijo.id}) }}" method="post">
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+        <div class="btn-toolbar" role="toolbar">
+            <div class="btn-group">
+                <input type="submit" class="btn btn-primary" value="Crear"/>
+                <a href="{{ path('activo_fijo_show', {'id' : activoFijo.id}) }}" class="btn btn-default">
+                    AFT: {{ activoFijo.rotulo }}
+                </a>
+                <a href="{{ path('apunte_new_control', {'idActivo' : activoFijo.id}) }}" class="btn btn-success">
+                    Control
+                </a>
+            </div>
+        </div>
+    </form>
 
-    <ul>
-        <li>
-            <a href="{{ path('apunte_index') }}">Back to the list</a>
-        </li>
-    </ul>
 {% endblock %}

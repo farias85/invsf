@@ -87,4 +87,8 @@ class Estado {
     public function getDescripcion() {
         return $this->descripcion;
     }
+
+    function __toString() {
+        return $this->getNombre();
+    }
 }

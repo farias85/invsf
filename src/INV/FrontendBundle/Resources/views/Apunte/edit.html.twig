@@ -12,16 +12,19 @@
 
 {% block wrapper %}
 
-    {{ form_start(edit_form) }}
-    {{ form_widget(edit_form) }}
-    <div class="btn-toolbar" role="toolbar">
-        <div class="btn-group">
-            <input type="submit" class="btn btn-primary" value="Editar"/>
-            <a href="{{ path('apunte_index') }}" class="btn btn-default"> Listar </a>
+    <div class="row">
+        <div class="col-lg-6">
+            {{ form_start(edit_form) }}
+            {{ form_widget(edit_form) }}
+            <div class="btn-toolbar" role="toolbar">
+                <div class="btn-group">
+                    <input type="submit" class="btn btn-primary" value="Editar"/>
+                    <a href="{{ path('apunte_index') }}" class="btn btn-default"> Listar </a>
+                </div>
+            </div>
+            {{ form_end(edit_form) }}
         </div>
     </div>
-
-    {{ form_end(edit_form) }}
 
 
 {% endblock %}

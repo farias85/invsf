@@ -9,8 +9,13 @@ apunte_show:
     methods:  GET
 
 apunte_new:
-    path:     /new
+    path:     /{idActivo}/new
     defaults: { _controller: "FrontendBundle:Apunte:new" }
+    methods:  [GET, POST]
+
+apunte_new_control:
+    path:     /{idActivo}/control
+    defaults: { _controller: "FrontendBundle:Apunte:newControl" }
     methods:  [GET, POST]
 
 apunte_edit:

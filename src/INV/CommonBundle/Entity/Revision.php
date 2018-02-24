@@ -146,7 +146,11 @@ class Revision {
         return $this->excelUrl;
     }
 
+//    function __toString() {
+//        return 'Subido: ' . $this->fechaEnSistema->format('Y-m-d') . ' -> Excel: ' . $this->fechaExcel->format('Y-m-d');
+//    }
+
     function __toString() {
-        return 'Subido: ' . $this->fechaEnSistema->format('Y-m-d') . ' -> Excel: ' . $this->fechaExcel->format('Y-m-d');
+        return $this->getId() . '';
     }
 }

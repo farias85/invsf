@@ -27,25 +27,61 @@ class ApunteController extends LoggedController {
     }
 
     /**
-     * Creates a new apunte entity.
-     *
+     * Crea un apunte de control
+     * @param Request $request
+     * @param $idActivo
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function newAction(Request $request) {
+    public function newControlAction(Request $request, $idActivo) {
+        if (!$this->isLogged()) {
+            return $this->redirectForbidden();
+        }
+        $em = $this->getDoctrine()->getManager();
+        $activoFijo = $em->getRepository(Entity::ACTIVO_FIJO)->find($idActivo);
+        $apunte = new Apunte();
+        $apunte->setUsuario($this->getUser());
+        $apunte->setRotulo($activoFijo->getRotulo());
+        $apunte->setAsunto('Control');
+        $apunte->setObservacion('Control');
+        $apunte->setFecha(new \DateTime('now'));
+        $em->persist($apunte);
+        $em->flush();
+        return $this->redirectToRoute('activo_fijo_show', array('id' => $idActivo));
+    }
+
+    /**
+     * Creates a new apunte entity.
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function newAction(Request $request, $idActivo) {
+        if (!$this->isLogged()) {
+            return $this->redirectForbidden();
+        }
+
         $apunte = new Apunte();
         $form = $this->createForm('INV\CommonBundle\Form\ApunteType', $apunte);
         $form->handleRequest($request);
 
+        $em = $this->getDoctrine()->getManager();
+        $activoFijo = $em->getRepository(Entity::ACTIVO_FIJO)->find($idActivo);
+
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+
+            $apunte->setUsuario($this->getUser());
+            $apunte->setRotulo($activoFijo->getRotulo());
+            $apunte->setFecha(new \DateTime('now'));
+
             $em->persist($apunte);
             $em->flush();
 
-            return $this->redirectToRoute('apunte_show', array('id' => $apunte->getId()));
+            return $this->redirectToRoute('activo_fijo_show', array('id' => $idActivo));
         }
 
-        return $this->render('apunte/new.html.twig', array(
+        return $this->render('FrontendBundle:Apunte:new.html.twig', array(
             'apunte' => $apunte,
             'form' => $form->createView(),
+            'activoFijo' => $activoFijo
         ));
     }
 

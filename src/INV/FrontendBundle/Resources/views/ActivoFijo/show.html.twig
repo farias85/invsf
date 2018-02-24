@@ -1,80 +1,169 @@
-{% extends 'base.html.twig' %}
+{% extends 'FrontendBundle:Layout:frontend-basic.html.twig' %}
 
-{% block body %}
-    <h1>Activofijo</h1>
+{% block wrapper_header %}
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ activoFijo.id }}</td>
-            </tr>
-            <tr>
-                <th>Rotulo</th>
-                <td>{{ activoFijo.rotulo }}</td>
-            </tr>
-            <tr>
-                <th>Descripcion</th>
-                <td>{{ activoFijo.descripcion }}</td>
-            </tr>
-            <tr>
-                <th>Valorcuc</th>
-                <td>{{ activoFijo.valorCuc }}</td>
-            </tr>
-            <tr>
-                <th>Valormn</th>
-                <td>{{ activoFijo.valorMn }}</td>
-            </tr>
-            <tr>
-                <th>Tasa</th>
-                <td>{{ activoFijo.tasa }}</td>
-            </tr>
-            <tr>
-                <th>Depacucuc</th>
-                <td>{{ activoFijo.depAcuCuc }}</td>
-            </tr>
-            <tr>
-                <th>Depacumn</th>
-                <td>{{ activoFijo.depAcuMn }}</td>
-            </tr>
-            <tr>
-                <th>Valoractualcuc</th>
-                <td>{{ activoFijo.valorActualCuc }}</td>
-            </tr>
-            <tr>
-                <th>Valoractualmn</th>
-                <td>{{ activoFijo.valorActualMn }}</td>
-            </tr>
-            <tr>
-                <th>Responsabletext</th>
-                <td>{{ activoFijo.responsableText }}</td>
-            </tr>
-            <tr>
-                <th>Estadotext</th>
-                <td>{{ activoFijo.estadoText }}</td>
-            </tr>
-            <tr>
-                <th>Fechaalta</th>
-                <td>{% if activoFijo.fechaAlta %}{{ activoFijo.fechaAlta|date('Y-m-d') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Fechaestadoactual</th>
-                <td>{% if activoFijo.fechaEstadoActual %}{{ activoFijo.fechaEstadoActual|date('Y-m-d') }}{% endif %}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="section-header">
+        <h3 class="section-title">AFT: {{ activoFijo.rotulo }}</h3>
+        <p class="section-description">Detalles, Cambios por Revisiones y Apuntes</p>
+    </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('activo_fijo_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('activo_fijo_edit', { 'id': activoFijo.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+{% endblock %}
+
+
+{% block wrapper %}
+
+    <div class="btn-toolbar" role="toolbar">
+        <div class="btn-group">
+            <a href="{{ path('activo_fijo_index') }}" class="btn btn-default"> Listar </a>
+            <a class="btn btn-primary"
+               href="{{ path('activo_fijo_edit', { 'id': activoFijo.id }) }}">{{ 'crud.edit' | trans }}</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <table class="table data-tbl-boxy responsive">
+                <tbody>
+                <tr>
+                    <th>Rótulo</th>
+                    <td>{{ activoFijo.rotulo }}</td>
+                </tr>
+                <tr>
+                    <th>Descripción</th>
+                    <td>{{ activoFijo.descripcion }}</td>
+                </tr>
+                <tr>
+                    <th>Valor CUC</th>
+                    <td>{{ activoFijo.valorCuc }}</td>
+                </tr>
+                <tr>
+                    <th>Valor MN</th>
+                    <td>{{ activoFijo.valorMn }}</td>
+                </tr>
+                <tr>
+                    <th>Tasa</th>
+                    <td>{{ activoFijo.tasa }}</td>
+                </tr>
+                <tr>
+                    <th>Dep. Acu. CUC</th>
+                    <td>{{ activoFijo.depAcuCuc }}</td>
+                </tr>
+                <tr>
+                    <th>Dep. Acu. MN</th>
+                    <td>{{ activoFijo.depAcuMn }}</td>
+                </tr>
+                <tr>
+                    <th>Valor Actual CUC</th>
+                    <td>{{ activoFijo.valorActualCuc }}</td>
+                </tr>
+                <tr>
+                    <th>Valor Actual MN</th>
+                    <td>{{ activoFijo.valorActualMn }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-lg-6">
+            <table class="table data-tbl-boxy responsive">
+                <tbody>
+                <tr>
+                    <th>Responsable ATM</th>
+                    <td>{{ activoFijo.responsableText }}</td>
+                </tr>
+                <tr>
+                    <th>Estado Economía</th>
+                    <td>{{ activoFijo.estadoText }}</td>
+                </tr>
+                <tr>
+                    <th>Fecha Alta</th>
+                    <td>{% if activoFijo.fechaAlta %}{{ activoFijo.fechaAlta|date('Y-m-d') }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Fecha Estado Actual</th>
+                    <td>{% if activoFijo.fechaEstadoActual %}{{ activoFijo.fechaEstadoActual|date('Y-m-d') }}{% endif %}</td>
+                </tr>
+                <tr style="background-color: #00b0ff">
+                    <th>Revisión</th>
+                    <td>{{ activoFijo.revision }}</td>
+                </tr>
+                <tr style="background-color: mintcream">
+                    <th>Estado</th>
+                    <td>{{ activoFijo.estado }}</td>
+                </tr>
+                <tr style="background-color: mintcream">
+                    <th>Responsable</th>
+                    <td>{{ activoFijo.responsable }}</td>
+                </tr>
+                <tr style="background-color: mintcream">
+                    <th>Local</th>
+                    <td>{{ activoFijo.local }}</td>
+                </tr>
+                <tr style="background-color: mintcream">
+                    <th>Tipo de activo</th>
+                    <td>{{ activoFijo.tipoActivo }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="section-header">
+        <h3 class="section-title">Apuntes</h3>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="btn-toolbar" role="toolbar">
+                <div class="btn-group">
+                    <a href="{{ path('apunte_new', {'idActivo': activoFijo.id}) }}" class="btn btn-success"> Nuevo Apunte </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            {% include 'FrontendBundle:Apunte:_table.html.twig' %}
+        </div>
+    </div>
+
+    <div class="section-header">
+        <h3 class="section-title">Revisiones</h3>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table data-tbl-boxy responsive stable">
+                <thead>
+                <tr>
+                    <th>Descripción</th>
+                    <th>CUC</th>
+                    <th>MN</th>
+                    <th>Tasa</th>
+                    <th>Dep.CUC</th>
+                    <th>Dep.MN</th>
+                    <th>ValAcCUC</th>
+                    <th>ValAcMN</th>
+                    <th>Estado</th>
+                    <th>Actual</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for act in activos %}
+                    <tr style="{{ cycle(['background-color: aliceblue', 'background-color: inherit'], loop.index) }}">
+                        <td>{{ act.descripcion }}</td>
+                        <td>{{ act.valorCuc }}</td>
+                        <td>{{ act.valorMn }}</td>
+                        <td>{{ act.tasa }}</td>
+                        <td>{{ act.depAcuCuc }}</td>
+                        <td>{{ act.depAcuMn }}</td>
+                        <td>{{ act.valorActualCuc }}</td>
+                        <td>{{ act.valorActualMn }}</td>
+                        <td>{{ act.estadoText }}</td>
+                        <td>{% if act.fechaEstadoActual %}{{ act.fechaEstadoActual|date('Y-m-d') }}{% endif %}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
 {% endblock %}
