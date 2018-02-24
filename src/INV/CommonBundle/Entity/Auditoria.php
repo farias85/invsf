@@ -23,16 +23,9 @@ class Auditoria {
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha", type="date", nullable=false)
+     * @ORM\Column(name="fecha", type="datetime", nullable=false)
      */
     private $fecha;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="hora", type="datetime", nullable=false)
-     */
-    private $hora;
 
     /**
      * @var string
@@ -44,9 +37,16 @@ class Auditoria {
     /**
      * @var string
      *
-     * @ORM\Column(name="activo", type="text", length=65535, nullable=false)
+     * @ORM\Column(name="aft_antes", type="text", length=65535, nullable=false)
      */
-    private $activo;
+    private $aftAntes;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="aft_despues", type="text", length=65535, nullable=false)
+     */
+    private $aftDespues;
 
     /**
      * @var Usuario
@@ -91,28 +91,6 @@ class Auditoria {
     }
 
     /**
-     * Set hora.
-     *
-     * @param \DateTime $hora
-     *
-     * @return Auditoria
-     */
-    public function setHora($hora) {
-        $this->hora = $hora;
-
-        return $this;
-    }
-
-    /**
-     * Get hora.
-     *
-     * @return \DateTime
-     */
-    public function getHora() {
-        return $this->hora;
-    }
-
-    /**
      * Set rotulo.
      *
      * @param string $rotulo
@@ -132,28 +110,6 @@ class Auditoria {
      */
     public function getRotulo() {
         return $this->rotulo;
-    }
-
-    /**
-     * Set activo.
-     *
-     * @param string $activo
-     *
-     * @return Auditoria
-     */
-    public function setActivo($activo) {
-        $this->activo = $activo;
-
-        return $this;
-    }
-
-    /**
-     * Get activoAntes.
-     *
-     * @return string
-     */
-    public function getActivo() {
-        return $this->activo;
     }
 
     /**
@@ -177,4 +133,33 @@ class Auditoria {
     public function getUsuario() {
         return $this->usuario;
     }
+
+    /**
+     * @return string
+     */
+    public function getAftAntes() {
+        return $this->aftAntes;
+    }
+
+    /**
+     * @param string $aftAntes
+     */
+    public function setAftAntes($aftAntes) {
+        $this->aftAntes = $aftAntes;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAftDespues() {
+        return $this->aftDespues;
+    }
+
+    /**
+     * @param string $aftDespues
+     */
+    public function setAftDespues($aftDespues) {
+        $this->aftDespues = $aftDespues;
+    }
+
 }

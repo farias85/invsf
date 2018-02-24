@@ -8,17 +8,17 @@ auditoria_show:
     defaults: { _controller: "BackendBundle:Auditoria:show" }
     methods:  GET
 
-auditoria_new:
-    path:     /new
-    defaults: { _controller: "BackendBundle:Auditoria:new" }
-    methods:  [GET, POST]
-
-auditoria_edit:
-    path:     /{id}/edit
-    defaults: { _controller: "BackendBundle:Auditoria:edit" }
-    methods:  [GET, POST]
-
-auditoria_delete:
-    path:     /{id}/delete
-    defaults: { _controller: "BackendBundle:Auditoria:delete" }
-    methods:  [GET]
+#auditoria_new:
+#    path:     /new
+#    defaults: { _controller: "BackendBundle:Auditoria:new" }
+#    methods:  [GET, POST]
+#
+#auditoria_edit:
+#    path:     /{id}/edit
+#    defaults: { _controller: "BackendBundle:Auditoria:edit" }
+#    methods:  [GET, POST]
+#
+#auditoria_delete:
+#    path:     /{id}/delete
+#    defaults: { _controller: "BackendBundle:Auditoria:delete" }
+#    methods:  [GET]

@@ -9,7 +9,6 @@
 namespace INV\BackendBundle\Controller;
 
 use INV\CommonBundle\Controller\NomenclatureController;
-use INV\CommonBundle\Form\MetadataType;
 use INV\CommonBundle\Util\Entity;
 
 class MetadataController extends NomenclatureController {
@@ -36,10 +35,6 @@ class MetadataController extends NomenclatureController {
 
     public function getResourceViewPath() {
         return 'BackendBundle:Metadata';
-    }
-
-    public function getFormTypeClass() {
-        return MetadataType::class;
     }
 
     public function defaultKeysFilter() {

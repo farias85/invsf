@@ -39,13 +39,7 @@ class AuditoriaController extends NomenclatureController {
         return 'BackendBundle:Auditoria';
     }
 
-    public function getFormTypeClass() {
-        return AuditoriaType::class;
-    }
-
     public function defaultKeysFilter() {
-        return ['totalActivos' => 'text', 'valorTotal' => 'text', 'valorTotalMc' => 'text',
-            'depAcuTotal' => 'text', 'depAcuTotalMc' => 'text', 'elaborado' => 'text', 'responsable' => 'text',
-            'revisado' => 'text', 'revision' => 'text'];
+        return ['fecha' => 'date', 'rotulo' => 'text', 'aftAntes' => 'text', 'aftDespues' => 'text'];
     }
 }
