@@ -1,0 +1,59 @@
+{% extends 'FrontendBundle:Layout:frontend-basic.html.twig' %}
+
+{% block wrapper_header %}
+
+    <div class="section-header">
+        <h3 class="section-title">AFT</h3>
+        <p class="section-description">Lista de activos de la revisión activa</p>
+    </div>
+
+{% endblock %}
+
+{% block wrapper %}
+
+    <table class="table data-tbl-boxy responsive stable">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>r#</th>
+                <th>Rótulo</th>
+                <th>Descripción</th>
+                <th>Responsable ATM</th>
+                <th>Estado</th>
+                <th>Alta</th>
+                <th>Estado Actual</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for activoFijo in activoFijos %}
+            <tr>
+                <td>{{ loop.index }} </td>
+                <td>{{ loop.revindex }}</td>
+                <td>{{ activoFijo.rotulo }}</td>
+                <td>{{ activoFijo.descripcion }}</td>
+                <td>{{ activoFijo.responsableText }}</td>
+                <td>{{ activoFijo.estadoText }}</td>
+                <td>{% if activoFijo.fechaAlta %}{{ activoFijo.fechaAlta|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if activoFijo.fechaEstadoActual %}{{ activoFijo.fechaEstadoActual|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('activo_fijo_show', { 'id': activoFijo.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('activo_fijo_edit', { 'id': activoFijo.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('activo_fijo_new') }}">Create a new activoFijo</a>
+        </li>
+    </ul>
+{% endblock %}

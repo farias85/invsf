@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Activofijo</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ activoFijo.id }}</td>
+            </tr>
+            <tr>
+                <th>Rotulo</th>
+                <td>{{ activoFijo.rotulo }}</td>
+            </tr>
+            <tr>
+                <th>Descripcion</th>
+                <td>{{ activoFijo.descripcion }}</td>
+            </tr>
+            <tr>
+                <th>Valorcuc</th>
+                <td>{{ activoFijo.valorCuc }}</td>
+            </tr>
+            <tr>
+                <th>Valormn</th>
+                <td>{{ activoFijo.valorMn }}</td>
+            </tr>
+            <tr>
+                <th>Tasa</th>
+                <td>{{ activoFijo.tasa }}</td>
+            </tr>
+            <tr>
+                <th>Depacucuc</th>
+                <td>{{ activoFijo.depAcuCuc }}</td>
+            </tr>
+            <tr>
+                <th>Depacumn</th>
+                <td>{{ activoFijo.depAcuMn }}</td>
+            </tr>
+            <tr>
+                <th>Valoractualcuc</th>
+                <td>{{ activoFijo.valorActualCuc }}</td>
+            </tr>
+            <tr>
+                <th>Valoractualmn</th>
+                <td>{{ activoFijo.valorActualMn }}</td>
+            </tr>
+            <tr>
+                <th>Responsabletext</th>
+                <td>{{ activoFijo.responsableText }}</td>
+            </tr>
+            <tr>
+                <th>Estadotext</th>
+                <td>{{ activoFijo.estadoText }}</td>
+            </tr>
+            <tr>
+                <th>Fechaalta</th>
+                <td>{% if activoFijo.fechaAlta %}{{ activoFijo.fechaAlta|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fechaestadoactual</th>
+                <td>{% if activoFijo.fechaEstadoActual %}{{ activoFijo.fechaEstadoActual|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('activo_fijo_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('activo_fijo_edit', { 'id': activoFijo.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
