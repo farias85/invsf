@@ -24,6 +24,8 @@ class AppKernel extends Kernel
             new INV\BackendBundle\BackendBundle(),
             new INV\FrontendBundle\FrontendBundle(),
             new INV\MediaBundle\MediaBundle(),
+            new WhiteOctober\TCPDFBundle\WhiteOctoberTCPDFBundle(),
+            new Liuggio\ExcelBundle\LiuggioExcelBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

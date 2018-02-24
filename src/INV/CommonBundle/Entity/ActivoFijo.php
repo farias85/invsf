@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * ActivoFijo
  *
  * @ORM\Table(name="activo_fijo")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="INV\CommonBundle\Repository\ActivoFijoRepository")
  */
 class ActivoFijo {
     /**

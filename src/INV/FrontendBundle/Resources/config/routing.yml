@@ -2,6 +2,18 @@ frontend_homepage:
     path:     /
     defaults: { _controller: FrontendBundle:Default:index }
 
+frontend_homepage_pdf:
+    path:     /pdf
+    defaults: { _controller: FrontendBundle:Default:pdf }
+
+frontend_homepage_excel:
+    path:     /excel
+    defaults: { _controller: FrontendBundle:Default:excel }
+
+frontend_homepage_excel2:
+    path:     /excel2
+    defaults: { _controller: FrontendBundle:Default:excel2 }
+
 frontend_security_login:
     path:     /login
     defaults: { _controller: "FrontendBundle:Security:login" }
@@ -12,3 +24,7 @@ frontend_security_logut:
 frontend_apunte:
     resource: "@FrontendBundle/Resources/config/routing/apunte.yml"
     prefix:   /apunte
+
+frontend_activo_fijo:
+    resource: "@FrontendBundle/Resources/config/routing/activo-fijo.yml"
+    prefix:   /activo-fijo

@@ -60,3 +60,7 @@
 
 # Symfony3
 /vendor/*
+
+# Downloads Uploads
+/web/downloads/*
+/web/uploads/*
