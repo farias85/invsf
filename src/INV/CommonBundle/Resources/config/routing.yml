@@ -1,3 +1,7 @@
+common_auditoria:
+    resource: "@CommonBundle/Resources/config/routing/auditoria.yml"
+    prefix:   /auditoria
+
 common_homepage:
     path:     /
     defaults: { _controller: CommonBundle:Default:index }

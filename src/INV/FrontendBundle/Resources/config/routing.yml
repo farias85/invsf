@@ -8,3 +8,7 @@ frontend_security_login:
 
 frontend_security_logut:
     path:     /logout
+
+frontend_apunte:
+    resource: "@FrontendBundle/Resources/config/routing/apunte.yml"
+    prefix:   /apunte

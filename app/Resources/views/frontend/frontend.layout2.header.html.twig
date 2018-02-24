@@ -19,16 +19,10 @@
                     {#<li><a href="#portfolio">Portfolio</a></li>#}
                     {#<li><a href="#team">Team</a></li>#}
 
-                    <li class="menu-has-children" title="{{ app.user }}">
-                        <a href="#">ATF</a>
-                        <ul>
-                            <li><a href="#">Activos</a></li>
-                            <li><a href="#">Sobrantes</a></li>
-                            <li><a href="#">Informes</a></li>
-                        </ul>
-                    </li>
-
-                    <li><a href="#">Apuntes</a></li>
+                    <li><a href="#">Activos</a></li>
+                    <li><a href="#">Sobrantes</a></li>
+                    <li><a href="{{ path('apunte_index') }}">Apuntes</a></li>
+                    <li><a href="#">Informes</a></li>
 
                     {% if app.user is not null %}
                         <li class="menu-has-children" title="{{ app.user }}">

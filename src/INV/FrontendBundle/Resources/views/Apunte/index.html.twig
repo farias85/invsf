@@ -1,0 +1,55 @@
+{% extends 'FrontendBundle:Layout:frontend-basic.html.twig' %}
+
+{% block wrapper_header %}
+
+    <div class="section-header">
+        <h3 class="section-title">Apuntes</h3>
+        <p class="section-description">Lista de mensajes almacenados</p>
+    </div>
+
+{% endblock %}
+
+{% block wrapper %}
+
+    <table class="table data-tbl-boxy responsive stable">
+        <thead>
+        <tr>
+            <th>Rótulo</th>
+            <th>Fecha</th>
+            <th>Asunto</th>
+            <th>Observación</th>
+            <th>&nbsp;&nbsp;&nbsp;Acciones&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for apunte in apuntes %}
+            <tr>
+                <td>{{ apunte.rotulo }}</td>
+                <td>{% if apunte.fecha %}{{ apunte.fecha|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ apunte.asunto }}</td>
+                <td>{{ apunte.observacion }}</td>
+                <td>
+                    <div class="btn-toolbar" role="toolbar">
+                        <div class="btn-group-sm">
+                            <a class="btn btn-small show-tooltip" title="Ver"
+                               href="{{ path('apunte_show', { 'id': apunte.id }) }}"><i class="icon-zoom-in"></i></a>
+                            {% if app.user is not empty %}
+                                <a class="btn btn-small show-tooltip"
+                                   title="Editar"
+                                   href="{{ path('apunte_edit', { 'id': apunte.id }) }}"><i class="icon-edit"></i></a>
+                                <a class="btn btn-small btn-danger show-tooltip" title="Eliminar"
+                                   onclick="return confirm('¿{{ 'crud.delete' | trans }}?')"
+                                   href="{{ path('apunte_delete', { 'id': apunte.id }) }}"><i
+                                            class="icon-trash"></i></a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+
+

@@ -1,0 +1,24 @@
+apunte_index:
+    path:     /
+    defaults: { _controller: "FrontendBundle:Apunte:index" }
+    methods:  GET
+
+apunte_show:
+    path:     /{id}/show
+    defaults: { _controller: "FrontendBundle:Apunte:show" }
+    methods:  GET
+
+apunte_new:
+    path:     /new
+    defaults: { _controller: "FrontendBundle:Apunte:new" }
+    methods:  [GET, POST]
+
+apunte_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "FrontendBundle:Apunte:edit" }
+    methods:  [GET, POST]
+
+apunte_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "FrontendBundle:Apunte:delete" }
+    methods:  [GET]

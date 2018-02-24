@@ -1,0 +1,47 @@
+{% extends 'FrontendBundle:Layout:frontend-basic.html.twig' %}
+
+{% block wrapper_header %}
+
+    <div class="section-header">
+        <h3 class="section-title">Apunte ATF: {{ apunte.rotulo }}</h3>
+    </div>
+
+{% endblock %}
+
+{% block wrapper %}
+
+    <table class="table data-tbl-boxy responsive">
+        <tbody>
+        <tr>
+            <th>Rotulo</th>
+            <td>{{ apunte.rotulo }}</td>
+        </tr>
+        <tr>
+            <th>Fecha</th>
+            <td>{% if apunte.fecha %}{{ apunte.fecha|date('Y-m-d') }}{% endif %}</td>
+        </tr>
+        <tr>
+            <th>Asunto</th>
+            <td>{{ apunte.asunto }}</td>
+        </tr>
+        <tr>
+            <th>Observacion</th>
+            <td>{{ apunte.observacion }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="btn-toolbar" role="toolbar">
+        <div class="btn-group">
+            <a href="{{ path('apunte_index') }}" class="btn btn-default"> Listar </a>
+            <a class="btn btn-default"
+               href="{{ path('apunte_edit', { 'id': apunte.id }) }}">{{ 'crud.edit' | trans }}</a>
+            <a class="btn btn-danger"
+               href="{{ path('apunte_delete', { 'id': apunte.id }) }}"
+               onclick="return confirm('¿{{ 'crud.delete' | trans }}?')">
+                {{ 'crud.delete' | trans }}
+            </a>
+        </div>
+    </div>
+
+{% endblock %}

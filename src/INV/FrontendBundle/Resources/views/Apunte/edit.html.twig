@@ -1,0 +1,27 @@
+{% extends 'FrontendBundle:Layout:frontend-basic.html.twig' %}
+
+{% block wrapper_header %}
+
+    <div class="section-header">
+        <h3 class="section-title">ATF: {{ apunte.rotulo }}</h3>
+        <p class="section-description">Editar apunte</p>
+    </div>
+
+{% endblock %}
+
+
+{% block wrapper %}
+
+    {{ form_start(edit_form) }}
+    {{ form_widget(edit_form) }}
+    <div class="btn-toolbar" role="toolbar">
+        <div class="btn-group">
+            <input type="submit" class="btn btn-primary" value="Editar"/>
+            <a href="{{ path('apunte_index') }}" class="btn btn-default"> Listar </a>
+        </div>
+    </div>
+
+    {{ form_end(edit_form) }}
+
+
+{% endblock %}
