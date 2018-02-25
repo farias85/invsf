@@ -86,4 +86,37 @@ class ActivoFijoController extends Controller {
     public function successRedirect($id = null) {
         return $this->get('inv.manager')->successRedirect($id, 'activo_fijo_show', 'activo_fijo_index');
     }
+
+    public function filterAction() {
+        $em = $this->getDoctrine()->getManager();
+
+        $activoFijos = $em->getRepository(Entity::ACTIVO_FIJO)->findByRevisionActiva();
+
+        $responsables = $this->findArrayResult(Entity::RESPONSABLE);
+        $estados = $this->findArrayResult(Entity::ESTADO);
+        $locales = $this->findArrayResult(Entity::LOCAL);
+        $tipos = $this->findArrayResult(Entity::TIPO_ACTIVO);
+
+        return $this->render('FrontendBundle:ActivoFijo:filter.html.twig', array(
+            'activoFijos' => $activoFijos,
+            'responsables' => json_encode($responsables),
+            'estados' => json_encode($estados),
+            'locales' => json_encode($locales),
+            'tipos' => json_encode($tipos),
+        ));
+    }
+
+    /**
+     * @param $entity string
+     * @param $orderBy string
+     */
+    public function findArrayResult($entity, $orderBy = 'nombre') {
+        $em = $this->getDoctrine()->getManager();
+        $result = $em->getRepository($entity)
+            ->createQueryBuilder('e')
+            ->orderBy('e.' . $orderBy, 'ASC')
+            ->getQuery()
+            ->getArrayResult();
+        return $result;
+    }
 }

@@ -1,0 +1,205 @@
+{% extends 'FrontendBundle:Layout:frontend-basic.html.twig' %}
+
+{% block wrapper_header %} {% endblock %}
+
+{% block wrapper %}
+
+    <div ng-controller="AftFilterController" ng-cloak>
+
+        <div class="section-header">
+            <h3 class="section-title">AFT Total: {| original.length |} </h3>
+            <p class="section-description">Lista actual de activos
+                <span class="badge badge-info"> {| activos.length |} </span>
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="rotulo">Rótulo</label>
+                    <input type="text" id="rotulo" name="rotulo" class="form-control" ng-model="rotulo"
+                           ng-change="mySelect()">
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="descripcion">Descripción</label>
+                    <input type="text" id="descripcion" name="descripcion" class="form-control" ng-model="descripcion"
+                           ng-change="mySelect()">
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="responsable">Responsable</label>
+                    <multiselect class="input-xlarge" multiple="true" ng-model="sresponsables"
+                                 options="r.nombre for r in responsables" id="responsable"
+                                 change="mySelect()">
+                    </multiselect>
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="estado">Estado</label>
+                    <multiselect class="input-xlarge" multiple="true" ng-model="sestados"
+                                 options="e.nombre for e in estados" id="estado"
+                                 change="mySelect()">
+                    </multiselect>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="local">Local</label>
+                    <multiselect class="input-xlarge" multiple="true" ng-model="slocales"
+                                 options="l.nombre for l in locales" id="local"
+                                 change="mySelect()">
+                    </multiselect>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="tipo">Tipo</label>
+                    <multiselect class="input-xlarge" multiple="true" ng-model="stipos"
+                                 options="t.nombre for t in tipos" id="tipo"
+                                 change="mySelect()">
+                    </multiselect>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <ul class="list-group" style="margin-left: -20px">
+                    <li class="list-group-item list-group-item-success" ng-hide="rotulo != ''">
+                        <strong>Rótulo: </strong>
+                    </li>
+                    <li class="list-group-item list-group-item-danger" ng-show="rotulo != ''">
+                        <strong>Rótulo: </strong> <span>{| rotulo |}</span>
+                    </li>
+                    <li class="list-group-item list-group-item-secondary" ng-hide="descripcion != ''">
+                        <strong>Descripción: </strong>
+                    </li>
+                    <li class="list-group-item list-group-item-danger" ng-show="descripcion != ''">
+                        <strong>Descripción: </strong> <span>{| descripcion |}</span>
+                    </li>
+                    <li class="list-group-item list-group-item-warning" ng-hide="sresponsables.length > 0">
+                        <strong>Responsables: </strong>
+                    </li>
+                    <li class="list-group-item list-group-item-danger" ng-show="sresponsables.length > 0">
+                        <strong>Responsables: </strong>
+                        <span ng-repeat="resp in sresponsables">{| resp.nombre |}, </span>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-6">
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-primary" ng-hide="sestados.length > 0">
+                        <strong>Estados: </strong>
+                    </li>
+                    <li class="list-group-item list-group-item-danger" ng-show="sestados.length > 0">
+                        <strong>Estados: </strong><span ng-repeat="estado in sestados">{| estado.nombre |}, </span>
+                    </li>
+                    <li class="list-group-item list-group-item-light" ng-hide="slocales.length > 0">
+                        <strong>Locales: </strong>
+                    </li>
+                    <li class="list-group-item list-group-item-danger" ng-show="slocales.length > 0">
+                        <strong>Locales: </strong><span ng-repeat="local in slocales">{| local.nombre |}, </span>
+                    </li>
+                    <li class="list-group-item list-group-item-info" ng-hide="stipos.length > 0">
+                        <strong>Tipos: </strong>
+                    </li>
+                    <li class="list-group-item list-group-item-danger" ng-show="stipos.length > 0">
+                        <strong>Tipos: </strong><span ng-repeat="tipo in stipos">{| tipo.nombre |}, </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <table class="table data-tbl-boxy responsive">
+                    <thead>
+                    <tr>
+                        <th>Rótulo</th>
+                        <th>Descripción</th>
+                        <th>Responsable</th>
+                        <th>Estado</th>
+                        <th>Local</th>
+                        <th>Tipo</th>
+                        <th>&nbsp;&nbsp;&nbsp;Acciones&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr ng-repeat="activoFijo in activos">
+                        <td>{| activoFijo.rotulo |}</td>
+                        <td>{| activoFijo.descripcion |}</td>
+                        <td>{| activoFijo.responsable |}</td>
+                        <td>{| activoFijo.estado |}</td>
+                        <td>{| activoFijo.local |}</td>
+                        <td>{| activoFijo.tipoActivo |}</td>
+                        <td>
+                            <div class="btn-toolbar" role="toolbar">
+                                <div class="btn-group-sm">
+                                    <a class="btn btn-small show-tooltip" title="Ver"
+                                       href="{|activoFijo.id|}/show">
+                                        <i class="icon-zoom-in"></i>
+                                    </a>
+                                    {% if app.user is not empty %}
+                                        <a class="btn btn-small show-tooltip"
+                                           title="Editar"
+                                           href="{|activoFijo.id|}/edit">
+                                            <i class="icon-edit"></i>
+                                        </a>
+                                        {% if app.environment == 'dev' %}
+                                            {% set prefix = '/app_dev.php' %}
+                                        {% else %}
+                                            {% set prefix = '' %}
+                                        {% endif %}
+                                        <a class="btn btn-small btn-success show-tooltip" title="Control"
+                                           href="{{ prefix }}/apunte/{|activoFijo.id|}/control">
+                                            <i class="icon-plus-sign"></i>
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/frontend/js/iApp/controller/AftFilterController.js') }}"></script>
+    <script type="text/javascript">
+      let TwigParams = {}
+      TwigParams.responsables = JSON.parse('{{ responsables | raw }}')
+      TwigParams.estados = JSON.parse('{{ estados | raw }}')
+      TwigParams.locales = JSON.parse('{{ locales | raw }}')
+      TwigParams.tipos = JSON.parse('{{ tipos | raw }}')
+      TwigParams.activos = []
+
+      {% for activoFijo in activoFijos %}
+      TwigParams.activos.push({
+        id: '{{ activoFijo.id }}',
+        rotulo: '{{ activoFijo.rotulo }}',
+        descripcion: '{{ activoFijo.descripcion }}',
+        responsable: '{{ activoFijo.responsable }}',
+        estado: '{{ activoFijo.estado }}',
+        local: '{{ activoFijo.local }}',
+        tipoActivo: '{{ activoFijo.tipoActivo }}',
+      })
+      {% endfor %}
+
+    </script>
+{% endblock %}

@@ -3,6 +3,11 @@ activo_fijo_index:
     defaults: { _controller: "FrontendBundle:ActivoFijo:index" }
     methods:  GET
 
+activo_fijo_filter:
+    path:     /filter
+    defaults: { _controller: "FrontendBundle:ActivoFijo:filter" }
+    methods:  [GET, POST]
+
 activo_fijo_show:
     path:     /{id}/show
     defaults: { _controller: "FrontendBundle:ActivoFijo:show" }
