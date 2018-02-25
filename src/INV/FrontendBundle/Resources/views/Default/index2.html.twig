@@ -1,0 +1,51 @@
+{% extends 'FrontendBundle:Layout:frontend-basic.html.twig' %}
+
+{% block wrapper %}
+    Hello World! FRONTEND
+
+    <div class="container" ng-controller="TodoController" ng-cloak>
+        {| message |}
+    </div>
+
+    <div class="container" ng-controller="MainCtrl" ng-cloak>
+        <h1>Example</h1>
+        <multiselect class="input-xlarge" multiple="true" ng-model="selectedCar" options="c.name for c in cars"
+                     change="selected()">
+        </multiselect>
+
+        <div class="well well-small">
+            {| selectedCar |}
+        </div>
+
+        {% if mjson is defined and mjson is not empty %}
+            {{ mjson }}
+        {% endif %}
+
+        <form action="{{ path('frontend_homepage') }}" method="post">
+            <input type="text" name="json" id="json" value="{| selectedCar |}">
+            <input type="submit" value="submit">
+        </form>
+
+
+        Single select:
+        <multiselect class="input-xlarge" ng-model="selectedFruit" options="c.name for c in fruits"
+                     change="selected()">
+        </multiselect>
+        <div class="well well-small">
+            {| selectedFruit |}
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('bundles/common/js/iApp/controller/TodoController.js') }}"></script>
+    <script src="{{ asset('bundles/common/js/iApp/controller/MainCtrl.js') }}"></script>
+{% endblock %}

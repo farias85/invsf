@@ -2,7 +2,7 @@
  * Created by Felipe Rodriguez Arias <ucifarias@gmail.com> on 08/11/2017.
  */
 
-bApp.service('ApiService',
+iApp.service('ApiService',
   function ($rootScope, $http, $resource, $q) {
     /**
      * HTTP GET CALL

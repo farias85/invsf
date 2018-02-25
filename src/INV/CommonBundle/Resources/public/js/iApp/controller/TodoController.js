@@ -2,7 +2,7 @@
  * Created by Felipe Rodriguez Arias <ucifarias@gmail.com> on 08/11/2017.
  */
 
-bApp.controller('TodoController',
+iApp.controller('TodoController',
   function ($scope) {
 
     $scope.message = 'Hello world ANGULaaaAR!!!'

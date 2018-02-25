@@ -2,7 +2,7 @@
  * Created by Felipe on 12/02/2018.
  */
 
-bApp.controller('MainCtrl',
+iApp.controller('MainCtrl',
   function ($scope) {
     $scope.name = 'World'
 

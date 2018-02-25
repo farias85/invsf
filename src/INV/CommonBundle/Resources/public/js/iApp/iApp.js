@@ -2,7 +2,7 @@
  * Created by Felipe on 09/02/2018.
  */
 
-let bApp = angular.module('INV',
+let iApp = angular.module('INV',
   [
     'ngResource',
     'ngRoute',

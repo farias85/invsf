@@ -105,4 +105,8 @@ class DefaultController extends Controller {
 //        return "A symfony response";
         return $this->render('FrontendBundle:Default:index.html.twig');
     }
+
+    public function angularAction() {
+        return $this->render('FrontendBundle:Default:index2.html.twig');
+    }
 }

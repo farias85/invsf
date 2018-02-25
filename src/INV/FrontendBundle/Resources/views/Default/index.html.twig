@@ -2,43 +2,6 @@
 
 {% block wrapper %}
     Hello World!
-
-    <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active">
-            <a href="#step3" aria-controls="step3" role="tab" data-toggle="tab">
-                11111
-            </a>
-        </li>
-        <li role="presentation">
-            <a href="#step4" aria-controls="step4" role="tab" data-toggle="tab">
-                22222
-            </a>
-        </li>
-    </ul>
-
-    <div class="tab-content">
-        <div role="tabpanel" class="tab-pane" id="step3">
-            <div class="row">
-                <div class="col-lg-6">
-                    <br/>
-                    asaaaaaaaaaaaaaaaaaaaaaaaaaa
-                </div>
-            </div>
-        </div>
-        <div role="tabpanel" class="tab-pane" id="step4">
-            <div class="row">
-                <div class="col-lg-6">
-                    <br/>
-                    asdsd
-                </div>
-            </div>
-        </div>
-    </div>
-
 {% endblock %}
 
-{% block javascripts %}
-    parent();
-    <script src="{{ asset('bundles/backend/bower_components/bootstrap/js/tab.js') }}" type="text/javascript"></script>
-{% endblock %}
 
