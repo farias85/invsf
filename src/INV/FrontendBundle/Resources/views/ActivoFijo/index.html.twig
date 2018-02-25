@@ -4,7 +4,9 @@
 
     <div class="section-header">
         <h3 class="section-title">AFT Total: {{ activoFijos | length }}</h3>
-        <p class="section-description">Lista de activos de la revisión activa</p>
+        <p class="section-description">Lista de activos de la revisión activa
+            <span class="badge badge-info"> {% if activoFijos[0] is defined %} {{ activoFijos[0].revision }} {% endif %}</span>
+        </p>
     </div>
 
 {% endblock %}
@@ -16,10 +18,10 @@
         <tr>
             <th>Rótulo</th>
             <th>Descripción</th>
-            <th>Resp. ATM</th>
+            <th>Responsable</th>
             <th>Estado</th>
-            <th>Alta</th>
-            <th>Actual</th>
+            <th>Local</th>
+            <th>Tipo</th>
             <th>&nbsp;&nbsp;&nbsp;Acciones&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
         </tr>
         </thead>
@@ -28,10 +30,10 @@
             <tr style="{{ cycle(['background-color: aliceblue', 'background-color: inherit'], loop.index) }}">
                 <td>{{ activoFijo.rotulo }}</td>
                 <td>{{ activoFijo.descripcion }}</td>
-                <td>{{ activoFijo.responsableText }}</td>
-                <td>{{ activoFijo.estadoText }}</td>
-                <td>{% if activoFijo.fechaAlta %}{{ activoFijo.fechaAlta|date('Y-m-d') }}{% endif %}</td>
-                <td>{% if activoFijo.fechaEstadoActual %}{{ activoFijo.fechaEstadoActual|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ activoFijo.responsable }}</td>
+                <td>{{ activoFijo.estado }}</td>
+                <td>{{ activoFijo.local }}</td>
+                <td>{{ activoFijo.tipoActivo }}</td>
                 <td>
                     <div class="btn-toolbar" role="toolbar">
                         <div class="btn-group-sm">
@@ -46,7 +48,7 @@
                                     <i class="icon-edit"></i>
                                 </a>
                                 <a class="btn btn-small btn-success show-tooltip" title="Control"
-                                   onclick="return confirm('¿Desear crear un apunte de control para el AFT {{ activoFijo.rotulo }}?')"
+                                   onclick="return confirm('¿Desea crear un apunte de control para el AFT {{ activoFijo.rotulo }}?')"
                                    href="{{ path('apunte_new_control', { 'idActivo': activoFijo.id }) }}">
                                     <i class="icon-plus-sign"></i>
                                 </a>

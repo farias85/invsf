@@ -31,3 +31,11 @@ services:
     inv.mail.manager:
         class:     INV\CommonBundle\Manager\MailManager
         arguments: ["@mailer", "@twig",'@service_container']
+
+    inv.auditoria.manager:
+        parent: inv.manager
+        class: INV\CommonBundle\Manager\AuditoriaManager
+
+    inv.apunte.manager:
+        parent: inv.manager
+        class: INV\CommonBundle\Manager\ApunteManager

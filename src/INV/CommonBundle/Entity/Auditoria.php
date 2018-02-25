@@ -30,23 +30,30 @@ class Auditoria {
     /**
      * @var string
      *
-     * @ORM\Column(name="rotulo", type="string", length=18, nullable=false)
+     * @ORM\Column(name="entity", type="string", length=100, nullable=false)
+     */
+    private $entity;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="rotulo", type="string", length=100, nullable=false)
      */
     private $rotulo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="aft_antes", type="text", length=65535, nullable=false)
+     * @ORM\Column(name="antes", type="text", length=65535, nullable=false)
      */
-    private $aftAntes;
+    private $antes;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="aft_despues", type="text", length=65535, nullable=false)
+     * @ORM\Column(name="despues", type="text", length=65535, nullable=false)
      */
-    private $aftDespues;
+    private $despues;
 
     /**
      * @var Usuario
@@ -57,6 +64,14 @@ class Auditoria {
      * })
      */
     private $usuario;
+
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="descripcion", type="text", length=65535, nullable=true)
+     */
+    private $descripcion;
 
 
     /**
@@ -91,25 +106,10 @@ class Auditoria {
     }
 
     /**
-     * Set rotulo.
-     *
-     * @param string $rotulo
-     *
-     * @return Auditoria
+     * @return Usuario
      */
-    public function setRotulo($rotulo) {
-        $this->rotulo = $rotulo;
-
-        return $this;
-    }
-
-    /**
-     * Get rotulo.
-     *
-     * @return string
-     */
-    public function getRotulo() {
-        return $this->rotulo;
+    public function getUsuario() {
+        return $this->usuario;
     }
 
     /**
@@ -126,40 +126,72 @@ class Auditoria {
     }
 
     /**
-     * Get usuario.
-     *
-     * @return \INV\CommonBundle\Entity\Usuario|null
+     * @return string
      */
-    public function getUsuario() {
-        return $this->usuario;
+    public function getEntity() {
+        return $this->entity;
+    }
+
+    /**
+     * @param string $entity
+     */
+    public function setEntity($entity) {
+        $this->entity = $entity;
     }
 
     /**
      * @return string
      */
-    public function getAftAntes() {
-        return $this->aftAntes;
+    public function getAntes() {
+        return $this->antes;
     }
 
     /**
-     * @param string $aftAntes
+     * @param string $antes
      */
-    public function setAftAntes($aftAntes) {
-        $this->aftAntes = $aftAntes;
+    public function setAntes($antes) {
+        $this->antes = $antes;
     }
 
     /**
      * @return string
      */
-    public function getAftDespues() {
-        return $this->aftDespues;
+    public function getDespues() {
+        return $this->despues;
     }
 
     /**
-     * @param string $aftDespues
+     * @param string $despues
      */
-    public function setAftDespues($aftDespues) {
-        $this->aftDespues = $aftDespues;
+    public function setDespues($despues) {
+        $this->despues = $despues;
     }
 
+    /**
+     * @return null|string
+     */
+    public function getDescripcion() {
+        return $this->descripcion;
+    }
+
+    /**
+     * @param null|string $descripcion
+     */
+    public function setDescripcion($descripcion) {
+        $this->descripcion = $descripcion;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRotulo() {
+        return $this->rotulo;
+    }
+
+    /**
+     * @param string $rotulo
+     */
+    public function setRotulo($rotulo) {
+        $this->rotulo = $rotulo;
+    }
 }

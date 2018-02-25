@@ -40,6 +40,6 @@ class AuditoriaController extends NomenclatureController {
     }
 
     public function defaultKeysFilter() {
-        return ['fecha' => 'date', 'rotulo' => 'text', 'aftAntes' => 'text', 'aftDespues' => 'text'];
+        return ['fecha' => 'date', 'entity' => 'text', 'antes' => 'text', 'despues' => 'text'];
     }
 }

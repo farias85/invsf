@@ -2,16 +2,18 @@
 
 namespace INV\FrontendBundle\Controller;
 
+use INV\CommonBundle\Controller\LoggedController;
 use INV\CommonBundle\Entity\ActivoFijo;
+use INV\CommonBundle\Entity\Auditoria;
 use INV\CommonBundle\Util\Entity;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\VarDumper\VarDumper;
 
 /**
  * Activofijo controller.
  *
  */
-class ActivoFijoController extends Controller {
+class ActivoFijoController extends LoggedController {
     /**
      * Lists all activoFijo entities.
      *
@@ -35,29 +37,45 @@ class ActivoFijoController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $activos = $em->getRepository(Entity::ACTIVO_FIJO)->findBy(['rotulo' => $activoFijo->getRotulo()], ['id' => 'ASC']);
         $apuntes = $em->getRepository(Entity::APUNTE)->findBy(['rotulo' => $activoFijo->getRotulo()], ['id' => 'ASC']);
+        $auditorias = $em->getRepository(Entity::AUDITORIA)->findBy(['rotulo' => $activoFijo->getRotulo(), 'entity' => Entity::ACTIVO_FIJO], ['id' => 'ASC']);
         return $this->render('FrontendBundle:ActivoFijo:show.html.twig', array(
             'activoFijo' => $activoFijo,
             'activos' => $activos,
             'apuntes' => $apuntes,
+            'auditorias' => $auditorias,
         ));
     }
 
     /**
      * Displays a form to edit an existing activoFijo entity.
-     *
+     * @param Request $request
+     * @param ActivoFijo $activoFijo
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function editAction(Request $request, ActivoFijo $activoFijo) {
+        if (!$this->isLogged()) {
+            return $this->redirectForbidden();
+        }
+        $em = $this->getDoctrine()->getManager();
+
+        $aftAntes = '';
+        if ($request->isMethod('POST')) {
+            $aftAntes = $em->getRepository(Entity::ACTIVO_FIJO)->findForAuditoria($activoFijo->getId());
+        }
         $editForm = $this->createForm('INV\CommonBundle\Form\ActivoFijoType', $activoFijo);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $flash = $request->getSession()->getFlashBag();
             try {
-                $this->getDoctrine()->getManager()->flush();
+                $em->flush();
+                $aftDespues = $em->getRepository(Entity::ACTIVO_FIJO)->findForAuditoria($activoFijo->getId());
+                $this->get('inv.auditoria.manager')->create($aftAntes, $aftDespues, $activoFijo->getRotulo(), Entity::ACTIVO_FIJO);
             } catch (\Exception $e) {
                 $flash->add('danger', $this->get('translator')->trans('operation.fail', [], 'common'));
                 return $this->redirectToRoute('activo_fijo_index');
             }
+
             return $this->successRedirect($activoFijo->getId());
         }
 

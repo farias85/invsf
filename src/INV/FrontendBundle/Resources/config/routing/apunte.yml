@@ -27,3 +27,8 @@ apunte_delete:
     path:     /{id}/delete
     defaults: { _controller: "FrontendBundle:Apunte:delete" }
     methods:  [GET]
+
+apunte_delete_from_aft:
+    path:     /{id}/delete-from-aft/{idActivo}
+    defaults: { _controller: "FrontendBundle:Apunte:deleteFromAft" }
+    methods:  [GET]

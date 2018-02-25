@@ -28,11 +28,21 @@
                                href="{{ path('apunte_edit', { 'id': apunte.id }) }}">
                                 <i class="icon-edit"></i>
                             </a>
-                            <a class="btn btn-small btn-danger show-tooltip" title="Eliminar"
-                               onclick="return confirm('¿{{ 'crud.delete' | trans }}?')"
-                               href="{{ path('apunte_delete', { 'id': apunte.id }) }}">
-                                <i class="icon-trash"></i>
-                            </a>
+
+                            {% if activoFijo is not defined %}
+                                <a class="btn btn-small btn-danger show-tooltip" title="Eliminar"
+                                   onclick="return confirm('¿{{ 'crud.delete' | trans }}?')"
+                                   href="{{ path('apunte_delete', { 'id': apunte.id }) }}">
+                                    <i class="icon-trash"></i>
+                                </a>
+                            {% else %}
+                                <a class="btn btn-small btn-danger show-tooltip" title="Eliminar"
+                                   onclick="return confirm('¿{{ 'crud.delete' | trans }}?')"
+                                   href="{{ path('apunte_delete_from_aft', { 'id': apunte.id, 'idActivo': activoFijo.id }) }}">
+                                    <i class="icon-trash"></i>
+                                </a>
+                            {% endif %}
+
                         {% endif %}
                     </div>
                 </div>

@@ -124,10 +124,11 @@ class ApunteController extends LoggedController {
 
     /**
      * Deletes a apunte entity.
+     * @param Request $request
      * @param $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function deleteAction($id) {
+    public function deleteAction(Request $request, $id) {
 
         if (!$this->isLogged()) {
             return $this->redirectForbidden();
@@ -135,12 +136,35 @@ class ApunteController extends LoggedController {
 
         $em = $this->getDoctrine()->getManager();
         $apunte = $em->getRepository(Entity::APUNTE)->find($id);
-        $chequeos = $em->getRepository(Entity::CHEQUEO)->findBy(['apunte' => $apunte]);
-        foreach ($chequeos as $chequeo) {
-            $em->remove($chequeo);
+        $flash = $request->getSession()->getFlashBag();
+
+        try {
+            $this->get('inv.apunte.manager')->remove($apunte);
+        } catch (\Exception $e) {
+            $flash->add('danger', $this->get('translator')->trans('operation.fail', [], 'common'));
         }
-        $em->remove($apunte);
-        $em->flush();
+
         return $this->redirectToRoute('apunte_index');
     }
+
+    public function deleteFromAftAction(Request $request, $id, $idActivo) {
+
+        if (!$this->isLogged()) {
+            return $this->redirectForbidden();
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $apunte = $em->getRepository(Entity::APUNTE)->find($id);
+        $flash = $request->getSession()->getFlashBag();
+
+        try {
+            $this->get('inv.apunte.manager')->remove($apunte);
+        } catch (\Exception $e) {
+            $flash->add('danger', $this->get('translator')->trans('operation.fail', [], 'common'));
+        }
+
+        return $this->redirectToRoute('activo_fijo_show', ['id' => $idActivo]);
+    }
+
+
 }

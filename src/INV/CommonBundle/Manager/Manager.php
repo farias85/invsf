@@ -154,4 +154,8 @@ class Manager {
         $raw = addslashes($raw); //escapando la comilla simple en el texto de la descripcion y el resumen
         return $raw;
     }
+
+    public function getUser() {
+        return $this->container->get('security.token_storage')->getToken()->getUser();
+    }
 }

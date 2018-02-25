@@ -116,7 +116,8 @@
         <div class="col-lg-12">
             <div class="btn-toolbar" role="toolbar">
                 <div class="btn-group">
-                    <a href="{{ path('apunte_new', {'idActivo': activoFijo.id}) }}" class="btn btn-success"> Nuevo Apunte </a>
+                    <a href="{{ path('apunte_new', {'idActivo': activoFijo.id}) }}" class="btn btn-success"> Nuevo
+                        Apunte </a>
                 </div>
             </div>
         </div>
@@ -144,6 +145,7 @@
                     <th>ValAcMN</th>
                     <th>Estado</th>
                     <th>Actual</th>
+                    <th>Rev</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -159,6 +161,92 @@
                         <td>{{ act.valorActualMn }}</td>
                         <td>{{ act.estadoText }}</td>
                         <td>{% if act.fechaEstadoActual %}{{ act.fechaEstadoActual|date('Y-m-d') }}{% endif %}</td>
+                        <td>{{ act.revision }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="section-header">
+        <h3 class="section-title">Cambios</h3>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table data-tbl-boxy responsive">
+                <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Usuario</th>
+                    <th>Antes</th>
+                    <th>Después</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for audit in auditorias %}
+                    {% set antes = util.json_decode(audit.antes) %}
+                    {% set despues = util.json_decode(audit.despues) %}
+                    <tr style="{{ cycle(['background-color: aliceblue', 'background-color: inherit'], loop.index) }}">
+                        <td>{% if audit.fecha %}{{ audit.fecha|date('Y-m-d:h:i:s') }}{% endif %}</td>
+                        <td>{{ audit.usuario }}</td>
+                        <td>
+                            <ul class="list-group">
+                                <li class="list-group-item list-group-item-info">
+                                    <strong>Responsable:</strong>
+                                </li>
+                                <li class="list-group-item {% if antes.responsable.nombre != despues.responsable.nombre %} list-group-item-danger {% endif %}">
+                                    {{ antes.responsable.nombre }}
+                                </li>
+                                <li class="list-group-item list-group-item-info">
+                                    <strong>Estado:</strong>
+                                </li>
+                                <li class="list-group-item {% if antes.estado.nombre != despues.estado.nombre %} list-group-item-danger {% endif %}">
+                                    {{ antes.estado.nombre }}
+                                </li>
+                                <li class="list-group-item list-group-item-info">
+                                    <strong>Local:</strong>
+                                </li>
+                                <li class="list-group-item {% if antes.local.nombre != despues.local.nombre %} list-group-item-danger {% endif %}">
+                                    {{ antes.local.nombre }}
+                                </li>
+                                <li class="list-group-item list-group-item-info">
+                                    <strong>Tipo de Activo</strong>
+                                </li>
+                                <li class="list-group-item {% if antes.tipoActivo.nombre != despues.tipoActivo.nombre %} list-group-item-danger {% endif %}">
+                                    {{ antes.tipoActivo.nombre }}
+                                </li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul class="list-group">
+                                <li class="list-group-item list-group-item-info">
+                                    <strong>Responsable:</strong>
+                                </li>
+                                <li class="list-group-item {% if antes.responsable.nombre != despues.responsable.nombre %} list-group-item-danger {% endif %}">
+                                    {{ despues.responsable.nombre }}
+                                </li>
+                                <li class="list-group-item list-group-item-info">
+                                    <strong>Estado:</strong>
+                                </li>
+                                <li class="list-group-item {% if antes.estado.nombre != despues.estado.nombre %} list-group-item-danger {% endif %}">
+                                    {{ despues.estado.nombre }}
+                                </li>
+                                <li class="list-group-item list-group-item-info">
+                                    <strong>Local:</strong>
+                                </li>
+                                <li class="list-group-item {% if antes.local.nombre != despues.local.nombre %} list-group-item-danger {% endif %}">
+                                    {{ despues.local.nombre }}
+                                </li>
+                                <li class="list-group-item list-group-item-info">
+                                    <strong>Tipo de Activo</strong>
+                                </li>
+                                <li class="list-group-item {% if antes.tipoActivo.nombre != despues.tipoActivo.nombre %} list-group-item-danger {% endif %}">
+                                    {{ despues.tipoActivo.nombre }}
+                                </li>
+                            </ul>
+                        </td>
                     </tr>
                 {% endfor %}
                 </tbody>
