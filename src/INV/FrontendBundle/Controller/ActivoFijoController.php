@@ -2,18 +2,17 @@
 
 namespace INV\FrontendBundle\Controller;
 
-use INV\CommonBundle\Controller\LoggedController;
 use INV\CommonBundle\Entity\ActivoFijo;
-use INV\CommonBundle\Entity\Auditoria;
+use INV\CommonBundle\Entity\Usuario;
 use INV\CommonBundle\Util\Entity;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\VarDumper\VarDumper;
 
 /**
  * Activofijo controller.
  *
  */
-class ActivoFijoController extends LoggedController {
+class ActivoFijoController extends Controller {
     /**
      * Lists all activoFijo entities.
      *
@@ -53,8 +52,8 @@ class ActivoFijoController extends LoggedController {
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function editAction(Request $request, ActivoFijo $activoFijo) {
-        if (!$this->isLogged()) {
-            return $this->redirectForbidden();
+        if (!($this->getUser() instanceof Usuario)) {
+            throw $this->createAccessDeniedException();
         }
         $em = $this->getDoctrine()->getManager();
 
@@ -66,13 +65,12 @@ class ActivoFijoController extends LoggedController {
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $flash = $request->getSession()->getFlashBag();
             try {
                 $em->flush();
                 $aftDespues = $em->getRepository(Entity::ACTIVO_FIJO)->findForAuditoria($activoFijo->getId());
                 $this->get('inv.auditoria.manager')->create($aftAntes, $aftDespues, $activoFijo->getRotulo(), Entity::ACTIVO_FIJO);
             } catch (\Exception $e) {
-                $flash->add('danger', $this->get('translator')->trans('operation.fail', [], 'common'));
+                $this->addFlash('danger', $this->get('translator')->trans('operation.fail', [], 'common'));
                 return $this->redirectToRoute('activo_fijo_index');
             }
 

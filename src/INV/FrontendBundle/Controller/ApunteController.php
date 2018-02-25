@@ -2,16 +2,17 @@
 
 namespace INV\FrontendBundle\Controller;
 
-use INV\CommonBundle\Controller\LoggedController;
 use INV\CommonBundle\Entity\Apunte;
+use INV\CommonBundle\Entity\Usuario;
 use INV\CommonBundle\Util\Entity;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Apunte controller.
  *
  */
-class ApunteController extends LoggedController {
+class ApunteController extends Controller {
     /**
      * Lists all apunte entities.
      *
@@ -33,9 +34,10 @@ class ApunteController extends LoggedController {
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function newControlAction(Request $request, $idActivo) {
-        if (!$this->isLogged()) {
-            return $this->redirectForbidden();
+        if (!($this->getUser() instanceof Usuario)) {
+            throw $this->createAccessDeniedException();
         }
+
         $em = $this->getDoctrine()->getManager();
         $activoFijo = $em->getRepository(Entity::ACTIVO_FIJO)->find($idActivo);
         $apunte = new Apunte();
@@ -44,6 +46,7 @@ class ApunteController extends LoggedController {
         $apunte->setAsunto('Control');
         $apunte->setObservacion('Control');
         $apunte->setFecha(new \DateTime('now'));
+
         $em->persist($apunte);
         $em->flush();
         return $this->redirectToRoute('activo_fijo_show', array('id' => $idActivo));
@@ -55,8 +58,8 @@ class ApunteController extends LoggedController {
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function newAction(Request $request, $idActivo) {
-        if (!$this->isLogged()) {
-            return $this->redirectForbidden();
+        if (!($this->getUser() instanceof Usuario)) {
+            throw $this->createAccessDeniedException();
         }
 
         $apunte = new Apunte();
@@ -102,9 +105,8 @@ class ApunteController extends LoggedController {
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function editAction(Request $request, Apunte $apunte) {
-
-        if (!$this->isLogged()) {
-            return $this->redirectForbidden();
+        if (!($this->getUser() instanceof Usuario)) {
+            throw $this->createAccessDeniedException();
         }
 
         $editForm = $this->createForm('INV\CommonBundle\Form\ApunteType', $apunte);
@@ -129,38 +131,34 @@ class ApunteController extends LoggedController {
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteAction(Request $request, $id) {
-
-        if (!$this->isLogged()) {
-            return $this->redirectForbidden();
+        if (!($this->getUser() instanceof Usuario)) {
+            throw $this->createAccessDeniedException();
         }
 
         $em = $this->getDoctrine()->getManager();
         $apunte = $em->getRepository(Entity::APUNTE)->find($id);
-        $flash = $request->getSession()->getFlashBag();
 
         try {
             $this->get('inv.apunte.manager')->remove($apunte);
         } catch (\Exception $e) {
-            $flash->add('danger', $this->get('translator')->trans('operation.fail', [], 'common'));
+            $this->addFlash('danger', $this->get('translator')->trans('operation.fail', [], 'common'));
         }
 
         return $this->redirectToRoute('apunte_index');
     }
 
     public function deleteFromAftAction(Request $request, $id, $idActivo) {
-
-        if (!$this->isLogged()) {
-            return $this->redirectForbidden();
+        if (!($this->getUser() instanceof Usuario)) {
+            throw $this->createAccessDeniedException();
         }
 
         $em = $this->getDoctrine()->getManager();
         $apunte = $em->getRepository(Entity::APUNTE)->find($id);
-        $flash = $request->getSession()->getFlashBag();
 
         try {
             $this->get('inv.apunte.manager')->remove($apunte);
         } catch (\Exception $e) {
-            $flash->add('danger', $this->get('translator')->trans('operation.fail', [], 'common'));
+            $this->addFlash('danger', $this->get('translator')->trans('operation.fail', [], 'common'));
         }
 
         return $this->redirectToRoute('activo_fijo_show', ['id' => $idActivo]);
