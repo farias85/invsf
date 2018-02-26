@@ -17,7 +17,7 @@
     {% block stylesheets %}
         <!-- Google Fonts -->
         {#<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700"#}
-              {#rel="stylesheet">#}
+        {#rel="stylesheet">#}
 
         <!-- Bootstrap CSS File -->
         <link rel="stylesheet" href="{{ asset('bundles/common/js/angular/multiselect/bootstrap-combined.min.css') }}"/>
@@ -33,6 +33,12 @@
 
         <!-- Main Stylesheet File -->
         <link href="{{ asset('bundles/frontend/regna/css/style.css') }}" rel="stylesheet">
+
+        <script>
+          var TwigAsset = {}
+          TwigAsset.multiselect = '{{ asset('bundles/common/js/angular/multiselect/multiselect.tmpl.html') }}'
+          console.log(TwigAsset.multiselect)
+        </script>
 
         <!-- Main Angular Files -->
         <script src="{{ asset('bundles/common/js/angular-1.6.9/angular.js') }}"></script>
@@ -101,6 +107,7 @@
     <!-- Seconds Angular Files -->
     <script src="{{ asset('bundles/common/js/angular/chartjs/Chart.min.js') }}"></script>
     <script src="{{ asset('bundles/common/js/angular/chartjs/angular-chart.min.js') }}"></script>
+
     <script src="{{ asset('bundles/common/js/angular/multiselect/multiselect.js') }}"></script>
 
     <!-- Include Required Prerequisites -->

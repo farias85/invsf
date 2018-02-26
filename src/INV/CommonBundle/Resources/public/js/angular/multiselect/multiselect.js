@@ -218,7 +218,7 @@ angular.module('ui.multiselect', [])
       scope: false,
       replace: true,
       // templateUrl: 'multiselect.tmpl.html',
-      templateUrl: '/bundles/common/js/angular/multiselect/multiselect.tmpl.html',
+      templateUrl: TwigAsset.multiselect,
       link: function (scope, element, attrs) {
 
         scope.isVisible = false
