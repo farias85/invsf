@@ -146,22 +146,17 @@
                             <div class="btn-toolbar" role="toolbar">
                                 <div class="btn-group-sm">
                                     <a class="btn btn-small show-tooltip" title="Ver"
-                                       href="{|activoFijo.id|}/show">
+                                       href="{|activoFijo.urlShow|}">
                                         <i class="icon-zoom-in"></i>
                                     </a>
                                     {% if app.user is not empty %}
                                         <a class="btn btn-small show-tooltip"
                                            title="Editar"
-                                           href="{|activoFijo.id|}/edit">
+                                           href="{|activoFijo.urlEdit|}">
                                             <i class="icon-edit"></i>
                                         </a>
-                                        {% if app.environment == 'dev' %}
-                                            {% set prefix = '/app_dev.php' %}
-                                        {% else %}
-                                            {% set prefix = '' %}
-                                        {% endif %}
                                         <a class="btn btn-small btn-success show-tooltip" title="Control"
-                                           href="{{ prefix }}/apunte/{|activoFijo.id|}/control">
+                                           href="{|activoFijo.urlControl|}">
                                             <i class="icon-plus-sign"></i>
                                         </a>
                                     {% endif %}

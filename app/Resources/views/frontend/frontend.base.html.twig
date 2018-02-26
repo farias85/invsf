@@ -40,6 +40,9 @@
           console.log(TwigAsset.multiselect)
         </script>
 
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+
         <!-- Main Angular Files -->
         <script src="{{ asset('bundles/common/js/angular-1.6.9/angular.js') }}"></script>
         <script src="{{ asset('bundles/common/js/angular-1.6.9/angular-animate.js') }}"></script>

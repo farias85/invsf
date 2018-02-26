@@ -5,8 +5,17 @@
 iApp.controller('AftFilterController',
   function ($scope) {
 
-    $scope.activos = TwigParams.activos
     $scope.original = TwigParams.activos
+
+    $scope.original = $scope.original.map(activo => {
+        activo.urlShow = Routing.generate('activo_fijo_show', {'id': activo.id})
+        activo.urlEdit = Routing.generate('activo_fijo_edit', {'id': activo.id})
+        activo.urlControl = Routing.generate('apunte_new_control', {'idActivo': activo.id})
+        return activo
+      }
+    )
+
+    $scope.activos = $scope.original
     $scope.responsables = TwigParams.responsables
     $scope.sresponsables = []
     $scope.estados = TwigParams.estados

@@ -17,6 +17,8 @@ apunte_new_control:
     path:     /{idActivo}/control
     defaults: { _controller: "FrontendBundle:Apunte:newControl" }
     methods:  [GET, POST]
+    options:
+        expose: true
 
 apunte_edit:
     path:     /{id}/edit
