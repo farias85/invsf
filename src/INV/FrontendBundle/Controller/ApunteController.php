@@ -40,15 +40,8 @@ class ApunteController extends Controller {
 
         $em = $this->getDoctrine()->getManager();
         $activoFijo = $em->getRepository(Entity::ACTIVO_FIJO)->find($idActivo);
-        $apunte = new Apunte();
-        $apunte->setUsuario($this->getUser());
-        $apunte->setRotulo($activoFijo->getRotulo());
-        $apunte->setAsunto('Control');
-        $apunte->setObservacion('Control');
-        $apunte->setFecha(new \DateTime('now'));
+        $this->get('inv.apunte.manager')->create($activoFijo->getRotulo());
 
-        $em->persist($apunte);
-        $em->flush();
         return $this->redirectToRoute('activo_fijo_show', array('id' => $idActivo));
     }
 

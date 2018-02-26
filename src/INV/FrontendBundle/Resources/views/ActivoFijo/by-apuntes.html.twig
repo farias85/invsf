@@ -1,0 +1,106 @@
+{% extends 'FrontendBundle:Layout:frontend-basic.html.twig' %}
+
+{% block wrapper_header %} {% endblock %}
+
+{% block wrapper %}
+
+    <div ng-controller="ByApunteController" ng-cloak>
+
+        <div class="section-header">
+            <h3 class="section-title">AFT Total: {{ activoFijos | length }}</h3>
+            <p class="section-description">Cantidad de AFT seleccionados
+                <span class="badge badge-primary"> {| selected.length |} </span>
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <form action="{{ path('activo_fijo_by_apuntes') }}" method="post">
+                    <label for="nombre">Nombre del Informe</label>
+                    <input type="text" id="nombre" name="nombre" class="form-control" required="required">
+                    <input type="text" id="selected" name="selected" class="form-control" ng-model="sValue" required="required">
+                    <input type="submit" ng-disabled="selected.length < 2" value="Informe" class="btn btn-success">
+                </form>
+            </div>
+        </div>
+
+        <table class="table data-tbl-boxy responsive stable">
+            <thead>
+            <tr>
+                <th>Rótulo</th>
+                <th>Descripción</th>
+                <th>Último</th>
+                <th>Cantidad</th>
+                <th>Alta</th>
+                <th>Responsable</th>
+                <th>Estado</th>
+                <th>Local</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr ng-repeat="activoFijo in activos track by $index" class="tabletr {|activoFijo.selected|}"
+                ng-click="rowSelect(activoFijo)">
+                <td>
+                    <a class="btn btn-small show-tooltip" title="Ver"
+                       href="{|activoFijo.id|}/show">
+                        {| activoFijo.rotulo |}
+                    </a>
+                </td>
+                <td>{| activoFijo.descripcion |}</td>
+                <td>{| activoFijo.ultimo |}</td>
+                <td><span class="badge {| activoFijo.badge |}">{| activoFijo.cantidad |}</span></td>
+                <td>{| activoFijo.alta |}</td>
+                <td>{| activoFijo.responsable |}</td>
+                <td>{| activoFijo.estado |}</td>
+                <td>{| activoFijo.local |}</td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <script type="text/javascript">
+      let TwigParams = {}
+      TwigParams.activos = []
+
+      {% for activoFijo in activoFijos %}
+      TwigParams.activos.push({
+        id: '{{ activoFijo.id }}',
+        rotulo: '{{ activoFijo.rotulo }}',
+        responsable: '{{ activoFijo.responsable }}',
+        estado: '{{ activoFijo.estado }}',
+        local: '{{ activoFijo.local }}',
+        descripcion: '{{ activoFijo.descripcion }}',
+        ultimo: '{% if apuntes[loop.index0][0] is defined %}{{ apuntes[loop.index0][0].fecha | date('Y-m-d:h:i:s') }}{% endif %}',
+        cantidad: '{{ countApuntes[loop.index0] }}',
+        alta: '{% if activoFijo.fechaAlta %}{{ activoFijo.fechaAlta | date('Y-m-d') }}{% endif %}',
+        actual: '{% if activoFijo.fechaEstadoActual %}{{ activoFijo.fechaAlta | date('Y-m-d') }}{% endif %}',
+      })
+      {% endfor %}
+    </script>
+
+    <script src="{{ asset('bundles/frontend/js/iApp/controller/ByApunteController.js') }}"></script>
+
+    ng-scope odd
+
+    <style>
+        .tabletr.odd {
+            background-color: aliceblue
+        }
+
+        .tabletr.even {
+            background-color: inherit
+        }
+
+        .tabletr.selected {
+            background-color: #E0D0DA;
+        }
+    </style>
+
+{% endblock %}

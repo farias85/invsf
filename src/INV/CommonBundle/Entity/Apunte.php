@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Apunte
  *
  * @ORM\Table(name="apunte")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="INV\CommonBundle\Repository\ApunteRepository")
  */
 class Apunte {
     /**
@@ -30,7 +30,7 @@ class Apunte {
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha", type="date", nullable=false)
+     * @ORM\Column(name="fecha", type="datetime", nullable=false)
      */
     private $fecha;
 

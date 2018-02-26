@@ -161,6 +161,25 @@ class ActivoFijo {
      */
     private $tipoActivo;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="INV\CommonBundle\Entity\Informe", inversedBy="activos")
+     * @ORM\JoinTable(name="informe_activo_fijo",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="activo_fijo", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="informe", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $informes;
+
+    function __construct() {
+        $this->informes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
 
     /**
      * Get id.
@@ -565,5 +584,36 @@ class ActivoFijo {
      */
     public function getTipoActivo() {
         return $this->tipoActivo;
+    }
+
+    /**
+     * Add informe
+     *
+     * @param Informe $informe
+     *
+     * @return ActivoFijo
+     */
+    public function addInforme(Informe $informe) {
+        $this->informes[] = $informe;
+
+        return $this;
+    }
+
+    /**
+     * Remove informe
+     *
+     * @param Informe $informe
+     */
+    public function removeInforme(Informe $informe) {
+        $this->informes->removeElement($informe);
+    }
+
+    /**
+     * Get informes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getInformes() {
+        return $this->informes;
     }
 }

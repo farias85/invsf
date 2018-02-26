@@ -14,6 +14,22 @@ use INV\CommonBundle\Util\Entity;
 
 class ApunteManager extends Manager {
 
+    public function create($rotulo, $asunto = 'Control', $descripcion = 'Control') {
+        $apunte = new Apunte();
+
+        $apunte->setUsuario($this->getUser());
+        $apunte->setRotulo($rotulo);
+        $apunte->setAsunto($asunto);
+        $apunte->setObservacion($descripcion);
+        $apunte->setFecha(new \DateTime('now'));
+
+        $em = $this->getEntityManager();
+        $em->persist($apunte);
+        $em->flush();
+
+        return $apunte;
+    }
+
     /**
      * @param $apunte Apunte
      */

@@ -3,10 +3,12 @@
 namespace INV\FrontendBundle\Controller;
 
 use INV\CommonBundle\Entity\ActivoFijo;
+use INV\CommonBundle\Entity\Informe;
 use INV\CommonBundle\Entity\Usuario;
 use INV\CommonBundle\Util\Entity;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\VarDumper\VarDumper;
 
 /**
  * Activofijo controller.
@@ -119,4 +121,49 @@ class ActivoFijoController extends Controller {
             ->getArrayResult();
         return $result;
     }
+
+    public function byApuntesAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+
+        if ($request->isMethod('POST')) {
+            if (!($this->getUser() instanceof Usuario)) {
+                throw $this->createAccessDeniedException();
+            }
+
+            $informe = new Informe();
+            $informe->setNombre($request->get('nombre'));
+            $informe->setFecha(new \DateTime('now'));
+            $informe->setCompletado(false);
+            $em->persist($informe);
+            $em->flush();
+
+            $array = json_decode($request->get('selected'));
+            foreach ($array as $item) {
+                $item = get_object_vars($item);
+                $act = $em->getRepository(Entity::ACTIVO_FIJO)->find($item['id']);
+                $informe->addActivo($act);
+            }
+            $em->flush();
+            return $this->redirectToRoute('informe_show', ['id' => $informe->getId()]);
+        }
+
+        $activoFijos = $em->getRepository(Entity::ACTIVO_FIJO)->findByRevisionActiva();
+        $countApuntes = [];
+        $apuntes = [];
+
+        foreach ($activoFijos as $activoFijo) {
+//            $countApuntes[] = $em->getRepository(Entity::APUNTE)->findCountByRotulo($activoFijo->getRotulo());
+            $result = $em->getRepository(Entity::APUNTE)->findBy(['rotulo' => $activoFijo->getRotulo()], ['fecha' => 'DESC']);
+            $countApuntes[] = empty($result) ? 0 : sizeof($result);
+            $apuntes[] = empty($result) ? [] : $result;
+        }
+
+        return $this->render('FrontendBundle:ActivoFijo:by-apuntes.html.twig', array(
+            'activoFijos' => $activoFijos,
+            'countApuntes' => $countApuntes,
+            'apuntes' => $apuntes,
+        ));
+    }
+
+
 }

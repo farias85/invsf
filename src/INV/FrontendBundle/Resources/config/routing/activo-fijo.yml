@@ -8,6 +8,11 @@ activo_fijo_filter:
     defaults: { _controller: "FrontendBundle:ActivoFijo:filter" }
     methods:  [GET, POST]
 
+activo_fijo_by_apuntes:
+    path:     /por-apuntes
+    defaults: { _controller: "FrontendBundle:ActivoFijo:byApuntes" }
+    methods:  [GET, POST]
+
 activo_fijo_show:
     path:     /{id}/show
     defaults: { _controller: "FrontendBundle:ActivoFijo:show" }

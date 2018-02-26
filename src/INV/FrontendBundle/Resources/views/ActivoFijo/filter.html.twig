@@ -180,7 +180,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <script src="{{ asset('bundles/frontend/js/iApp/controller/AftFilterController.js') }}"></script>
+
     <script type="text/javascript">
       let TwigParams = {}
       TwigParams.responsables = JSON.parse('{{ responsables | raw }}')
@@ -200,6 +200,8 @@
         tipoActivo: '{{ activoFijo.tipoActivo }}',
       })
       {% endfor %}
-
     </script>
+
+    <script src="{{ asset('bundles/frontend/js/iApp/controller/AftFilterController.js') }}"></script>
+
 {% endblock %}

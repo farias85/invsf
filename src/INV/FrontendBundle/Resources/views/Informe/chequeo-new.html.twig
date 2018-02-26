@@ -1,0 +1,31 @@
+{% extends 'FrontendBundle:Layout:frontend-basic.html.twig' %}
+
+{% block wrapper_header %}
+
+    <div class="section-header">
+        <h3 class="section-title">AFT: INFORME</h3>
+        <p class="section-description">Editar información de activo</p>
+    </div>
+
+{% endblock %}
+
+
+{% block wrapper %}
+    <div class="row">
+        <div class="col-lg-6">
+            <form action="{{ path('informe_new_chequeo', {'idInforme' : informe.id, 'idActivo' : activoFijo.id }) }}"
+                  method="post">
+                {{ form_rest(form) }}
+                <div class="btn-toolbar" role="toolbar">
+                    <div class="btn-group">
+                        <input type="submit" class="btn btn-primary" value="Editar"/>
+                        <a href="{{ path('informe_show', {'id': informe.id}) }}" class="btn btn-default">
+                            Al Informe
+                        </a>
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </form>
+        </div>
+    </div>
+{% endblock %}

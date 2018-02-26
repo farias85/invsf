@@ -43,6 +43,17 @@ class Informe {
 
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="INV\CommonBundle\Entity\ActivoFijo", mappedBy="informes")
+     */
+    private $activos;
+
+    function __construct() {
+        $this->activos = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
      * Get id.
      *
      * @return int
@@ -115,5 +126,41 @@ class Informe {
      */
     public function getNombre() {
         return $this->nombre;
+    }
+
+    /**
+     * Add activo
+     *
+     * @param ActivoFijo $activo
+     *
+     * @return Informe
+     */
+    public function addActivo(ActivoFijo $activo) {
+        $activo->addInforme($this);
+        $this->activos[] = $activo;
+
+        return $this;
+    }
+
+    /**
+     * Remove activo
+     *
+     * @param ActivoFijo $activo
+     */
+    public function removeActivo(ActivoFijo $activo) {
+        $this->activos->removeElement($activo);
+    }
+
+    /**
+     * Get activos
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getActivos() {
+        return $this->activos;
+    }
+
+    function __toString() {
+        return $this->getNombre();
     }
 }

@@ -1,0 +1,7 @@
+informe_show:
+    path:     /{id}/show
+    defaults: { _controller: "FrontendBundle:Informe:show" }
+
+informe_new_chequeo:
+    path:     /{idInforme}/chequeo/{idActivo}/new
+    defaults: { _controller: "FrontendBundle:Informe:newChequeo" }
