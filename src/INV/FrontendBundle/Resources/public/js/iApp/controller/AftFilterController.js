@@ -7,13 +7,21 @@ iApp.controller('AftFilterController',
 
     $scope.original = TwigParams.activos
 
-    $scope.original = $scope.original.map(activo => {
-        activo.urlShow = Routing.generate('activo_fijo_show', {'id': activo.id})
-        activo.urlEdit = Routing.generate('activo_fijo_edit', {'id': activo.id})
-        activo.urlControl = Routing.generate('apunte_new_control', {'idActivo': activo.id})
-        return activo
-      }
-    )
+    $scope.getUrlShow = (activo) => {
+      return Routing.generate('activo_fijo_show', {'id': activo.id})
+    }
+
+    $scope.getUrlEdit = (activo) => {
+      return Routing.generate('activo_fijo_edit', {'id': activo.id})
+    }
+
+    $scope.getUrlControl = (activo) => {
+      return Routing.generate('apunte_new_control', {'getUrlShow(activoFijo)': activo.id})
+    }
+
+    $scope.getRowColor = (index) => {
+      return parseInt(index, 10) % 2 === 0 ? 'aliceblue' : 'inherit'
+    }
 
     $scope.activos = $scope.original
     $scope.responsables = TwigParams.responsables

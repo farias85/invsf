@@ -135,7 +135,7 @@
                     </thead>
                     <tbody>
 
-                    <tr ng-repeat="activoFijo in activos">
+                    <tr ng-repeat="activoFijo in activos track by $index" class="tabletr" ng-class-even="myeven">
                         <td>{| activoFijo.rotulo |}</td>
                         <td>{| activoFijo.descripcion |}</td>
                         <td>{| activoFijo.responsable |}</td>
@@ -146,17 +146,17 @@
                             <div class="btn-toolbar" role="toolbar">
                                 <div class="btn-group-sm">
                                     <a class="btn btn-small show-tooltip" title="Ver"
-                                       href="{|activoFijo.urlShow|}">
+                                       href="{|getUrlShow(activoFijo)|}">
                                         <i class="icon-zoom-in"></i>
                                     </a>
                                     {% if app.user is not empty %}
                                         <a class="btn btn-small show-tooltip"
                                            title="Editar"
-                                           href="{|activoFijo.urlEdit|}">
+                                           href="{|getUrlEdit(activoFijo)|}">
                                             <i class="icon-edit"></i>
                                         </a>
                                         <a class="btn btn-small btn-success show-tooltip" title="Control"
-                                           href="{|activoFijo.urlControl|}">
+                                           href="{|getUrlControl(activoFijo)|}">
                                             <i class="icon-plus-sign"></i>
                                         </a>
                                     {% endif %}
@@ -198,5 +198,21 @@
     </script>
 
     <script src="{{ asset('bundles/frontend/js/iApp/controller/AftFilterController.js') }}"></script>
+
+    <style>
+        .tabletr.odd {
+            background-color: aliceblue
+        }
+
+        .tabletr.even {
+            background-color: inherit
+        }
+
+        /*No se xq no pincha lo de los estilos even y odd igual q en by-apuntes*/
+
+        .myeven {
+            background-color: aliceblue
+        }
+    </style>
 
 {% endblock %}
