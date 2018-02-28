@@ -5,6 +5,11 @@
  */
 package cu.cenpis.gps.inv.read;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+
 /*import cu.cenpis.gps.inv.data.entity.ActivoFijo;
 import cu.cenpis.gps.inv.data.entity.Estado;
 import cu.cenpis.gps.inv.data.entity.Local;
@@ -19,6 +24,7 @@ import cu.cenpis.gps.inv.data.service.MetadataService;
 import cu.cenpis.gps.inv.data.service.ResponsableService;
 import cu.cenpis.gps.inv.data.service.RevisionService;
 import cu.cenpis.gps.inv.data.service.TipoActivoService;*/
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -45,10 +51,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  *
  * @author vladimir
  */
-public class ControllerExcel {
-
-    private ActivoFijoController activoFijoController;
-    /*private List<String[]> listaInfo;
+public class ActivoFijoController {
+    private List<String[]> listaInfo;
     private List<String[]> listaInfoRe;
 
     private int totalActivos;
@@ -62,22 +66,16 @@ public class ControllerExcel {
     private String revisado;
     private String responsableText;
 
-    private RevisionService revisionService;
+    /*private RevisionService revisionService;
     private MetadataService metadataService;
     private LocalService localService;
     private EstadoService estadoService;
     private ResponsableService responsableService;
     private TipoActivoService tipoActivoService;
     private ActivoFijoService activoFijoService;*/
-
-    //private String excelFilePath;
-    public ControllerExcel() {
-        
-        activoFijoController = new ActivoFijoController();
-        
-        
-        
-        /*this.listaInfo = new ArrayList<>();
+    
+    public ActivoFijoController() {
+        this.listaInfo = new ArrayList<>();
         this.listaInfoRe = new ArrayList<>();
         cantidadC = 0;
         totalActivos = 0;
@@ -89,7 +87,7 @@ public class ControllerExcel {
         revisado = "";
         responsableText = "";
         // excelFilePath = "";
-        revisionService = (RevisionService) Context.getBean("revisionServiceImpl");
+        /*revisionService = (RevisionService) Context.getBean("revisionServiceImpl");
         metadataService = (MetadataService) Context.getBean("metadataServiceImpl");
         localService = (LocalService) Context.getBean("localServiceImpl");
         estadoService = (EstadoService) Context.getBean("estadoServiceImpl");
@@ -98,11 +96,7 @@ public class ControllerExcel {
         activoFijoService = (ActivoFijoService) Context.getBean("activoFijoServiceImpl");*/
     }
 
-    public ActivoFijoController getActivoFijoController() {
-        return activoFijoController;
-    }    
-
-    /*public int getTotalActivos() {
+    public int getTotalActivos() {
         return totalActivos;
     }
 
@@ -138,9 +132,9 @@ public class ControllerExcel {
         return responsableText;
     }
 
-    // public String getExcelFilePath() {
-     //return excelFilePath;
-     //}
+    /* public String getExcelFilePath() {
+     return excelFilePath;
+     }*/
     public List<String[]> getListaInfoRe() {
         return listaInfoRe;
     }
@@ -153,13 +147,13 @@ public class ControllerExcel {
 
     public List<String[]> getListaInfo() {
         return listaInfo;
-    }*/
-
+    }
+    
     public void readExcel(String dir) throws IOException {
 
         //excelFilePath = dir;
         
-        /*this.listaInfo = new ArrayList<>();
+        this.listaInfo = new ArrayList<>();
         this.listaInfoRe = new ArrayList<>();
         
         FileInputStream inputStream = null;
@@ -199,14 +193,12 @@ public class ControllerExcel {
             inputStream.close();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Formato del Excel 5.0/7.0 (BIFF5) no soportado. Cambiar por BIFF8", "Error", JOptionPane.ERROR_MESSAGE);
-        }*/
-
-
+        }
     }
-
+    
     public void recortarEcxel(int iF, int fF, int iC, int fC) {
 
-        /*if (iF > 0 && fF > 0 && iC > 0 && fC > 0) {
+        if (iF > 0 && fF > 0 && iC > 0 && fC > 0) {
             listaInfoRe = new ArrayList<>(listaInfo);
             listaInfoRe = listaInfoRe.subList(0, fF);
             listaInfoRe = listaInfoRe.subList(iF - 1, listaInfoRe.size());
@@ -232,11 +224,11 @@ public class ControllerExcel {
                     }
                 }
             }
-        }*/
+        }
 
     }
 
-   /* private Object getValueCell(Cell cell) {
+    private Object getValueCell(Cell cell) {
         switch (cell.getCellType()) {
             case Cell.CELL_TYPE_STRING:
                 return cell.getStringCellValue();
@@ -251,11 +243,11 @@ public class ControllerExcel {
                 return " ";
         }
         return null;
-    }*/
-
+    }
+    
     public void readData() {
 
-       /* if (listaInfo.size() > 0) {
+        if (listaInfo.size() > 0) {
             if (listaInfoRe.isEmpty()) {
                 listaInfoRe = new ArrayList<>(listaInfo);
             }
@@ -307,18 +299,18 @@ public class ControllerExcel {
 
                 }
             }
-        }*/
+        }
 
     }
-
+    
     public void ModificarData(int tA, Float vT, Float vTMC, Float dT, Float dTMC) {
-        /*totalActivos = tA;
+        totalActivos = tA;
         valorTotal = vT;
         valorTotalMC = vTMC;
         depTotalAcu = dT;
-        depTotalAcuMC = dTMC;*/
+        depTotalAcuMC = dTMC;
     }
-
+    
     public void crearRevision() {
         
         //Eliminar revision 43 
@@ -416,15 +408,15 @@ public class ControllerExcel {
                             cantAG++;
                             
                             //if (cantAG == 394) {
-                              //  int r = 4;
+                            //    int r = 4;
                             //}
 
                         //}
                         //else{
                         // JOptionPane.showMessageDialog(null, "Error en el formato del documento." + "\n" +   cantAG + " Activos fijos insertados de" + totalActivos +  "\n"
-                         //+ "Debe eliminar la última revisión y el último metadata ", "Error", JOptionPane.ERROR_MESSAGE);
-                         //break;
-                         //}
+                        // + "Debe eliminar la última revisión y el último metadata ", "Error", JOptionPane.ERROR_MESSAGE);
+                        // break;
+                        // }
                     }
                 } catch (ArrayIndexOutOfBoundsException excepcion) {
                     JOptionPane.showMessageDialog(null, "Error en el formato del documento." + "\n" + "Activo número: " + (cantAG + 1) + "\n"
