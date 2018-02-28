@@ -16,7 +16,6 @@ import cu.cenpis.gps.inv.data.service.EstadoService;
 import cu.cenpis.gps.inv.data.service.LocalService;
 import cu.cenpis.gps.inv.data.service.ResponsableService;
 import cu.cenpis.gps.inv.data.service.RevisionService;
-import cu.cenpis.gps.inv.data.service.SobranteService;
 import cu.cenpis.gps.inv.data.service.UsuarioService;
 import cu.cenpis.gps.inv.security.SecuredPassword;
 import java.io.IOException;
