@@ -47,7 +47,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  */
 public class ControllerExcel {
 
-    private ActivoFijoController activoFijoController;
+    private ActivoFijoExcel activoFijoExcel;
+    private MedioUsoExcel medioUsoExcel;
     /*private List<String[]> listaInfo;
     private List<String[]> listaInfoRe;
 
@@ -73,7 +74,8 @@ public class ControllerExcel {
     //private String excelFilePath;
     public ControllerExcel() {
         
-        activoFijoController = new ActivoFijoController();
+        activoFijoExcel = new ActivoFijoExcel();
+        medioUsoExcel = new MedioUsoExcel();
         
         
         
@@ -98,10 +100,15 @@ public class ControllerExcel {
         activoFijoService = (ActivoFijoService) Context.getBean("activoFijoServiceImpl");*/
     }
 
-    public ActivoFijoController getActivoFijoController() {
-        return activoFijoController;
+    public ActivoFijoExcel getActivoFijoExcel() {
+        return activoFijoExcel;
     }    
 
+    public MedioUsoExcel getMedioUsoExcel() {
+        return medioUsoExcel;
+    }
+
+    
     /*public int getTotalActivos() {
         return totalActivos;
     }

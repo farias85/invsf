@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 
-/*import cu.cenpis.gps.inv.data.entity.ActivoFijo;
+import cu.cenpis.gps.inv.data.entity.ActivoFijo;
 import cu.cenpis.gps.inv.data.entity.Estado;
 import cu.cenpis.gps.inv.data.entity.Local;
 import cu.cenpis.gps.inv.data.entity.Metadata;
@@ -23,7 +23,7 @@ import cu.cenpis.gps.inv.data.service.LocalService;
 import cu.cenpis.gps.inv.data.service.MetadataService;
 import cu.cenpis.gps.inv.data.service.ResponsableService;
 import cu.cenpis.gps.inv.data.service.RevisionService;
-import cu.cenpis.gps.inv.data.service.TipoActivoService;*/
+import cu.cenpis.gps.inv.data.service.TipoActivoService;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -51,7 +51,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  *
  * @author vladimir
  */
-public class ActivoFijoController {
+public class ActivoFijoExcel extends Excel{
     private List<String[]> listaInfo;
     private List<String[]> listaInfoRe;
 
@@ -66,18 +66,18 @@ public class ActivoFijoController {
     private String revisado;
     private String responsableText;
 
-    /*private RevisionService revisionService;
+    private RevisionService revisionService;
     private MetadataService metadataService;
     private LocalService localService;
     private EstadoService estadoService;
     private ResponsableService responsableService;
     private TipoActivoService tipoActivoService;
-    private ActivoFijoService activoFijoService;*/
+    private ActivoFijoService activoFijoService;
     
-    public ActivoFijoController() {
+    public ActivoFijoExcel() {
         this.listaInfo = new ArrayList<>();
         this.listaInfoRe = new ArrayList<>();
-        cantidadC = 0;
+        //cantidadC = 0;
         totalActivos = 0;
         valorTotal = 0f;
         valorTotalMC = 0f;
@@ -87,13 +87,13 @@ public class ActivoFijoController {
         revisado = "";
         responsableText = "";
         // excelFilePath = "";
-        /*revisionService = (RevisionService) Context.getBean("revisionServiceImpl");
+        revisionService = (RevisionService) Context.getBean("revisionServiceImpl");
         metadataService = (MetadataService) Context.getBean("metadataServiceImpl");
         localService = (LocalService) Context.getBean("localServiceImpl");
         estadoService = (EstadoService) Context.getBean("estadoServiceImpl");
         responsableService = (ResponsableService) Context.getBean("responsableServiceImpl");
         tipoActivoService = (TipoActivoService) Context.getBean("tipoActivoServiceImpl");
-        activoFijoService = (ActivoFijoService) Context.getBean("activoFijoServiceImpl");*/
+        activoFijoService = (ActivoFijoService) Context.getBean("activoFijoServiceImpl");
     }
 
     public int getTotalActivos() {
@@ -135,21 +135,21 @@ public class ActivoFijoController {
     /* public String getExcelFilePath() {
      return excelFilePath;
      }*/
-    public List<String[]> getListaInfoRe() {
+    /*public List<String[]> getListaInfoRe() {
         return listaInfoRe;
-    }
+    }*/
 
-    private int cantidadC;
+    //private int cantidadC;
 
-    public int getCantidadC() {
-        return cantidadC;
-    }
+    //public int getCantidadC() {
+    //    return cantidadC;
+    //}
 
-    public List<String[]> getListaInfo() {
+   /* public List<String[]> getListaInfo() {
         return listaInfo;
-    }
+    }*/
     
-    public void readExcel(String dir) throws IOException {
+   /* public void readExcel(String dir) throws IOException {
 
         //excelFilePath = dir;
         
@@ -194,9 +194,9 @@ public class ActivoFijoController {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Formato del Excel 5.0/7.0 (BIFF5) no soportado. Cambiar por BIFF8", "Error", JOptionPane.ERROR_MESSAGE);
         }
-    }
+    }*/
     
-    public void recortarEcxel(int iF, int fF, int iC, int fC) {
+   /* public void recortarEcxel(int iF, int fF, int iC, int fC) {
 
         if (iF > 0 && fF > 0 && iC > 0 && fC > 0) {
             listaInfoRe = new ArrayList<>(listaInfo);
@@ -226,9 +226,9 @@ public class ActivoFijoController {
             }
         }
 
-    }
+    }*/
 
-    private Object getValueCell(Cell cell) {
+   /* private Object getValueCell(Cell cell) {
         switch (cell.getCellType()) {
             case Cell.CELL_TYPE_STRING:
                 return cell.getStringCellValue();
@@ -243,8 +243,9 @@ public class ActivoFijoController {
                 return " ";
         }
         return null;
-    }
+    }*/
     
+    @Override
     public void readData() {
 
         if (listaInfo.size() > 0) {
@@ -311,11 +312,12 @@ public class ActivoFijoController {
         depTotalAcuMC = dTMC;
     }
     
+    @Override
     public void crearRevision() {
         
         //Eliminar revision 43 
         //revisionService.removeById(50L);
-       /* if (!listaInfoRe.isEmpty()) {
+        if (!listaInfoRe.isEmpty()) {
 
             if (listaInfoRe.size() % 2 == 0) {
                 //RevisionService revisionService = (RevisionService) Context.getBean("revisionServiceImpl");
@@ -443,6 +445,6 @@ public class ActivoFijoController {
             }
         } else {
             JOptionPane.showMessageDialog(null, "¡Debe cargar el excel primero!", "Información ", JOptionPane.INFORMATION_MESSAGE);
-        }*/
+        }
     }
 }

@@ -6,6 +6,7 @@
 package cu.cenpis.gps.inv.view;
 
 import cu.cenpis.gps.inv.read.ControllerExcel;
+import cu.cenpis.gps.inv.read.Excel;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -27,10 +28,10 @@ public class FrameMain extends javax.swing.JFrame {
      */
     public FrameMain() {
         initComponents();
-        objExcel = new ControllerExcel();
+        controllerExcel = new ControllerExcel();
         jLabel13.setText("");
     }
-    private ControllerExcel objExcel;
+    private ControllerExcel controllerExcel;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,8 +42,9 @@ public class FrameMain extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
@@ -62,9 +64,6 @@ public class FrameMain extends javax.swing.JFrame {
         jTextField5 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jSpinner1 = new javax.swing.JSpinner();
@@ -74,6 +73,8 @@ public class FrameMain extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jSpinner4 = new javax.swing.JSpinner();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -84,15 +85,7 @@ public class FrameMain extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        jTabbedPane1.setVerifyInputWhenFocusTarget(false);
 
         jButton1.setText(" Modificar Datos");
         jButton1.setToolTipText("");
@@ -127,7 +120,7 @@ public class FrameMain extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(25, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -212,22 +205,30 @@ public class FrameMain extends javax.swing.JFrame {
                     .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12)
                     .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(jLabel13)
                 .addGap(28, 28, 28))
         );
-
-        jTabbedPane1.setVerifyInputWhenFocusTarget(false);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 546, Short.MAX_VALUE)
+            .addGap(0, 860, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 143, Short.MAX_VALUE)
+            .addGap(0, 226, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
 
         jTabbedPane1.addTab("Activo Fijo", jPanel3);
@@ -236,11 +237,11 @@ public class FrameMain extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 546, Short.MAX_VALUE)
+            .addGap(0, 860, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 143, Short.MAX_VALUE)
+            .addGap(0, 226, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Medio en uso", jPanel4);
@@ -300,17 +301,17 @@ public class FrameMain extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45))
+                .addGap(22, 22, 22)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 865, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
@@ -329,10 +330,19 @@ public class FrameMain extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jTabbedPane1))
-                .addContainerGap())
+                                .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(1127, 1127, 1127))
         );
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
 
         jMenu1.setText("Activo Fijo");
 
@@ -357,6 +367,11 @@ public class FrameMain extends javax.swing.JFrame {
         jMenu2.setText("Medio en Uso");
 
         jMenuItem3.setText("Buscar Excel");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem3);
 
         jMenuItem4.setText("Crear....");
@@ -371,23 +386,22 @@ public class FrameMain extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jScrollPane2)))
                 .addContainerGap())
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(106, 106, 106)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(59, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(59, 59, 59)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -399,7 +413,7 @@ public class FrameMain extends javax.swing.JFrame {
         //ApplicationContext context = ContextSingleton.getInstance();
         //UsuarioService usuarioService = (UsuarioService) ContextSingleton.getInstance().getBean("usuarioServiceImpl");
 
-        //objExcel = new ControllerExcel();
+        //controllerExcel = new ControllerExcel();
         JFileChooser fileChooser = new JFileChooser(".");
         int status = fileChooser.showOpenDialog(null);
         if (status == JFileChooser.APPROVE_OPTION) {
@@ -408,13 +422,13 @@ public class FrameMain extends javax.swing.JFrame {
             Limpiar();
             jLabel13.setText("");
             try {
-                objExcel.getActivoFijoController().readExcel(excelFilePath);
+                controllerExcel.getActivoFijoExcel().readExcel(excelFilePath);
             } catch (IOException ex) {
                 Logger.getLogger(FrameMain.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            if (objExcel.getActivoFijoController().getListaInfo().size() > 0) {
-                llenarTabla(objExcel.getActivoFijoController().getListaInfo());
+            if (controllerExcel.getActivoFijoExcel().getListaInfo().size() > 0) {
+                llenarTabla(controllerExcel.getActivoFijoExcel().getListaInfo(), controllerExcel.getActivoFijoExcel());
 
                 jSpinner1.setEnabled(true);
                 jSpinner2.setEnabled(true);
@@ -427,35 +441,37 @@ public class FrameMain extends javax.swing.JFrame {
                 SpinnerNumberModel nmCF = new SpinnerNumberModel();
 
                 nmFI.setMinimum(1);
-                nmFI.setMaximum(objExcel.getActivoFijoController().getListaInfo().size());
+                nmFI.setMaximum(controllerExcel.getActivoFijoExcel().getListaInfo().size());
                 nmFI.setStepSize(1);
                 nmFI.setValue(1);
                 jSpinner1.setModel(nmFI);
 
                 nmFF.setMinimum(1);
-                nmFF.setMaximum(objExcel.getActivoFijoController().getListaInfo().size());
+                nmFF.setMaximum(controllerExcel.getActivoFijoExcel().getListaInfo().size());
                 nmFF.setStepSize(1);
-                nmFF.setValue(objExcel.getActivoFijoController().getListaInfo().size());
+                nmFF.setValue(controllerExcel.getActivoFijoExcel().getListaInfo().size());
                 jSpinner2.setModel(nmFF);
 
                 nmCI.setMinimum(1);
-                nmCI.setMaximum(objExcel.getActivoFijoController().getCantidadC() - 1);
+                nmCI.setMaximum(controllerExcel.getActivoFijoExcel().getCantidadC() - 1);
                 nmCI.setStepSize(1);
                 nmCI.setValue(1);
                 jSpinner3.setModel(nmCI);
 
                 nmCF.setMinimum(1);
-                nmCF.setMaximum(objExcel.getActivoFijoController().getCantidadC() - 1);
+                nmCF.setMaximum(controllerExcel.getActivoFijoExcel().getCantidadC() - 1);
                 nmCF.setStepSize(1);
-                nmCF.setValue(objExcel.getActivoFijoController().getCantidadC() - 1);
+                nmCF.setValue(controllerExcel.getActivoFijoExcel().getCantidadC() - 1);
                 jSpinner4.setModel(nmCF);
 
-                objExcel.getActivoFijoController().readData();
-                jTextField1.setText(String.valueOf(objExcel.getActivoFijoController().getTotalActivos()));
-                jTextField2.setText(String.valueOf(objExcel.getActivoFijoController().getValorTotal()));
-                jTextField3.setText(String.valueOf(objExcel.getActivoFijoController().getValorTotalMC()));
-                jTextField4.setText(String.valueOf(objExcel.getActivoFijoController().getDepTotalAcu()));
-                jTextField5.setText(String.valueOf(objExcel.getActivoFijoController().getDepTotalAcuMC()));
+                controllerExcel.getActivoFijoExcel().readData();
+                jTextField1.setText(String.valueOf(controllerExcel.getActivoFijoExcel().getTotalActivos()));
+                jTextField2.setText(String.valueOf(controllerExcel.getActivoFijoExcel().getValorTotal()));
+                jTextField3.setText(String.valueOf(controllerExcel.getActivoFijoExcel().getValorTotalMC()));
+                jTextField4.setText(String.valueOf(controllerExcel.getActivoFijoExcel().getDepTotalAcu()));
+                jTextField5.setText(String.valueOf(controllerExcel.getActivoFijoExcel().getDepTotalAcuMC()));
+                
+               
 
             }
         }
@@ -484,11 +500,11 @@ public class FrameMain extends javax.swing.JFrame {
 
     }
 
-    private void llenarTabla(List<String[]> listaInfo) {
+    private void llenarTabla(List<String[]> listaInfo, Excel objExcel) {
         jTable1.removeAll();
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("");
-        for (int i = 1; i < objExcel.getActivoFijoController().getCantidadC(); i++) {
+        for (int i = 1; i < objExcel.getCantidadC(); i++) {
             modelo.addColumn(Integer.toString(i));
         }
 
@@ -502,21 +518,47 @@ public class FrameMain extends javax.swing.JFrame {
         jTable1.setModel(modelo);
     }
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        controllerExcel.getActivoFijoExcel().crearRevision();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jSpinner4StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner4StateChanged
+        // TODO add your handling code here:
+        if (controllerExcel.getActivoFijoExcel().getListaInfoRe().size() > 0) {
+            int s4 = (int) jSpinner4.getValue();
+            int s3 = (int) jSpinner3.getValue();
+            if (s4 < s3) {
+                jSpinner4.setValue(s3);
+            }
+            controllerExcel.getActivoFijoExcel().recortarEcxel((int) jSpinner1.getValue(), (int) jSpinner2.getValue(), (int) jSpinner3.getValue(), (int) jSpinner4.getValue());
+            llenarTabla(controllerExcel.getActivoFijoExcel().getListaInfoRe(), controllerExcel.getActivoFijoExcel());
+        }
+    }//GEN-LAST:event_jSpinner4StateChanged
+
+    private void jSpinner3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner3StateChanged
+        // TODO add your handling code here:
+        if (controllerExcel.getActivoFijoExcel().getListaInfoRe().size() > 0) {
+            controllerExcel.getActivoFijoExcel().recortarEcxel((int) jSpinner1.getValue(), (int) jSpinner2.getValue(), (int) jSpinner3.getValue(), (int) jSpinner4.getValue());
+            llenarTabla(controllerExcel.getActivoFijoExcel().getListaInfoRe(), controllerExcel.getActivoFijoExcel());
+        }
+    }//GEN-LAST:event_jSpinner3StateChanged
+
     private void jSpinner2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner2StateChanged
         // TODO add your handling code here:
 
-        if (objExcel.getActivoFijoController().getListaInfoRe().size() > 0) {
+        if (controllerExcel.getActivoFijoExcel().getListaInfoRe().size() > 0) {
             int s2 = (int) jSpinner2.getValue();
 
             int s1 = (int) jSpinner1.getValue();
             if (s2 < s1) {
                 jSpinner2.setValue(s1);
             }
-            objExcel.getActivoFijoController().recortarEcxel((int) jSpinner1.getValue(), (int) jSpinner2.getValue(), (int) jSpinner3.getValue(), (int) jSpinner4.getValue());
-            llenarTabla(objExcel.getActivoFijoController().getListaInfoRe());
+            controllerExcel.getActivoFijoExcel().recortarEcxel((int) jSpinner1.getValue(), (int) jSpinner2.getValue(), (int) jSpinner3.getValue(), (int) jSpinner4.getValue());
+            llenarTabla(controllerExcel.getActivoFijoExcel().getListaInfoRe(), controllerExcel.getActivoFijoExcel());
 
-            if (objExcel.getActivoFijoController().getListaInfoRe().size() % 2 == 0) {
-                jLabel13.setText(objExcel.getActivoFijoController().getListaInfoRe().size() / 2 + " Activos Fijos Cargados de  " + objExcel.getActivoFijoController().getTotalActivos());
+            if (controllerExcel.getActivoFijoExcel().getListaInfoRe().size() % 2 == 0) {
+                jLabel13.setText(controllerExcel.getActivoFijoExcel().getListaInfoRe().size() / 2 + " Activos Fijos Cargados de  " + controllerExcel.getActivoFijoExcel().getTotalActivos());
             } else {
                 jLabel13.setText("Activo Fijo Imcompleto");
             }
@@ -525,39 +567,17 @@ public class FrameMain extends javax.swing.JFrame {
 
     private void jSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner1StateChanged
         // TODO add your handling code here:
-        objExcel.getActivoFijoController().recortarEcxel((int) jSpinner1.getValue(), (int) jSpinner2.getValue(), (int) jSpinner3.getValue(), (int) jSpinner4.getValue());
-        if (objExcel.getActivoFijoController().getListaInfoRe().size() > 0) {
-            llenarTabla(objExcel.getActivoFijoController().getListaInfoRe());
+        controllerExcel.getActivoFijoExcel().recortarEcxel((int) jSpinner1.getValue(), (int) jSpinner2.getValue(), (int) jSpinner3.getValue(), (int) jSpinner4.getValue());
+        if (controllerExcel.getActivoFijoExcel().getListaInfoRe().size() > 0) {
+            llenarTabla(controllerExcel.getActivoFijoExcel().getListaInfoRe(), controllerExcel.getActivoFijoExcel());
 
-            if (objExcel.getActivoFijoController().getListaInfoRe().size() % 2 == 0) {
-                jLabel13.setText(objExcel.getActivoFijoController().getListaInfoRe().size() / 2 + " Activos Fijos Cargados de  " + objExcel.getActivoFijoController().getTotalActivos());
+            if (controllerExcel.getActivoFijoExcel().getListaInfoRe().size() % 2 == 0) {
+                jLabel13.setText(controllerExcel.getActivoFijoExcel().getListaInfoRe().size() / 2 + " Activos Fijos Cargados de  " + controllerExcel.getActivoFijoExcel().getTotalActivos());
             } else {
                 jLabel13.setText("Activo Fijo Imcompleto");
             }
         }
     }//GEN-LAST:event_jSpinner1StateChanged
-
-    private void jSpinner3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner3StateChanged
-        // TODO add your handling code here:
-        if (objExcel.getActivoFijoController().getListaInfoRe().size() > 0) {
-            objExcel.getActivoFijoController().recortarEcxel((int) jSpinner1.getValue(), (int) jSpinner2.getValue(), (int) jSpinner3.getValue(), (int) jSpinner4.getValue());
-            llenarTabla(objExcel.getActivoFijoController().getListaInfoRe());
-        }
-
-    }//GEN-LAST:event_jSpinner3StateChanged
-
-    private void jSpinner4StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner4StateChanged
-        // TODO add your handling code here:
-        if (objExcel.getActivoFijoController().getListaInfoRe().size() > 0) {
-            int s4 = (int) jSpinner4.getValue();
-            int s3 = (int) jSpinner3.getValue();
-            if (s4 < s3) {
-                jSpinner4.setValue(s3);
-            }
-            objExcel.getActivoFijoController().recortarEcxel((int) jSpinner1.getValue(), (int) jSpinner2.getValue(), (int) jSpinner3.getValue(), (int) jSpinner4.getValue());
-            llenarTabla(objExcel.getActivoFijoController().getListaInfoRe());
-        }
-    }//GEN-LAST:event_jSpinner4StateChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -566,13 +586,74 @@ public class FrameMain extends javax.swing.JFrame {
         Float vTMC = Float.parseFloat(jTextField3.getText());
         Float dT = Float.parseFloat(jTextField4.getText());
         Float dTMC = Float.parseFloat(jTextField5.getText());
-        objExcel.getActivoFijoController().ModificarData(tA, vT, vTMC, dT, dTMC);
+        controllerExcel.getActivoFijoExcel().ModificarData(tA, vT, vTMC, dT, dTMC);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
-        objExcel.getActivoFijoController().crearRevision();
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+        
+        JFileChooser fileChooser = new JFileChooser(".");
+        int status = fileChooser.showOpenDialog(null);
+        if (status == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            String excelFilePath = selectedFile.getAbsolutePath();
+            //Limpiar();
+            //jLabel13.setText("");
+            try {
+                controllerExcel.getMedioUsoExcel().readExcel(excelFilePath);
+            } catch (IOException ex) {
+                Logger.getLogger(FrameMain.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            if (controllerExcel.getMedioUsoExcel().getListaInfo().size() > 0) {
+                llenarTabla(controllerExcel.getMedioUsoExcel().getListaInfo(), controllerExcel.getMedioUsoExcel());
+
+                jSpinner1.setEnabled(true);
+                jSpinner2.setEnabled(true);
+                jSpinner3.setEnabled(true);
+                jSpinner4.setEnabled(true);
+
+                SpinnerNumberModel nmFI = new SpinnerNumberModel();
+                SpinnerNumberModel nmFF = new SpinnerNumberModel();
+                SpinnerNumberModel nmCI = new SpinnerNumberModel();
+                SpinnerNumberModel nmCF = new SpinnerNumberModel();
+
+                nmFI.setMinimum(1);
+                nmFI.setMaximum(controllerExcel.getMedioUsoExcel().getListaInfo().size());
+                nmFI.setStepSize(1);
+                nmFI.setValue(1);
+                jSpinner1.setModel(nmFI);
+
+                nmFF.setMinimum(1);
+                nmFF.setMaximum(controllerExcel.getMedioUsoExcel().getListaInfo().size());
+                nmFF.setStepSize(1);
+                nmFF.setValue(controllerExcel.getMedioUsoExcel().getListaInfo().size());
+                jSpinner2.setModel(nmFF);
+
+                nmCI.setMinimum(1);
+                nmCI.setMaximum(controllerExcel.getMedioUsoExcel().getCantidadC() - 1);
+                nmCI.setStepSize(1);
+                nmCI.setValue(1);
+                jSpinner3.setModel(nmCI);
+
+                nmCF.setMinimum(1);
+                nmCF.setMaximum(controllerExcel.getMedioUsoExcel().getCantidadC() - 1);
+                nmCF.setStepSize(1);
+                nmCF.setValue(controllerExcel.getMedioUsoExcel().getCantidadC() - 1);
+                jSpinner4.setModel(nmCF);
+
+                /*controllerExcel.getMedioUsoExcel().readData();
+                jTextField1.setText(String.valueOf(controllerExcel.getMedioUsoExcel().getTotalActivos()));
+                jTextField2.setText(String.valueOf(controllerExcel.getMedioUsoExcel().getValorTotal()));
+                jTextField3.setText(String.valueOf(controllerExcel.getMedioUsoExcel().getValorTotalMC()));
+                jTextField4.setText(String.valueOf(controllerExcel.getMedioUsoExcel().getDepTotalAcu()));
+                jTextField5.setText(String.valueOf(controllerExcel.getMedioUsoExcel().getDepTotalAcuMC()));*/
+                
+               
+
+            }
+        }
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -636,6 +717,7 @@ public class FrameMain extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner2;
     private javax.swing.JSpinner jSpinner3;
