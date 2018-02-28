@@ -8,7 +8,6 @@ package cu.cenpis.gps.inv.data.entity;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,8 +31,10 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(schema = "")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Estado.findAll", query = "SELECT e FROM Estado e"),
-    @NamedQuery(name = "Estado.findByIdEstado", query = "SELECT e FROM Estado e WHERE e.idEstado = :idEstado"),
+    @NamedQuery(name = "Estado.findAll", query = "SELECT e FROM Estado e")
+    ,
+    @NamedQuery(name = "Estado.findByIdEstado", query = "SELECT e FROM Estado e WHERE e.idEstado = :idEstado")
+    ,
     @NamedQuery(name = "Estado.findByNombre", query = "SELECT e FROM Estado e WHERE e.nombre = :nombre")})
 public class Estado implements Serializable {
 
@@ -41,7 +42,7 @@ public class Estado implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Basic(optional = false)
-    @Column(name = "id_estado")
+    @Column(name = "id")
     private Long idEstado;
     @Basic(optional = false)
     @NotNull

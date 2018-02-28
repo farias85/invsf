@@ -32,16 +32,20 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(schema = "")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Responsable.findAll", query = "SELECT r FROM Responsable r"),
-    @NamedQuery(name = "Responsable.findByIdResponsable", query = "SELECT r FROM Responsable r WHERE r.idResponsable = :idResponsable"),
-    @NamedQuery(name = "Responsable.findByNombre", query = "SELECT r FROM Responsable r WHERE r.nombre = :nombre"),
+    @NamedQuery(name = "Responsable.findAll", query = "SELECT r FROM Responsable r")
+    ,
+    @NamedQuery(name = "Responsable.findByIdResponsable", query = "SELECT r FROM Responsable r WHERE r.idResponsable = :idResponsable")
+    ,
+    @NamedQuery(name = "Responsable.findByNombre", query = "SELECT r FROM Responsable r WHERE r.nombre = :nombre")
+    ,
     @NamedQuery(name = "Responsable.findByEmail", query = "SELECT r FROM Responsable r WHERE r.email = :email")})
 public class Responsable implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Basic(optional = false)
-    @Column(name = "id_responsable")
+    @Column(name = "id")
     private Long idResponsable;
     @Basic(optional = false)
     @NotNull
@@ -60,7 +64,7 @@ public class Responsable implements Serializable {
 
     public Responsable() {
     }
-    
+
     public Responsable(String nombre, String email) {
         this.nombre = nombre;
         this.email = email;
@@ -131,5 +135,5 @@ public class Responsable implements Serializable {
     public String toString() {
         return "cu.Responsable[ idResponsable=" + idResponsable + " ]";
     }
-    
+
 }

@@ -19,6 +19,7 @@ import cu.cenpis.gps.inv.data.service.RevisionService;
 import cu.cenpis.gps.inv.data.service.SobranteService;
 import cu.cenpis.gps.inv.data.service.UsuarioService;
 import cu.cenpis.gps.inv.security.SecuredPassword;
+import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
@@ -40,38 +41,10 @@ public class Main1 {
 
         ApplicationContext context = new ClassPathXmlApplicationContext("cu/cenpis/gps/inv/config/mvc-dispatcher-servlet.xml");
         UsuarioService usuarioService = (UsuarioService) context.getBean("usuarioServiceImpl");
-        ActivoFijoService activoFijoService = (ActivoFijoService) context.getBean("activoFijoServiceImpl");
-        EstadoService estadoService = (EstadoService) context.getBean("estadoServiceImpl");
-        LocalService localService = (LocalService) context.getBean("localServiceImpl");
-        ResponsableService responsableService = (ResponsableService) context.getBean("responsableServiceImpl");
-        RevisionService revisionService = (RevisionService) context.getBean("revisionServiceImpl");
-        SobranteService sobranteService = (SobranteService) context.getBean("sobranteServiceImpl");
 
-        sobranteService.findAll();
-
-//        Estado estado = estadoService.find(0L);
-//        Local local = localService.find(0L);
-//        Responsable responsable = responsableService.find(0L);
-//        Revision revision = revisionService.find(0L);
-//        ActivoFijo activoFijo = new ActivoFijo("inv-rotulo", "des", 1.5f, 1.0f, 2f, 2f, 2f, 2f, 2f, "resp", "estado", new Date(), new Date(), estado, local, responsable, revision);
-//        activoFijoService.create(activoFijo);
-//        List<Usuario> lu = usuarioService.findAll();
-//        for (Usuario var : lu) {
-//            try {
-//                var.setContrasenna(SecuredPassword.generateStorngPasswordHash(var.getEmail()));
-//            } catch (NoSuchAlgorithmException | InvalidKeySpecException ex) {
-//                Logger.getLogger(Main1.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//            usuarioService.edit(var);
-//        }
-//        List<String> pList = new ArrayList<>();
-//        pList.add("011621");
-//        pList.add("011630");
-//        List<ActivoFijo> aList = activoFijoService.findYaNoEstan();
-//        List<ActivoFijo> aList = activoFijoService.findNuevos();
-//        for (int i = 0; i < aList.size(); i++) {
-//            System.out.println(aList.get(i).getIdActivoFijo());
-//            System.out.println(aList.get(i).getRotulo());
-//        }
+        List<Usuario> all = usuarioService.findAll();
+        for (int i = 0; i < all.size(); i++) {
+            System.out.println(all.get(i).getNombre());
+        }
     }
 }

@@ -34,18 +34,24 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(schema = "")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Revision.findAll", query = "SELECT r FROM Revision r"),
-    @NamedQuery(name = "Revision.findByIdRevision", query = "SELECT r FROM Revision r WHERE r.idRevision = :idRevision"),
-    @NamedQuery(name = "Revision.findByActivo", query = "SELECT r FROM Revision r WHERE r.activo = :activo"),
-    @NamedQuery(name = "Revision.findByFechaEnSistema", query = "SELECT r FROM Revision r WHERE r.fechaEnSistema = :fechaEnSistema"),
-    @NamedQuery(name = "Revision.findByFechaExcel", query = "SELECT r FROM Revision r WHERE r.fechaExcel = :fechaExcel"),
+    @NamedQuery(name = "Revision.findAll", query = "SELECT r FROM Revision r")
+    ,
+    @NamedQuery(name = "Revision.findByIdRevision", query = "SELECT r FROM Revision r WHERE r.idRevision = :idRevision")
+    ,
+    @NamedQuery(name = "Revision.findByActivo", query = "SELECT r FROM Revision r WHERE r.activo = :activo")
+    ,
+    @NamedQuery(name = "Revision.findByFechaEnSistema", query = "SELECT r FROM Revision r WHERE r.fechaEnSistema = :fechaEnSistema")
+    ,
+    @NamedQuery(name = "Revision.findByFechaExcel", query = "SELECT r FROM Revision r WHERE r.fechaExcel = :fechaExcel")
+    ,
     @NamedQuery(name = "Revision.findByExcelUrl", query = "SELECT r FROM Revision r WHERE r.excelUrl = :excelUrl")})
 public class Revision implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Basic(optional = false)
-    @Column(name = "id_revision")
+    @Column(name = "id")
     private Long idRevision;
     @Basic(optional = false)
     @NotNull
@@ -162,5 +168,5 @@ public class Revision implements Serializable {
     public String toString() {
         return "cu.Revision[ idRevision=" + idRevision + " ]";
     }
-    
+
 }

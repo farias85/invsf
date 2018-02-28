@@ -44,7 +44,7 @@ public class Metadata implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Basic(optional = false)
-    @Column(name = "id_metadata")
+    @Column(name = "id")
     private Long idMetadata;
     @Basic(optional = false)
     @NotNull
@@ -72,7 +72,7 @@ public class Metadata implements Serializable {
     private String responsable;
     @Size(max = 200)
     private String revisado;
-    @JoinColumn(name = "revision", referencedColumnName = "id_revision")
+    @JoinColumn(name = "revision", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Revision revision;
 
