@@ -58,7 +58,7 @@ public class ActivoFijo implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Basic(optional = false)
-    @Column(name = "id_activo_fijo")
+    @Column(name = "id")
     private Long idActivoFijo;
     @Basic(optional = false)
     @NotNull
@@ -123,19 +123,19 @@ public class ActivoFijo implements Serializable {
     @NotNull
     @Column(name = "proceso_baja")
     private boolean procesoBaja;
-    @JoinColumn(name = "estado", referencedColumnName = "id_estado")
+    @JoinColumn(name = "estado", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Estado estado;
-    @JoinColumn(name = "local", referencedColumnName = "id_local")
+    @JoinColumn(name = "local", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Local local;
-    @JoinColumn(name = "responsable", referencedColumnName = "id_responsable")
+    @JoinColumn(name = "responsable", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Responsable responsable;
-    @JoinColumn(name = "revision", referencedColumnName = "id_revision")
+    @JoinColumn(name = "revision", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Revision revision;
-    @JoinColumn(name = "tipo_activo", referencedColumnName = "id_tipo_activo")
+    @JoinColumn(name = "tipo_activo", referencedColumnName = "id")
     @ManyToOne
     private TipoActivo tipoActivo;
     

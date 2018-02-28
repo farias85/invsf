@@ -40,7 +40,7 @@ public class Local implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Basic(optional = false)
-    @Column(name = "id_local")
+    @Column(name = "id")
     private Long idLocal;
     @Basic(optional = false)
     @NotNull
