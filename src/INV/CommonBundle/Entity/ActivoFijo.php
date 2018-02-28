@@ -23,7 +23,7 @@ class ActivoFijo {
     /**
      * @var string
      *
-     * @ORM\Column(name="rotulo", type="string", length=18, nullable=false)
+     * @ORM\Column(name="rotulo", type="string", length=50, nullable=false)
      */
     private $rotulo;
 
@@ -160,6 +160,34 @@ class ActivoFijo {
      * })
      */
     private $tipoActivo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="serie", type="string", length=255, nullable=true)
+     */
+    private $serie;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="modelo", type="string", length=255, nullable=true)
+     */
+    private $modelo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pais_procedencia", type="string", length=255, nullable=true)
+     */
+    private $paisProcedencia;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_produccion", type="date", nullable=true)
+     */
+    private $fechaProduccion;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -615,5 +643,61 @@ class ActivoFijo {
      */
     public function getInformes() {
         return $this->informes;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSerie() {
+        return $this->serie;
+    }
+
+    /**
+     * @param string $serie
+     */
+    public function setSerie($serie) {
+        $this->serie = $serie;
+    }
+
+    /**
+     * @return string
+     */
+    public function getModelo() {
+        return $this->modelo;
+    }
+
+    /**
+     * @param string $modelo
+     */
+    public function setModelo($modelo) {
+        $this->modelo = $modelo;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPaisProcedencia() {
+        return $this->paisProcedencia;
+    }
+
+    /**
+     * @param string $paisProcedencia
+     */
+    public function setPaisProcedencia($paisProcedencia) {
+        $this->paisProcedencia = $paisProcedencia;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getFechaProduccion() {
+        return $this->fechaProduccion;
+    }
+
+    /**
+     * @param \DateTime $fechaProduccion
+     */
+    public function setFechaProduccion($fechaProduccion) {
+        $this->fechaProduccion = $fechaProduccion;
     }
 }
