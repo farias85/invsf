@@ -414,7 +414,8 @@ public class FrameMain extends javax.swing.JFrame {
         //UsuarioService usuarioService = (UsuarioService) ContextSingleton.getInstance().getBean("usuarioServiceImpl");
 
         //controllerExcel = new ControllerExcel();
-        JFileChooser fileChooser = new JFileChooser(".");
+        
+        /*JFileChooser fileChooser = new JFileChooser(".");
         int status = fileChooser.showOpenDialog(null);
         if (status == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
@@ -474,9 +475,73 @@ public class FrameMain extends javax.swing.JFrame {
                
 
             }
-        }
+        }*/
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void cargarExcel(Excel objExcel){
+        JFileChooser fileChooser = new JFileChooser(".");
+        int status = fileChooser.showOpenDialog(null);
+        if (status == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            String excelFilePath = selectedFile.getAbsolutePath();
+            Limpiar();//modificar
+            jLabel13.setText("");
+            //poner el otro label
+            try {
+                objExcel.readExcel(excelFilePath);
+            } catch (IOException ex) {
+                Logger.getLogger(FrameMain.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            if (objExcel.getListaInfo().size() > 0) {
+                llenarTabla(objExcel.getListaInfo(), controllerExcel.getActivoFijoExcel());
+
+                jSpinner1.setEnabled(true);
+                jSpinner2.setEnabled(true);
+                jSpinner3.setEnabled(true);
+                jSpinner4.setEnabled(true);
+
+                SpinnerNumberModel nmFI = new SpinnerNumberModel();
+                SpinnerNumberModel nmFF = new SpinnerNumberModel();
+                SpinnerNumberModel nmCI = new SpinnerNumberModel();
+                SpinnerNumberModel nmCF = new SpinnerNumberModel();
+
+                nmFI.setMinimum(1);
+                nmFI.setMaximum(objExcel.getListaInfo().size());
+                nmFI.setStepSize(1);
+                nmFI.setValue(1);
+                jSpinner1.setModel(nmFI);
+
+                nmFF.setMinimum(1);
+                nmFF.setMaximum(objExcel.getListaInfo().size());
+                nmFF.setStepSize(1);
+                nmFF.setValue(objExcel.getListaInfo().size());
+                jSpinner2.setModel(nmFF);
+
+                nmCI.setMinimum(1);
+                nmCI.setMaximum(objExcel.getCantidadC() - 1);
+                nmCI.setStepSize(1);
+                nmCI.setValue(1);
+                jSpinner3.setModel(nmCI);
+
+                nmCF.setMinimum(1);
+                nmCF.setMaximum(objExcel.getCantidadC() - 1);
+                nmCF.setStepSize(1);
+                nmCF.setValue(objExcel.getCantidadC() - 1);
+                jSpinner4.setModel(nmCF);
+
+                objExcel.readData();
+                /*jTextField1.setText(String.valueOf(controllerExcel.getActivoFijoExcel().getTotalActivos()));
+                jTextField2.setText(String.valueOf(controllerExcel.getActivoFijoExcel().getValorTotal()));
+                jTextField3.setText(String.valueOf(controllerExcel.getActivoFijoExcel().getValorTotalMC()));
+                jTextField4.setText(String.valueOf(controllerExcel.getActivoFijoExcel().getDepTotalAcu()));
+                jTextField5.setText(String.valueOf(controllerExcel.getActivoFijoExcel().getDepTotalAcuMC()));*/
+                
+               
+
+            }
+        }
+    }
     private void Limpiar() {
         jTextField1.setText("");
         jTextField2.setText("");
