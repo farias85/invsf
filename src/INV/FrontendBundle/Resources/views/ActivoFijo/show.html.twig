@@ -60,13 +60,6 @@
                     <th>Valor Actual MN</th>
                     <td>{{ activoFijo.valorActualMn }}</td>
                 </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="col-lg-6">
-            <table class="table data-tbl-boxy responsive">
-                <tbody>
                 <tr>
                     <th>Responsable ATM</th>
                     <td>{{ activoFijo.responsableText }}</td>
@@ -83,6 +76,13 @@
                     <th>Fecha Estado Actual</th>
                     <td>{% if activoFijo.fechaEstadoActual %}{{ activoFijo.fechaEstadoActual|date('Y-m-d') }}{% endif %}</td>
                 </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-lg-6">
+            <table class="table data-tbl-boxy responsive">
+                <tbody>
                 <tr style="background-color: #00b0ff">
                     <th>Revisión</th>
                     <td>{{ activoFijo.revision }}</td>
@@ -102,6 +102,26 @@
                 <tr style="background-color: mintcream">
                     <th>Tipo de activo</th>
                     <td>{{ activoFijo.tipoActivo }}</td>
+                </tr>
+                <tr style="background-color: mintcream">
+                    <th># Serie</th>
+                    <td>{{ activoFijo.serie }}</td>
+                </tr>
+                <tr style="background-color: mintcream">
+                    <th>Marca</th>
+                    <td>{{ activoFijo.marca }}</td>
+                </tr>
+                <tr style="background-color: mintcream">
+                    <th>Modelo</th>
+                    <td>{{ activoFijo.modelo }}</td>
+                </tr>
+                <tr style="background-color: mintcream">
+                    <th>País de Procedencia</th>
+                    <td>{{ activoFijo.paisProcedencia }}</td>
+                </tr>
+                <tr style="background-color: mintcream">
+                    <th>Fecha Fabricación</th>
+                    <td>{% if activoFijo.fechaProduccion %}{{ activoFijo.fechaProduccion | date('Y-m-d') }}{% endif %}</td>
                 </tr>
                 </tbody>
             </table>
@@ -254,4 +274,16 @@
         </div>
     </div>
 
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+      $(function () {
+        $('#myList a').on('click', function (e) {
+          e.preventDefault()
+          $(this).tab('show')
+        })
+      })
+    </script>
 {% endblock %}
