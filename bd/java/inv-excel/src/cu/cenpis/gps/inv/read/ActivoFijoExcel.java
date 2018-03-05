@@ -52,8 +52,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  * @author vladimir
  */
 public class ActivoFijoExcel extends Excel{
-    private List<String[]> listaInfo;
-    private List<String[]> listaInfoRe;
+    //private List<String[]> listaInfo;
+    //private List<String[]> listaInfoRe;
 
     private int totalActivos;
     private Float valorTotal;
@@ -75,8 +75,8 @@ public class ActivoFijoExcel extends Excel{
     private ActivoFijoService activoFijoService;
     
     public ActivoFijoExcel() {
-        this.listaInfo = new ArrayList<>();
-        this.listaInfoRe = new ArrayList<>();
+        //this.listaInfo = new ArrayList<>();
+        //this.listaInfoRe = new ArrayList<>();
         //cantidadC = 0;
         totalActivos = 0;
         valorTotal = 0f;
@@ -135,7 +135,7 @@ public class ActivoFijoExcel extends Excel{
     /* public String getExcelFilePath() {
      return excelFilePath;
      }*/
-    /*public List<String[]> getListaInfoRe() {
+    /*public List<String[]> getgetListaInfo()Re() {
         return listaInfoRe;
     }*/
 
@@ -145,7 +145,7 @@ public class ActivoFijoExcel extends Excel{
     //    return cantidadC;
     //}
 
-   /* public List<String[]> getListaInfo() {
+   /* public List<String[]> getgetListaInfo()() {
         return listaInfo;
     }*/
     
@@ -248,12 +248,12 @@ public class ActivoFijoExcel extends Excel{
     @Override
     public void readData() {
 
-        if (listaInfo.size() > 0) {
-            if (listaInfoRe.isEmpty()) {
-                listaInfoRe = new ArrayList<>(listaInfo);
+        if (getListaInfo().size() > 0) {
+            if (getListaInfoRe().isEmpty()) {
+                crearListaInfoRe(getListaInfo());                
             }
 
-            String str = listaInfoRe.get(listaInfoRe.size() - 1)[1];
+            String str = getListaInfoRe().get(getListaInfoRe().size() - 1)[1];
             DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
             try {
                 fecha = formatter.parse(str);
@@ -261,8 +261,8 @@ public class ActivoFijoExcel extends Excel{
                 Logger.getLogger(ControllerExcel.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            for (int j = 20; j < listaInfoRe.size(); j++) {
-                String[] listaInfoRe1 = listaInfoRe.get(j);
+            for (int j = 20; j < getListaInfoRe().size(); j++) {
+                String[] listaInfoRe1 = getListaInfoRe().get(j);
                 for (int i = 0; i < listaInfoRe1.length; i++) {
                     //if (j > 10) {
                     if (listaInfoRe1[i].contains("Total de Activos")) {
@@ -317,9 +317,9 @@ public class ActivoFijoExcel extends Excel{
         
         //Eliminar revision 43 
         //revisionService.removeById(50L);
-        if (!listaInfoRe.isEmpty()) {
+        if (!getListaInfoRe().isEmpty()) {
 
-            if (listaInfoRe.size() % 2 == 0) {
+            if (getListaInfoRe().size() % 2 == 0) {
                 //RevisionService revisionService = (RevisionService) Context.getBean("revisionServiceImpl");
 
                 Revision revision = new Revision();
@@ -358,12 +358,12 @@ public class ActivoFijoExcel extends Excel{
 
                 try {
 
-                    for (int i = 0; i < listaInfoRe.size(); i += 2) {
+                    for (int i = 0; i < getListaInfoRe().size(); i += 2) {
                         DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 
-                       // if (listaInfoRe.get(i).length == 11 && listaInfoRe.get(i + 1).length == 5) {
-                            fechaA = formatter.parse(listaInfoRe.get(i)[9]);
-                            fechaEA = formatter.parse(listaInfoRe.get(i)[10]);
+                       // if (getListaInfoRe().get(i).length == 11 && getListaInfoRe().get(i + 1).length == 5) {
+                            fechaA = formatter.parse(getListaInfoRe().get(i)[9]);
+                            fechaEA = formatter.parse(getListaInfoRe().get(i)[10]);
 
                             Local local;
                             Estado estado;
@@ -371,7 +371,7 @@ public class ActivoFijoExcel extends Excel{
                             TipoActivo tipoActivo;
 
                             HashMap<String, Object> params = new HashMap<>();
-                            params.put("mRotulo", listaInfoRe.get(i)[1]);
+                            params.put("mRotulo", getListaInfoRe().get(i)[1]);
                             params.put("idRevision", idURev);
                             List<ActivoFijo> activosFijos = activoFijoService.findNamedQuery("ActivoFijo.findRevision", params);
 
@@ -389,22 +389,22 @@ public class ActivoFijoExcel extends Excel{
                                 tipoActivo = SinTipoActivo;
                             }
 
-                            ActivoFijo activoFijo = new ActivoFijo(listaInfoRe.get(i)[1], listaInfoRe.get(i)[2], Float.parseFloat(listaInfoRe.get(i)[3]),
-                                    Float.parseFloat(listaInfoRe.get(i)[4]), Float.parseFloat(listaInfoRe.get(i + 1)[3]), Float.parseFloat(listaInfoRe.get(i + 1)[3]),
-                                    Float.parseFloat(listaInfoRe.get(i)[5]), Float.parseFloat(listaInfoRe.get(i + 1)[4]), Float.parseFloat(listaInfoRe.get(i)[6]),
-                                    listaInfoRe.get(i)[7], listaInfoRe.get(i)[8], fechaA, fechaEA, estado, local, responsable, revision, tipoActivo);
+                            ActivoFijo activoFijo = new ActivoFijo(getListaInfoRe().get(i)[1], getListaInfoRe().get(i)[2], Float.parseFloat(getListaInfoRe().get(i)[3]),
+                                    Float.parseFloat(getListaInfoRe().get(i)[4]), Float.parseFloat(getListaInfoRe().get(i + 1)[3]), Float.parseFloat(getListaInfoRe().get(i + 1)[3]),
+                                    Float.parseFloat(getListaInfoRe().get(i)[5]), Float.parseFloat(getListaInfoRe().get(i + 1)[4]), Float.parseFloat(getListaInfoRe().get(i)[6]),
+                                    getListaInfoRe().get(i)[7], getListaInfoRe().get(i)[8], fechaA, fechaEA, estado, local, responsable, revision, tipoActivo);
 
-                            //activoFijo.setRotulo(i/*Long.parseLong(listaInfoRe.get(i)[1]));
-                            // activoFijo.setDescripcion(listaInfoRe.get(i)[2]);
-                            //activoFijo.setValorMn(Float.parseFloat(listaInfoRe.get(i)[3]));
-                            //activoFijo.setTasa(Float.parseFloat(listaInfoRe.get(i)[4]));
-                            //activoFijo.setDepAcuMn(Float.parseFloat(listaInfoRe.get(i)[5]));
-                            //activoFijo.setValorActualMn(Float.parseFloat(listaInfoRe.get(i)[6]));
-                            //activoFijo.setResponsableText(listaInfoRe.get(i)[7]);
-                            //activoFijo.setEstadoText(listaInfoRe.get(i)[8]);
-                            //activoFijo.setValorCuc(Float.parseFloat(listaInfoRe.get(i + 1)[2]));
-                            //activoFijo.setDepAcuCuc(Float.parseFloat(listaInfoRe.get(i + 1)[3]));
-                            //activoFijo.setValorActualCuc(Float.parseFloat(listaInfoRe.get(i + 1)[4]));
+                            //activoFijo.setRotulo(i/*Long.parseLong(getListaInfoRe().get(i)[1]));
+                            // activoFijo.setDescripcion(getListaInfoRe().get(i)[2]);
+                            //activoFijo.setValorMn(Float.parseFloat(getListaInfoRe().get(i)[3]));
+                            //activoFijo.setTasa(Float.parseFloat(getListaInfoRe().get(i)[4]));
+                            //activoFijo.setDepAcuMn(Float.parseFloat(getListaInfoRe().get(i)[5]));
+                            //activoFijo.setValorActualMn(Float.parseFloat(getListaInfoRe().get(i)[6]));
+                            //activoFijo.setResponsableText(getListaInfoRe().get(i)[7]);
+                            //activoFijo.setEstadoText(getListaInfoRe().get(i)[8]);
+                            //activoFijo.setValorCuc(Float.parseFloat(getListaInfoRe().get(i + 1)[2]));
+                            //activoFijo.setDepAcuCuc(Float.parseFloat(getListaInfoRe().get(i + 1)[3]));
+                            //activoFijo.setValorActualCuc(Float.parseFloat(getListaInfoRe().get(i + 1)[4]));
                             activoFijoService.create(activoFijo);
 
                             cantAG++;
@@ -422,14 +422,14 @@ public class ActivoFijoExcel extends Excel{
                     }
                 } catch (ArrayIndexOutOfBoundsException excepcion) {
                     JOptionPane.showMessageDialog(null, "Error en el formato del documento." + "\n" + "Activo número: " + (cantAG + 1) + "\n"
-                            + "Fila: " + listaInfoRe.get(cantAG*2)[0], "Error", JOptionPane.ERROR_MESSAGE);
+                            + "Fila: " + getListaInfoRe().get(cantAG*2)[0], "Error", JOptionPane.ERROR_MESSAGE);
                   
                 } catch (ParseException ex) {
-                    JOptionPane.showMessageDialog(null, "Error en el formato de fecha." + "\n" + "Activo número: " + (cantAG + 1) + " --- " + "Rotulo: " + listaInfoRe.get(cantAG*2)[1] + "\n"
-                           + "Fila: " + listaInfoRe.get(cantAG*2)[0] + "\n" + 0 + "  Activos fijos insertados de  " + listaInfoRe.size() / 2, "Error", JOptionPane.ERROR_MESSAGE);                   
+                    JOptionPane.showMessageDialog(null, "Error en el formato de fecha." + "\n" + "Activo número: " + (cantAG + 1) + " --- " + "Rotulo: " + getListaInfoRe().get(cantAG*2)[1] + "\n"
+                           + "Fila: " + getListaInfoRe().get(cantAG*2)[0] + "\n" + 0 + "  Activos fijos insertados de  " + getListaInfoRe().size() / 2, "Error", JOptionPane.ERROR_MESSAGE);                   
                 }
 
-                if (cantAG != listaInfoRe.size() / 2) {
+                if (cantAG != getListaInfoRe().size() / 2) {
                     revisionService.removeById(revision.getIdRevision());
                     if (idURev != null) {
                         revision = revisionService.find(idURev);
@@ -437,7 +437,7 @@ public class ActivoFijoExcel extends Excel{
                         revisionService.edit(revision);
                     }
                 } else {
-                    JOptionPane.showMessageDialog(null, cantAG + "  Activos fijos insertados de  " + listaInfoRe.size() / 2);
+                    JOptionPane.showMessageDialog(null, cantAG + "  Activos fijos insertados de  " + getListaInfoRe().size() / 2);
                 }
 
             } else {

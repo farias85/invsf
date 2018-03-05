@@ -64,8 +64,8 @@ public class MetadataMedioUso implements Serializable {
         this.id = id;
     }
 
-    public MetadataMedioUso(Long id, int totalMedioUso, double importeTotalCuc, double importeTotalCup) {
-        this.id = id;
+    public MetadataMedioUso(/*Long id,*/ int totalMedioUso, double importeTotalCuc, double importeTotalCup) {
+        //this.id = id;
         this.totalMedioUso = totalMedioUso;
         this.importeTotalCuc = importeTotalCuc;
         this.importeTotalCup = importeTotalCup;

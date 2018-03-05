@@ -39,6 +39,10 @@ public abstract class Excel {
     public List<String[]> getListaInfoRe() {
         return listaInfoRe;
     }
+    
+    protected void crearListaInfoRe(List<String[]> lista){
+        listaInfoRe = new ArrayList<>(lista);
+    }
 
     public int getCantidadC() {
         return cantidadC;
