@@ -3,6 +3,7 @@
 namespace INV\CommonBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -48,6 +49,34 @@ class ActivoFijoType extends AbstractType {
                     'attr' => [
                         'class' => 'form-control',
                     ]
+                ]
+            )
+            ->add('serie', null, [
+                    'attr' => [
+                        'class' => 'form-control',
+                    ]
+                ]
+            )
+            ->add('marca', null, [
+                    'attr' => [
+                        'class' => 'form-control',
+                    ]
+                ]
+            )
+            ->add('modelo', null, [
+                    'attr' => [
+                        'class' => 'form-control',
+                    ]
+                ]
+            )
+            ->add('paisProcedencia', null, [
+                    'attr' => [
+                        'class' => 'form-control',
+                    ]
+                ]
+            )
+            ->add('fechaProduccion', BirthdayType::class, [
+
                 ]
             );
     }

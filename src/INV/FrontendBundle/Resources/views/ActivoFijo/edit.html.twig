@@ -13,18 +13,18 @@
 {% block wrapper %}
 
     <div class="row">
-        <div class="col-lg-6">
-            {{ form_start(edit_form) }}
-            {{ form_widget(edit_form) }}
-            <div class="btn-toolbar" role="toolbar">
-                <div class="btn-group">
-                    <input type="submit" class="btn btn-primary" value="Editar"/>
-                    <a href="{{ path('activo_fijo_index') }}" class="btn btn-default"> Listar </a>
+        <div class="col-lg-8">
+            <form action="{{ path('activo_fijo_edit', {'id': activoFijo.id}) }}" method="post">
+                {{ form_rest(edit_form) }}
+                <div class="btn-toolbar" role="toolbar">
+                    <div class="btn-group">
+                        <input type="submit" class="btn btn-primary" value="Editar"/>
+                        <a href="{{ path('activo_fijo_index') }}" class="btn btn-default"> Listar </a>
+                    </div>
                 </div>
-            </div>
-            {{ form_end(edit_form) }}
+            </form>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             <table class="table data-tbl-boxy responsive">
                 <tbody>
                 <tr>

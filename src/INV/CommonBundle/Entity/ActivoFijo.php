@@ -171,6 +171,13 @@ class ActivoFijo {
     /**
      * @var string
      *
+     * @ORM\Column(name="marca", type="string", length=255, nullable=true)
+     */
+    private $marca;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="modelo", type="string", length=255, nullable=true)
      */
     private $modelo;
@@ -699,5 +706,19 @@ class ActivoFijo {
      */
     public function setFechaProduccion($fechaProduccion) {
         $this->fechaProduccion = $fechaProduccion;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMarca() {
+        return $this->marca;
+    }
+
+    /**
+     * @param string $marca
+     */
+    public function setMarca($marca) {
+        $this->marca = $marca;
     }
 }
