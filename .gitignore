@@ -64,3 +64,7 @@
 # Downloads Uploads
 /web/downloads/*
 /web/uploads/*
+/bd/java/inv-excel/dist/
+/bd/java/inv-excel/build/
+/bd/java/inv-dao/build/
+/bd/java/inv-dao/dist/

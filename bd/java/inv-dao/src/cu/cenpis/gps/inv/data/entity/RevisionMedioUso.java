@@ -79,8 +79,8 @@ public class RevisionMedioUso implements Serializable {
         this.id = id;
     }
 
-    public RevisionMedioUso(Long id, boolean activo, Date fechaEnSistema, Date fechaExcel, String excelUrl) {
-        this.id = id;
+    public RevisionMedioUso(/*Long id,*/ boolean activo, Date fechaEnSistema, Date fechaExcel, String excelUrl) {
+        //this.id = id;
         this.activo = activo;
         this.fechaEnSistema = fechaEnSistema;
         this.fechaExcel = fechaExcel;

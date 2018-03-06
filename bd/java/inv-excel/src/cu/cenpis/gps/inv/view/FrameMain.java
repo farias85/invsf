@@ -6,6 +6,7 @@
 package cu.cenpis.gps.inv.view;
 
 import cu.cenpis.gps.inv.read.ControllerExcel;
+import cu.cenpis.gps.inv.read.Excel;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -27,10 +28,10 @@ public class FrameMain extends javax.swing.JFrame {
      */
     public FrameMain() {
         initComponents();
-        objExcel = new ControllerExcel();
+        controllerExcel = new ControllerExcel();
         jLabel13.setText("");
     }
-    private ControllerExcel objExcel;
+    private ControllerExcel controllerExcel;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,8 +42,9 @@ public class FrameMain extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
@@ -51,8 +53,6 @@ public class FrameMain extends javax.swing.JFrame {
         jTextField7 = new javax.swing.JTextField();
         jTextField8 = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -61,31 +61,38 @@ public class FrameMain extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
-        jSpinner1 = new javax.swing.JSpinner();
-        jSpinner2 = new javax.swing.JSpinner();
-        jSpinner3 = new javax.swing.JSpinner();
-        jSpinner4 = new javax.swing.JSpinner();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        jTextField9 = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        jTextField10 = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        jTextField11 = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jSpinner1 = new javax.swing.JSpinner();
+        jSpinner2 = new javax.swing.JSpinner();
+        jLabel2 = new javax.swing.JLabel();
+        jSpinner3 = new javax.swing.JSpinner();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jSpinner4 = new javax.swing.JSpinner();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        jTabbedPane1.setVerifyInputWhenFocusTarget(false);
 
         jButton1.setText(" Modificar Datos");
         jButton1.setToolTipText("");
@@ -101,10 +108,6 @@ public class FrameMain extends javax.swing.JFrame {
 
         jLabel12.setText("Revisado Por");
 
-        jLabel3.setText("Inicio C");
-
-        jLabel4.setText("Fin C");
-
         jLabel5.setText("Total Activos");
 
         jLabel6.setText("Valor Total");
@@ -115,39 +118,6 @@ public class FrameMain extends javax.swing.JFrame {
 
         jLabel8.setText("Depreciacion total acumulada");
 
-        jSpinner1.setEnabled(false);
-        jSpinner1.setRequestFocusEnabled(false);
-        jSpinner1.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jSpinner1StateChanged(evt);
-            }
-        });
-
-        jSpinner2.setEnabled(false);
-        jSpinner2.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jSpinner2StateChanged(evt);
-            }
-        });
-
-        jSpinner3.setEnabled(false);
-        jSpinner3.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jSpinner3StateChanged(evt);
-            }
-        });
-
-        jSpinner4.setEnabled(false);
-        jSpinner4.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jSpinner4StateChanged(evt);
-            }
-        });
-
-        jLabel1.setText("Inicio F");
-
-        jLabel2.setText("Fin F");
-
         jLabel9.setText("Depreciacion total acumulada MC");
 
         jLabel13.setText("jLabel13");
@@ -157,23 +127,9 @@ public class FrameMain extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel1))
-                    .addComponent(jLabel3)
-                    .addComponent(jSpinner3, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
-                    .addComponent(jSpinner1))
-                .addGap(59, 59, 59)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                .addContainerGap(25, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
@@ -214,7 +170,7 @@ public class FrameMain extends javax.swing.JFrame {
                                 .addComponent(jLabel12)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                                 .addComponent(jButton1)))))
                 .addGap(104, 104, 104))
         );
@@ -223,67 +179,219 @@ public class FrameMain extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(15, 15, 15)
+                    .addComponent(jLabel8)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(12, 12, 12))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel5)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(39, 39, 39)
+                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(1, 1, 1)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(39, 39, 39)
-                                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel9))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(1, 1, 1)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jLabel7)
-                                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel9))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel6)
-                                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGap(18, 18, 18)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jLabel10)))))))
-                        .addGap(25, 25, 25)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12)
-                            .addComponent(jButton1))))
-                .addGap(56, 56, 56)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel6)
+                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel10)))))))
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11)
+                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12)
+                    .addComponent(jButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(jLabel13)
                 .addGap(28, 28, 28))
         );
 
-        jMenu1.setText("Archivo");
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 860, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 226, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+
+        jTabbedPane1.addTab("Activo Fijo", jPanel3);
+
+        jLabel14.setText("Total de Medios en Uso");
+
+        jLabel15.setText("Importe Total en CUP");
+
+        jLabel16.setText("Importe Total en CUC");
+
+        jLabel17.setText("jLabel17");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addComponent(jLabel15)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addComponent(jLabel16)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel17)
+                                .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(665, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addComponent(jLabel17)
+                .addContainerGap(45, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Medio en uso", jPanel4);
+
+        jLabel1.setText("Inicio F");
+
+        jSpinner1.setEnabled(false);
+        jSpinner1.setRequestFocusEnabled(false);
+        jSpinner1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSpinner1StateChanged(evt);
+            }
+        });
+
+        jSpinner2.setEnabled(false);
+        jSpinner2.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSpinner2StateChanged(evt);
+            }
+        });
+
+        jLabel2.setText("Fin F");
+
+        jSpinner3.setEnabled(false);
+        jSpinner3.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSpinner3StateChanged(evt);
+            }
+        });
+
+        jLabel3.setText("Inicio C");
+
+        jLabel4.setText("Fin C");
+
+        jSpinner4.setEnabled(false);
+        jSpinner4.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSpinner4StateChanged(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel3)
+                        .addComponent(jSpinner3)
+                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1))
+                .addGap(59, 59, 59)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(22, 22, 22)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 865, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(15, 15, 15)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(1127, 1127, 1127))
+        );
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
+
+        jMenu1.setText("Activo Fijo");
 
         jMenuItem1.setText("BuscarExcel");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -303,6 +411,21 @@ public class FrameMain extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        jMenu2.setText("Medio en Uso");
+
+        jMenuItem3.setText("Buscar Excel");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem3);
+
+        jMenuItem4.setText("Crear Revisión");
+        jMenu2.add(jMenuItem4);
+
+        jMenuBar1.add(jMenu2);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -310,19 +433,22 @@ public class FrameMain extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jScrollPane2)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -334,14 +460,88 @@ public class FrameMain extends javax.swing.JFrame {
         //ApplicationContext context = ContextSingleton.getInstance();
         //UsuarioService usuarioService = (UsuarioService) ContextSingleton.getInstance().getBean("usuarioServiceImpl");
 
-        //objExcel = new ControllerExcel();
+        //controllerExcel = new ControllerExcel();
+        cargarExcel(controllerExcel.getActivoFijoExcel());
+        jTabbedPane1.setEnabledAt(0, true);
+        jTabbedPane1.setSelectedIndex(0);
+        jTabbedPane1.setEnabledAt(1, false);
+
+        /*JFileChooser fileChooser = new JFileChooser(".");
+         int status = fileChooser.showOpenDialog(null);
+         if (status == JFileChooser.APPROVE_OPTION) {
+         File selectedFile = fileChooser.getSelectedFile();
+         String excelFilePath = selectedFile.getAbsolutePath();
+         Limpiar();
+         jLabel13.setText("");
+         try {
+         controllerExcel.getActivoFijoExcel().readExcel(excelFilePath);
+         } catch (IOException ex) {
+         Logger.getLogger(FrameMain.class.getName()).log(Level.SEVERE, null, ex);
+         }
+
+         if (controllerExcel.getActivoFijoExcel().getListaInfo().size() > 0) {
+         llenarTabla(controllerExcel.getActivoFijoExcel().getListaInfo(), controllerExcel.getActivoFijoExcel());
+
+         jSpinner1.setEnabled(true);
+         jSpinner2.setEnabled(true);
+         jSpinner3.setEnabled(true);
+         jSpinner4.setEnabled(true);
+
+         SpinnerNumberModel nmFI = new SpinnerNumberModel();
+         SpinnerNumberModel nmFF = new SpinnerNumberModel();
+         SpinnerNumberModel nmCI = new SpinnerNumberModel();
+         SpinnerNumberModel nmCF = new SpinnerNumberModel();
+
+         nmFI.setMinimum(1);
+         nmFI.setMaximum(controllerExcel.getActivoFijoExcel().getListaInfo().size());
+         nmFI.setStepSize(1);
+         nmFI.setValue(1);
+         jSpinner1.setModel(nmFI);
+
+         nmFF.setMinimum(1);
+         nmFF.setMaximum(controllerExcel.getActivoFijoExcel().getListaInfo().size());
+         nmFF.setStepSize(1);
+         nmFF.setValue(controllerExcel.getActivoFijoExcel().getListaInfo().size());
+         jSpinner2.setModel(nmFF);
+
+         nmCI.setMinimum(1);
+         nmCI.setMaximum(controllerExcel.getActivoFijoExcel().getCantidadC() - 1);
+         nmCI.setStepSize(1);
+         nmCI.setValue(1);
+         jSpinner3.setModel(nmCI);
+
+         nmCF.setMinimum(1);
+         nmCF.setMaximum(controllerExcel.getActivoFijoExcel().getCantidadC() - 1);
+         nmCF.setStepSize(1);
+         nmCF.setValue(controllerExcel.getActivoFijoExcel().getCantidadC() - 1);
+         jSpinner4.setModel(nmCF);
+
+         controllerExcel.getActivoFijoExcel().readData();
+         jTextField1.setText(String.valueOf(controllerExcel.getActivoFijoExcel().getTotalActivos()));
+         jTextField2.setText(String.valueOf(controllerExcel.getActivoFijoExcel().getValorTotal()));
+         jTextField3.setText(String.valueOf(controllerExcel.getActivoFijoExcel().getValorTotalMC()));
+         jTextField4.setText(String.valueOf(controllerExcel.getActivoFijoExcel().getDepTotalAcu()));
+         jTextField5.setText(String.valueOf(controllerExcel.getActivoFijoExcel().getDepTotalAcuMC()));
+                
+               
+
+         }
+         }*/
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void cargarExcel(Excel objExcel) {
         JFileChooser fileChooser = new JFileChooser(".");
         int status = fileChooser.showOpenDialog(null);
         if (status == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
             String excelFilePath = selectedFile.getAbsolutePath();
-            Limpiar();
-            jLabel13.setText("");
+
+            if (objExcel.getClass().getName().contains("ActivoFijoExcel")) {
+                limpiarActivoFijo();//modificar
+                jLabel13.setText("");
+            }
+
+            //poner el otro label
             try {
                 objExcel.readExcel(excelFilePath);
             } catch (IOException ex) {
@@ -349,7 +549,7 @@ public class FrameMain extends javax.swing.JFrame {
             }
 
             if (objExcel.getListaInfo().size() > 0) {
-                llenarTabla(objExcel.getListaInfo());
+                // llenarTabla(objExcel.getListaInfo(), controllerExcel.getActivoFijoExcel());
 
                 jSpinner1.setEnabled(true);
                 jSpinner2.setEnabled(true);
@@ -386,24 +586,43 @@ public class FrameMain extends javax.swing.JFrame {
                 jSpinner4.setModel(nmCF);
 
                 objExcel.readData();
-                jTextField1.setText(String.valueOf(objExcel.getTotalActivos()));
-                jTextField2.setText(String.valueOf(objExcel.getValorTotal()));
-                jTextField3.setText(String.valueOf(objExcel.getValorTotalMC()));
-                jTextField4.setText(String.valueOf(objExcel.getDepTotalAcu()));
-                jTextField5.setText(String.valueOf(objExcel.getDepTotalAcuMC()));
 
+                if (objExcel.getClass().getName().contains("ActivoFijoExcel")) {
+                    llenarTabla(objExcel.getListaInfo(), controllerExcel.getActivoFijoExcel());
+
+                    jTextField1.setText(String.valueOf(controllerExcel.getActivoFijoExcel().getTotalActivos()));
+                    jTextField2.setText(String.valueOf(controllerExcel.getActivoFijoExcel().getValorTotal()));
+                    jTextField3.setText(String.valueOf(controllerExcel.getActivoFijoExcel().getValorTotalMC()));
+                    jTextField4.setText(String.valueOf(controllerExcel.getActivoFijoExcel().getDepTotalAcu()));
+                    jTextField5.setText(String.valueOf(controllerExcel.getActivoFijoExcel().getDepTotalAcuMC()));
+                } else if (objExcel.getClass().getName().contains("MedioUsoExcel")) {
+                    llenarTabla(objExcel.getListaInfo(), controllerExcel.getMedioUsoExcel());
+                    
+                     jTextField9.setText(String.valueOf(controllerExcel.getMedioUsoExcel().getTotalMedioUso()));
+                     jTextField10.setText(String.valueOf(controllerExcel.getMedioUsoExcel().getImporteTotalCUP()));
+                     jTextField11.setText(String.valueOf(controllerExcel.getMedioUsoExcel().getImporteTotalCUC()));
+                }
+                /*jTextField1.setText(String.valueOf(controllerExcel.getActivoFijoExcel().getTotalActivos()));
+                 jTextField2.setText(String.valueOf(controllerExcel.getActivoFijoExcel().getValorTotal()));
+                 jTextField3.setText(String.valueOf(controllerExcel.getActivoFijoExcel().getValorTotalMC()));
+                 jTextField4.setText(String.valueOf(controllerExcel.getActivoFijoExcel().getDepTotalAcu()));
+                 jTextField5.setText(String.valueOf(controllerExcel.getActivoFijoExcel().getDepTotalAcuMC()));*/
             }
         }
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }
 
-    private void Limpiar() {
+    private void limpiarActivoFijo() {
         jTextField1.setText("");
         jTextField2.setText("");
         jTextField3.setText("");
         jTextField4.setText("");
         jTextField5.setText("");
-        
-        
+
+        limpiarJSpinner();
+        limpiarTabla();
+    }
+
+    private void limpiarJSpinner() {
 
         jSpinner1.setValue(0);
         jSpinner1.setEnabled(false);
@@ -413,13 +632,14 @@ public class FrameMain extends javax.swing.JFrame {
         jSpinner3.setEnabled(false);
         jSpinner4.setValue(0);
         jSpinner4.setEnabled(false);
-        
-        DefaultTableModel modelo = new DefaultTableModel();
-        jTable1.setModel(modelo);
-
     }
 
-    private void llenarTabla(List<String[]> listaInfo) {
+    private void limpiarTabla() {
+        DefaultTableModel modelo = new DefaultTableModel();
+        jTable1.setModel(modelo);
+    }
+
+    private void llenarTabla(List<String[]> listaInfo, Excel objExcel) {
         jTable1.removeAll();
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("");
@@ -437,8 +657,96 @@ public class FrameMain extends javax.swing.JFrame {
         jTable1.setModel(modelo);
     }
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        controllerExcel.getActivoFijoExcel().crearRevision();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jSpinner4StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner4StateChanged
+        // TODO add your handling code here:
+        /*if (controllerExcel.getActivoFijoExcel().getListaInfoRe().size() > 0) {
+         int s4 = (int) jSpinner4.getValue();
+         int s3 = (int) jSpinner3.getValue();
+         if (s4 < s3) {
+         jSpinner4.setValue(s3);
+         }
+         controllerExcel.getActivoFijoExcel().recortarEcxel((int) jSpinner1.getValue(), (int) jSpinner2.getValue(), (int) jSpinner3.getValue(), (int) jSpinner4.getValue());
+         llenarTabla(controllerExcel.getActivoFijoExcel().getListaInfoRe(), controllerExcel.getActivoFijoExcel());
+         }*/
+
+        if (jTabbedPane1.getSelectedIndex() == 0) {
+            recortarjSpinner4(controllerExcel.getActivoFijoExcel());
+        } else {
+            if (jTabbedPane1.getSelectedIndex() == 1) {
+                recortarjSpinner4(controllerExcel.getMedioUsoExcel());
+            }
+        }
+    }//GEN-LAST:event_jSpinner4StateChanged
+    private void recortarjSpinner4(Excel objExcel) {
+
+        if (objExcel.getListaInfoRe().size() > 0) {
+            int s4 = (int) jSpinner4.getValue();
+            int s3 = (int) jSpinner3.getValue();
+            if (s4 < s3) {
+                jSpinner4.setValue(s3);
+            }
+            objExcel.recortarEcxel((int) jSpinner1.getValue(), (int) jSpinner2.getValue(), (int) jSpinner3.getValue(), (int) jSpinner4.getValue());
+            llenarTabla(objExcel.getListaInfoRe(), objExcel);
+        }
+    }
+
+    private void jSpinner3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner3StateChanged
+        // TODO add your handling code here:
+        /*if (controllerExcel.getActivoFijoExcel().getListaInfoRe().size() > 0) {
+         controllerExcel.getActivoFijoExcel().recortarEcxel((int) jSpinner1.getValue(), (int) jSpinner2.getValue(), (int) jSpinner3.getValue(), (int) jSpinner4.getValue());
+         llenarTabla(controllerExcel.getActivoFijoExcel().getListaInfoRe(), controllerExcel.getActivoFijoExcel());
+         }*/
+
+        if (jTabbedPane1.getSelectedIndex() == 0) {
+            recortarjSpinner3(controllerExcel.getActivoFijoExcel());
+        } else {
+            if (jTabbedPane1.getSelectedIndex() == 1) {
+                recortarjSpinner3(controllerExcel.getMedioUsoExcel());
+            }
+        }
+    }//GEN-LAST:event_jSpinner3StateChanged
+
+    private void recortarjSpinner3(Excel objExcel) {
+        if (objExcel.getListaInfoRe().size() > 0) {
+            objExcel.recortarEcxel((int) jSpinner1.getValue(), (int) jSpinner2.getValue(), (int) jSpinner3.getValue(), (int) jSpinner4.getValue());
+            llenarTabla(objExcel.getListaInfoRe(), objExcel);
+            //llenarTabla(controllerExcel.getActivoFijoExcel().getListaInfoRe(), controllerExcel.getActivoFijoExcel());
+        }
+    }
     private void jSpinner2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner2StateChanged
         // TODO add your handling code here:
+
+        /*if (controllerExcel.getActivoFijoExcel().getListaInfoRe().size() > 0) {
+         int s2 = (int) jSpinner2.getValue();
+
+         int s1 = (int) jSpinner1.getValue();
+         if (s2 < s1) {
+         jSpinner2.setValue(s1);
+         }
+         controllerExcel.getActivoFijoExcel().recortarEcxel((int) jSpinner1.getValue(), (int) jSpinner2.getValue(), (int) jSpinner3.getValue(), (int) jSpinner4.getValue());
+         llenarTabla(controllerExcel.getActivoFijoExcel().getListaInfoRe(), controllerExcel.getActivoFijoExcel());
+
+         if (controllerExcel.getActivoFijoExcel().getListaInfoRe().size() % 2 == 0) {
+         jLabel13.setText(controllerExcel.getActivoFijoExcel().getListaInfoRe().size() / 2 + " Activos Fijos Cargados de  " + controllerExcel.getActivoFijoExcel().getTotalActivos());
+         } else {
+         jLabel13.setText("Activo Fijo Imcompleto");
+         }
+         }*/
+        if (jTabbedPane1.getSelectedIndex() == 0) {
+            recortarjSpinner2(controllerExcel.getActivoFijoExcel());
+        } else {
+            if (jTabbedPane1.getSelectedIndex() == 1) {
+                recortarjSpinner2(controllerExcel.getMedioUsoExcel());
+            }
+        }
+    }//GEN-LAST:event_jSpinner2StateChanged
+
+    private void recortarjSpinner2(Excel objExcel) {
 
         if (objExcel.getListaInfoRe().size() > 0) {
             int s2 = (int) jSpinner2.getValue();
@@ -448,52 +756,63 @@ public class FrameMain extends javax.swing.JFrame {
                 jSpinner2.setValue(s1);
             }
             objExcel.recortarEcxel((int) jSpinner1.getValue(), (int) jSpinner2.getValue(), (int) jSpinner3.getValue(), (int) jSpinner4.getValue());
-            llenarTabla(objExcel.getListaInfoRe());
 
-            if (objExcel.getListaInfoRe().size() % 2 == 0) {
-                jLabel13.setText(objExcel.getListaInfoRe().size() / 2 + " Activos Fijos Cargados de  " + objExcel.getTotalActivos());
+            llenarTabla(objExcel.getListaInfoRe(), objExcel);
+            if (objExcel.getClass().getName().contains("ActivoFijoExcel")) {
+                //llenarTabla(controllerExcel.getActivoFijoExcel().getListaInfoRe(), controllerExcel.getActivoFijoExcel());
+
+                if (controllerExcel.getActivoFijoExcel().getListaInfoRe().size() % 2 == 0) {
+                    jLabel13.setText(controllerExcel.getActivoFijoExcel().getListaInfoRe().size() / 2 + " Activos Fijos Cargados de  " + controllerExcel.getActivoFijoExcel().getTotalActivos());
+                } else {
+                    jLabel13.setText("Activo Fijo Imcompleto");
+                }
             } else {
-                jLabel13.setText("Activo Fijo Imcompleto");
+                //llenarTabla(objExcel.getListaInfoRe(), controllerExcel.getMedioUsoExcel());
             }
         }
-    }//GEN-LAST:event_jSpinner2StateChanged
-
+    }
     private void jSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner1StateChanged
         // TODO add your handling code here:
-        objExcel.recortarEcxel((int) jSpinner1.getValue(), (int) jSpinner2.getValue(), (int) jSpinner3.getValue(), (int) jSpinner4.getValue());
-        if (objExcel.getListaInfoRe().size() > 0) {
-            llenarTabla(objExcel.getListaInfoRe());
+        /*controllerExcel.getActivoFijoExcel().recortarEcxel((int) jSpinner1.getValue(), (int) jSpinner2.getValue(), (int) jSpinner3.getValue(), (int) jSpinner4.getValue());
+         if (controllerExcel.getActivoFijoExcel().getListaInfoRe().size() > 0) {
+         llenarTabla(controllerExcel.getActivoFijoExcel().getListaInfoRe(), controllerExcel.getActivoFijoExcel());
 
-            if (objExcel.getListaInfoRe().size() % 2 == 0) {
-                jLabel13.setText(objExcel.getListaInfoRe().size() / 2 + " Activos Fijos Cargados de  " + objExcel.getTotalActivos());
-            } else {
-                jLabel13.setText("Activo Fijo Imcompleto");
+         if (controllerExcel.getActivoFijoExcel().getListaInfoRe().size() % 2 == 0) {
+         jLabel13.setText(controllerExcel.getActivoFijoExcel().getListaInfoRe().size() / 2 + " Activos Fijos Cargados de  " + controllerExcel.getActivoFijoExcel().getTotalActivos());
+         } else {
+         jLabel13.setText("Activo Fijo Imcompleto");
+         }
+         }*/
+        if (jTabbedPane1.getSelectedIndex() == 0) {
+            recortarjSpinner1(controllerExcel.getActivoFijoExcel());
+        } else {
+            if (jTabbedPane1.getSelectedIndex() == 1) {
+                recortarjSpinner1(controllerExcel.getMedioUsoExcel());
             }
         }
     }//GEN-LAST:event_jSpinner1StateChanged
 
-    private void jSpinner3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner3StateChanged
-        // TODO add your handling code here:
-        if (objExcel.getListaInfoRe().size() > 0) {
-            objExcel.recortarEcxel((int) jSpinner1.getValue(), (int) jSpinner2.getValue(), (int) jSpinner3.getValue(), (int) jSpinner4.getValue());
-            llenarTabla(objExcel.getListaInfoRe());
-        }
+    private void recortarjSpinner1(Excel objExcel) {
 
-    }//GEN-LAST:event_jSpinner3StateChanged
-
-    private void jSpinner4StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner4StateChanged
-        // TODO add your handling code here:
+        objExcel.recortarEcxel((int) jSpinner1.getValue(), (int) jSpinner2.getValue(), (int) jSpinner3.getValue(), (int) jSpinner4.getValue());
         if (objExcel.getListaInfoRe().size() > 0) {
-            int s4 = (int) jSpinner4.getValue();
-            int s3 = (int) jSpinner3.getValue();
-            if (s4 < s3) {
-                jSpinner4.setValue(s3);
+
+            llenarTabla(objExcel.getListaInfoRe(), objExcel);
+            if (objExcel.getClass().getName().contains("ActivoFijoExcel")) {
+                if (objExcel.getListaInfoRe().size() % 2 == 0) {
+                    jLabel13.setText(objExcel.getListaInfoRe().size() / 2 + " Activos Fijos Cargados de  " + controllerExcel.getActivoFijoExcel().getTotalActivos());
+                } else {
+                    jLabel13.setText("Activo Fijo Imcompleto");
+                }
+            } else {
+                if (objExcel.getListaInfoRe().size() % 3 == 0) {
+                    jLabel17.setText(objExcel.getListaInfoRe().size() / 3 + " Tipos de Medios en Uso Cargados");
+                } else {
+                    jLabel17.setText("Medio en uso Imcompleto");
+                }
             }
-            objExcel.recortarEcxel((int) jSpinner1.getValue(), (int) jSpinner2.getValue(), (int) jSpinner3.getValue(), (int) jSpinner4.getValue());
-            llenarTabla(objExcel.getListaInfoRe());
         }
-    }//GEN-LAST:event_jSpinner4StateChanged
-
+    }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         int tA = Integer.parseInt(jTextField1.getText());
@@ -501,13 +820,17 @@ public class FrameMain extends javax.swing.JFrame {
         Float vTMC = Float.parseFloat(jTextField3.getText());
         Float dT = Float.parseFloat(jTextField4.getText());
         Float dTMC = Float.parseFloat(jTextField5.getText());
-        objExcel.ModificarData(tA, vT, vTMC, dT, dTMC);
+        controllerExcel.getActivoFijoExcel().ModificarData(tA, vT, vTMC, dT, dTMC);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
-        objExcel.crearRevision();
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+        cargarExcel(controllerExcel.getMedioUsoExcel());
+        jTabbedPane1.setEnabledAt(1, true);
+        jTabbedPane1.setSelectedIndex(1);
+        jTabbedPane1.setEnabledAt(0, false);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -523,16 +846,21 @@ public class FrameMain extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrameMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameMain.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrameMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameMain.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrameMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameMain.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrameMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameMain.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -551,6 +879,10 @@ public class FrameMain extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -560,17 +892,26 @@ public class FrameMain extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner2;
     private javax.swing.JSpinner jSpinner3;
     private javax.swing.JSpinner jSpinner4;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField10;
+    private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
@@ -578,5 +919,6 @@ public class FrameMain extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }

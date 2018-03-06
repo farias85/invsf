@@ -6,7 +6,7 @@
 package cu.cenpis.gps.inv.main;
 
 import cu.cenpis.gps.inv.data.entity.ActivoFijo;
-import cu.cenpis.gps.inv.data.entity.Chequeo;
+//import cu.cenpis.gps.inv.data.entity.Chequeo;
 
 import cu.cenpis.gps.inv.data.service.ActivoFijoService;
 import cu.cenpis.gps.inv.data.service.RevisionService;
@@ -34,7 +34,7 @@ public class MainVladi {
 
         
         HibernateUtil hibernateUtil = new HibernateUtil();
-        List<Chequeo> list  = hibernateUtil.fetchAll("SELECT c FROM Chequeo c where informe=:9");
+        //List<Chequeo> list  = hibernateUtil.fetchAll("SELECT c FROM Chequeo c where informe=:9");
 //        HashMap<String, Object> params = new HashMap<>();
 //        params.put("mRotulo", "011621");
 //        params.put("idRevision", 5L);
