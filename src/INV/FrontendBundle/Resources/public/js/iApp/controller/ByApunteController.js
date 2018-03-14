@@ -17,6 +17,10 @@ iApp.controller('ByApunteController',
       }
     )
 
+    $scope.getUrlControl = (activo) => {
+      return Routing.generate('apunte_new_control', {'idActivo': activo.id})
+    }
+
     $scope.rowSelect = (activo) => {
       $scope.activos = $scope.activos.map(act => {
         if (act.id === activo.id) {
