@@ -30,6 +30,7 @@ public class FrameMain extends javax.swing.JFrame {
         initComponents();
         controllerExcel = new ControllerExcel();
         jLabel13.setText("");
+        jLabel17.setText("");
     }
     private ControllerExcel controllerExcel;
 
@@ -422,6 +423,11 @@ public class FrameMain extends javax.swing.JFrame {
         jMenu2.add(jMenuItem3);
 
         jMenuItem4.setText("Crear Revisión");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem4);
 
         jMenuBar1.add(jMenu2);
@@ -472,7 +478,7 @@ public class FrameMain extends javax.swing.JFrame {
          File selectedFile = fileChooser.getSelectedFile();
          String excelFilePath = selectedFile.getAbsolutePath();
          Limpiar();
-         jLabel13.setText("");
+         //jLabel13.setText("");
          try {
          controllerExcel.getActivoFijoExcel().readExcel(excelFilePath);
          } catch (IOException ex) {
@@ -539,6 +545,8 @@ public class FrameMain extends javax.swing.JFrame {
             if (objExcel.getClass().getName().contains("ActivoFijoExcel")) {
                 limpiarActivoFijo();//modificar
                 jLabel13.setText("");
+            } else if (objExcel.getClass().getName().contains("MedioUsoExcel")) {
+                jLabel17.setText("");
             }
 
             //poner el otro label
@@ -597,10 +605,10 @@ public class FrameMain extends javax.swing.JFrame {
                     jTextField5.setText(String.valueOf(controllerExcel.getActivoFijoExcel().getDepTotalAcuMC()));
                 } else if (objExcel.getClass().getName().contains("MedioUsoExcel")) {
                     llenarTabla(objExcel.getListaInfo(), controllerExcel.getMedioUsoExcel());
-                    
-                     jTextField9.setText(String.valueOf(controllerExcel.getMedioUsoExcel().getTotalMedioUso()));
-                     jTextField10.setText(String.valueOf(controllerExcel.getMedioUsoExcel().getImporteTotalCUP()));
-                     jTextField11.setText(String.valueOf(controllerExcel.getMedioUsoExcel().getImporteTotalCUC()));
+
+                    jTextField9.setText(String.valueOf(controllerExcel.getMedioUsoExcel().getTotalMedioUso()));
+                    jTextField10.setText(String.valueOf(controllerExcel.getMedioUsoExcel().getImporteTotalCUP()));
+                    jTextField11.setText(String.valueOf(controllerExcel.getMedioUsoExcel().getImporteTotalCUC()));
                 }
                 /*jTextField1.setText(String.valueOf(controllerExcel.getActivoFijoExcel().getTotalActivos()));
                  jTextField2.setText(String.valueOf(controllerExcel.getActivoFijoExcel().getValorTotal()));
@@ -767,7 +775,11 @@ public class FrameMain extends javax.swing.JFrame {
                     jLabel13.setText("Activo Fijo Imcompleto");
                 }
             } else {
-                //llenarTabla(objExcel.getListaInfoRe(), controllerExcel.getMedioUsoExcel());
+                if (objExcel.getListaInfoRe().size() % 3 == 0) {
+                    jLabel17.setText(objExcel.getListaInfoRe().size() / 3 + " Tipos de Medios en Uso Cargados");
+                } else {
+                    jLabel17.setText("Medio en uso Imcompleto");
+                }
             }
         }
     }
@@ -831,6 +843,11 @@ public class FrameMain extends javax.swing.JFrame {
         jTabbedPane1.setSelectedIndex(1);
         jTabbedPane1.setEnabledAt(0, false);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        controllerExcel.getMedioUsoExcel().crearRevision();
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments
