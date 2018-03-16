@@ -4,6 +4,8 @@ namespace INV\FrontendBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use INV\CommonBundle\Entity\ActivoFijo;
+use INV\CommonBundle\Util\Entity;
 
 class DefaultController extends Controller {
 
@@ -106,7 +108,148 @@ class DefaultController extends Controller {
         return $this->render('FrontendBundle:Default:index.html.twig');
     }
 
+    public function excelAT1Action() {
+
+        $em = $this->getDoctrine()->getManager();
+        $activoFijos = $em->getRepository(Entity::ACTIVO_FIJO)->findByRevisionActivaOK();
+
+        //return $this->render('FrontendBundle:Default:show.html.twig', array(
+            //'activoFijos' => $activoFijos,));
+        $titulo = "Título por defecto";
+        $titulos = $this->cabeceraExcelAction();
+        // ask the service for a Excel5
+        $phpExcelObject = $this->get('phpexcel')->createPHPExcelObject();
+        $phpExcelObject->getProperties()->setCreator($titulo)
+            ->setLastModifiedBy($titulo)
+            ->setTitle($titulo)
+            ->setSubject($titulo)
+            ->setDescription($titulo)
+            ->setKeywords($titulo)
+            ->setCategory($titulo);
+        $phpExcelObject->getActiveSheet()
+            ->fromArray(
+                $titulos, // The data to set
+                NULL, // Array values with this value will not be set
+                'A1' // Top left coordinate of the worksheet range where
+            //    we want to set these values (default is A1)
+            );
+        $i = 2;
+        $no = 1;
+        foreach ($activoFijos as $entidad) {
+            $array = $entidad->toArray();
+            $array[0] = $no++;
+
+            $celda = "A" . $i++;
+            $phpExcelObject->getActiveSheet()
+                ->fromArray(
+                    $entidad->toArray(), // The data to set
+                    NULL, // Array values with this value will not be set
+                    $celda // Top left coordinate of the worksheet range where
+
+                );
+        }
+        $phpExcelObject->getActiveSheet()->setTitle('Simple');
+        // Set active sheet index to the first sheet, so Excel opens this as the first sheet
+        $phpExcelObject->setActiveSheetIndex(0);
+
+        // create the writer
+        $writer = $this->get('phpexcel')->createWriter($phpExcelObject, 'Excel2007');
+        // create the response
+        $response = $this->get('phpexcel')->createStreamedResponse($writer);
+        // adding headers
+        $dispositionHeader = $response->headers->makeDisposition(
+            ResponseHeaderBag::DISPOSITION_ATTACHMENT,
+            'PhpExcelFileSample.xlsx'
+        );
+        $response->headers->set('Content-Type', 'text/vnd.ms-excel; charset=utf-8');
+        $response->headers->set('Pragma', 'public');
+        $response->headers->set('Cache-Control', 'maxage=1');
+        $response->headers->set('Content-Disposition', $dispositionHeader);
+
+        return $response;
+
+        /*$em = $this->getDoctrine()->getManager();
+        $activoFijos = $em->getRepository('CommonBundle:ActivoFijo')->findAll();
+        // ask the service for a excel object
+        $phpExcelObject = $this->get('phpexcel')->createPHPExcelObject();
+
+        $phpExcelObject->getProperties()->setCreator("liuggio")
+            ->setLastModifiedBy("Giulio De Donato")
+            ->setTitle("Office 2005 XLSX Test Document")
+            ->setSubject("Office 2005 XLSX Test Document")
+            ->setDescription("Test document for Office 2005 XLSX, generated using PHP classes.")
+            ->setKeywords("office 2005 openxml php")
+            ->setCategory("Test result file");
+
+
+        $phpExcelObject->setActiveSheetIndex(0)
+            ->setCellValue('I2', 'TARJETA AT-1')
+            ->setCellValue('D3', 'CONTROL DE EXISTENCIA DE EQUIPOS')
+            ->setCellValue('A4', 'Ministerio De Educación Superior')
+            ->setCellValue('H4', 'Entidad : Universidad de Oriente')
+            ->setCellValue('C5', 'Departamento:')
+            ->setCellValue('H5', 'Laboratorio:')
+            ->setCellValue('A6', 'Facultad o Área:')
+            ->setCellValue('D6', 'Local o Área:')
+            ->setCellValue('H6', 'Código:')
+            ->setCellValue('A8', count($activoFijos));
+
+        //prueba
+        $i = 2;
+        foreach ($activoFijos as $activoFijo) {
+            $array = get_object_vars($activoFijo);
+            $celda = "A" . $i++;
+            $phpExcelObject->getActiveSheet()
+                ->fromArray(
+                    $array, // The data to set
+                    NULL, // Array values with this value will not be set
+                    $celda // Top left coordinate of the worksheet range where
+
+                );
+        }
+        //fin prueba
+
+
+        $phpExcelObject->getActiveSheet()->setTitle('Simple');
+        // Set active sheet index to the first sheet, so Excel opens this as the first sheet
+        $phpExcelObject->setActiveSheetIndex(0);
+
+        // create the writer
+        $writer = $this->get('phpexcel')->createWriter($phpExcelObject, 'Excel2007');
+        // create the response
+        $response = $this->get('phpexcel')->createStreamedResponse($writer);
+        // adding headers
+        $dispositionHeader = $response->headers->makeDisposition(
+            ResponseHeaderBag::DISPOSITION_ATTACHMENT,
+            'PhpExcelFileSample.xlsx'
+        );
+        $response->headers->set('Content-Type', 'text/vnd.ms-excel; charset=utf-8');
+        $response->headers->set('Pragma', 'public');
+        $response->headers->set('Cache-Control', 'maxage=1');
+        $response->headers->set('Content-Disposition', $dispositionHeader);
+
+        return $response;*/
+    }
+
     public function angularAction() {
         return $this->render('FrontendBundle:Default:index2.html.twig');
+    }
+
+
+    public function cabeceraExcelAction(){
+        $arrayCabecera=array();
+        $arrayCabecera[]="No";
+        $arrayCabecera[]="Equipo";
+        $arrayCabecera[]="No de Inventario";
+        $arrayCabecera[]="No de Serie";
+        $arrayCabecera[]="Modelo";
+        $arrayCabecera[]="Fecha de Fabric";
+        $arrayCabecera[]="País de Proce";
+        $arrayCabecera[]="V inicial";
+        $arrayCabecera[]="Función";
+        $arrayCabecera[]="F de explot";
+        $arrayCabecera[]="Código";
+
+        return $arrayCabecera;
     }
 }

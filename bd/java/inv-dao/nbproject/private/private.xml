@@ -7,6 +7,8 @@
             <file>file:/C:/xampp/htdocs/invsf/bd/java/inv-dao/src/cu/cenpis/gps/inv/data/entity/Revision.java</file>
             <file>file:/C:/xampp/htdocs/invsf/bd/java/inv-dao/src/cu/cenpis/gps/inv/data/entity/Metadata.java</file>
             <file>file:/C:/xampp/htdocs/invsf/bd/java/inv-dao/src/cu/cenpis/gps/inv/data/entity/MedioUso.java</file>
+            <file>file:/C:/xampp/htdocs/invsf/bd/java/inv-dao/src/cu/cenpis/gps/inv/config/application.properties</file>
+            <file>file:/C:/xampp/htdocs/invsf/bd/java/inv-dao/src/META-INF/persistence.xml</file>
             <file>file:/C:/xampp/htdocs/invsf/bd/java/inv-dao/src/cu/cenpis/gps/inv/data/entity/MetadataMedioUso.java</file>
         </group>
     </open-files>

@@ -10,7 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="activo_fijo")
  * @ORM\Entity(repositoryClass="INV\CommonBundle\Repository\ActivoFijoRepository")
  */
-class ActivoFijo {
+class ActivoFijo
+{
     /**
      * @var int
      *
@@ -211,7 +212,8 @@ class ActivoFijo {
      */
     private $informes;
 
-    function __construct() {
+    function __construct()
+    {
         $this->informes = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -221,7 +223,8 @@ class ActivoFijo {
      *
      * @return int
      */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -232,7 +235,8 @@ class ActivoFijo {
      *
      * @return ActivoFijo
      */
-    public function setRotulo($rotulo) {
+    public function setRotulo($rotulo)
+    {
         $this->rotulo = $rotulo;
 
         return $this;
@@ -243,7 +247,8 @@ class ActivoFijo {
      *
      * @return string
      */
-    public function getRotulo() {
+    public function getRotulo()
+    {
         return $this->rotulo;
     }
 
@@ -254,7 +259,8 @@ class ActivoFijo {
      *
      * @return ActivoFijo
      */
-    public function setDescripcion($descripcion) {
+    public function setDescripcion($descripcion)
+    {
         $this->descripcion = $descripcion;
 
         return $this;
@@ -265,7 +271,8 @@ class ActivoFijo {
      *
      * @return string
      */
-    public function getDescripcion() {
+    public function getDescripcion()
+    {
         return $this->descripcion;
     }
 
@@ -276,7 +283,8 @@ class ActivoFijo {
      *
      * @return ActivoFijo
      */
-    public function setValorCuc($valorCuc) {
+    public function setValorCuc($valorCuc)
+    {
         $this->valorCuc = $valorCuc;
 
         return $this;
@@ -287,7 +295,8 @@ class ActivoFijo {
      *
      * @return float
      */
-    public function getValorCuc() {
+    public function getValorCuc()
+    {
         return $this->valorCuc;
     }
 
@@ -298,7 +307,8 @@ class ActivoFijo {
      *
      * @return ActivoFijo
      */
-    public function setValorMn($valorMn) {
+    public function setValorMn($valorMn)
+    {
         $this->valorMn = $valorMn;
 
         return $this;
@@ -309,7 +319,8 @@ class ActivoFijo {
      *
      * @return float
      */
-    public function getValorMn() {
+    public function getValorMn()
+    {
         return $this->valorMn;
     }
 
@@ -320,7 +331,8 @@ class ActivoFijo {
      *
      * @return ActivoFijo
      */
-    public function setTasa($tasa) {
+    public function setTasa($tasa)
+    {
         $this->tasa = $tasa;
 
         return $this;
@@ -331,7 +343,8 @@ class ActivoFijo {
      *
      * @return float
      */
-    public function getTasa() {
+    public function getTasa()
+    {
         return $this->tasa;
     }
 
@@ -342,7 +355,8 @@ class ActivoFijo {
      *
      * @return ActivoFijo
      */
-    public function setDepAcuCuc($depAcuCuc) {
+    public function setDepAcuCuc($depAcuCuc)
+    {
         $this->depAcuCuc = $depAcuCuc;
 
         return $this;
@@ -353,7 +367,8 @@ class ActivoFijo {
      *
      * @return float
      */
-    public function getDepAcuCuc() {
+    public function getDepAcuCuc()
+    {
         return $this->depAcuCuc;
     }
 
@@ -364,7 +379,8 @@ class ActivoFijo {
      *
      * @return ActivoFijo
      */
-    public function setDepAcuMn($depAcuMn) {
+    public function setDepAcuMn($depAcuMn)
+    {
         $this->depAcuMn = $depAcuMn;
 
         return $this;
@@ -375,7 +391,8 @@ class ActivoFijo {
      *
      * @return float
      */
-    public function getDepAcuMn() {
+    public function getDepAcuMn()
+    {
         return $this->depAcuMn;
     }
 
@@ -386,7 +403,8 @@ class ActivoFijo {
      *
      * @return ActivoFijo
      */
-    public function setValorActualCuc($valorActualCuc) {
+    public function setValorActualCuc($valorActualCuc)
+    {
         $this->valorActualCuc = $valorActualCuc;
 
         return $this;
@@ -397,7 +415,8 @@ class ActivoFijo {
      *
      * @return float
      */
-    public function getValorActualCuc() {
+    public function getValorActualCuc()
+    {
         return $this->valorActualCuc;
     }
 
@@ -408,7 +427,8 @@ class ActivoFijo {
      *
      * @return ActivoFijo
      */
-    public function setValorActualMn($valorActualMn) {
+    public function setValorActualMn($valorActualMn)
+    {
         $this->valorActualMn = $valorActualMn;
 
         return $this;
@@ -419,7 +439,8 @@ class ActivoFijo {
      *
      * @return float
      */
-    public function getValorActualMn() {
+    public function getValorActualMn()
+    {
         return $this->valorActualMn;
     }
 
@@ -430,7 +451,8 @@ class ActivoFijo {
      *
      * @return ActivoFijo
      */
-    public function setResponsableText($responsableText) {
+    public function setResponsableText($responsableText)
+    {
         $this->responsableText = $responsableText;
 
         return $this;
@@ -441,7 +463,8 @@ class ActivoFijo {
      *
      * @return string
      */
-    public function getResponsableText() {
+    public function getResponsableText()
+    {
         return $this->responsableText;
     }
 
@@ -452,7 +475,8 @@ class ActivoFijo {
      *
      * @return ActivoFijo
      */
-    public function setEstadoText($estadoText) {
+    public function setEstadoText($estadoText)
+    {
         $this->estadoText = $estadoText;
 
         return $this;
@@ -463,7 +487,8 @@ class ActivoFijo {
      *
      * @return string
      */
-    public function getEstadoText() {
+    public function getEstadoText()
+    {
         return $this->estadoText;
     }
 
@@ -474,7 +499,8 @@ class ActivoFijo {
      *
      * @return ActivoFijo
      */
-    public function setFechaAlta($fechaAlta) {
+    public function setFechaAlta($fechaAlta)
+    {
         $this->fechaAlta = $fechaAlta;
 
         return $this;
@@ -485,7 +511,8 @@ class ActivoFijo {
      *
      * @return \DateTime
      */
-    public function getFechaAlta() {
+    public function getFechaAlta()
+    {
         return $this->fechaAlta;
     }
 
@@ -496,7 +523,8 @@ class ActivoFijo {
      *
      * @return ActivoFijo
      */
-    public function setFechaEstadoActual($fechaEstadoActual) {
+    public function setFechaEstadoActual($fechaEstadoActual)
+    {
         $this->fechaEstadoActual = $fechaEstadoActual;
 
         return $this;
@@ -507,7 +535,8 @@ class ActivoFijo {
      *
      * @return \DateTime
      */
-    public function getFechaEstadoActual() {
+    public function getFechaEstadoActual()
+    {
         return $this->fechaEstadoActual;
     }
 
@@ -518,7 +547,8 @@ class ActivoFijo {
      *
      * @return ActivoFijo
      */
-    public function setEstado(\INV\CommonBundle\Entity\Estado $estado = null) {
+    public function setEstado(\INV\CommonBundle\Entity\Estado $estado = null)
+    {
         $this->estado = $estado;
 
         return $this;
@@ -529,7 +559,8 @@ class ActivoFijo {
      *
      * @return \INV\CommonBundle\Entity\Estado|null
      */
-    public function getEstado() {
+    public function getEstado()
+    {
         return $this->estado;
     }
 
@@ -540,7 +571,8 @@ class ActivoFijo {
      *
      * @return ActivoFijo
      */
-    public function setLocal(\INV\CommonBundle\Entity\Local $local = null) {
+    public function setLocal(\INV\CommonBundle\Entity\Local $local = null)
+    {
         $this->local = $local;
 
         return $this;
@@ -551,7 +583,8 @@ class ActivoFijo {
      *
      * @return \INV\CommonBundle\Entity\Local|null
      */
-    public function getLocal() {
+    public function getLocal()
+    {
         return $this->local;
     }
 
@@ -562,7 +595,8 @@ class ActivoFijo {
      *
      * @return ActivoFijo
      */
-    public function setResponsable(\INV\CommonBundle\Entity\Responsable $responsable = null) {
+    public function setResponsable(\INV\CommonBundle\Entity\Responsable $responsable = null)
+    {
         $this->responsable = $responsable;
 
         return $this;
@@ -573,7 +607,8 @@ class ActivoFijo {
      *
      * @return \INV\CommonBundle\Entity\Responsable|null
      */
-    public function getResponsable() {
+    public function getResponsable()
+    {
         return $this->responsable;
     }
 
@@ -584,7 +619,8 @@ class ActivoFijo {
      *
      * @return ActivoFijo
      */
-    public function setRevision(\INV\CommonBundle\Entity\Revision $revision = null) {
+    public function setRevision(\INV\CommonBundle\Entity\Revision $revision = null)
+    {
         $this->revision = $revision;
 
         return $this;
@@ -595,7 +631,8 @@ class ActivoFijo {
      *
      * @return \INV\CommonBundle\Entity\Revision|null
      */
-    public function getRevision() {
+    public function getRevision()
+    {
         return $this->revision;
     }
 
@@ -606,7 +643,8 @@ class ActivoFijo {
      *
      * @return ActivoFijo
      */
-    public function setTipoActivo(\INV\CommonBundle\Entity\TipoActivo $tipoActivo = null) {
+    public function setTipoActivo(\INV\CommonBundle\Entity\TipoActivo $tipoActivo = null)
+    {
         $this->tipoActivo = $tipoActivo;
 
         return $this;
@@ -617,7 +655,8 @@ class ActivoFijo {
      *
      * @return \INV\CommonBundle\Entity\TipoActivo|null
      */
-    public function getTipoActivo() {
+    public function getTipoActivo()
+    {
         return $this->tipoActivo;
     }
 
@@ -628,7 +667,8 @@ class ActivoFijo {
      *
      * @return ActivoFijo
      */
-    public function addInforme(Informe $informe) {
+    public function addInforme(Informe $informe)
+    {
         $this->informes[] = $informe;
 
         return $this;
@@ -639,7 +679,8 @@ class ActivoFijo {
      *
      * @param Informe $informe
      */
-    public function removeInforme(Informe $informe) {
+    public function removeInforme(Informe $informe)
+    {
         $this->informes->removeElement($informe);
     }
 
@@ -648,77 +689,106 @@ class ActivoFijo {
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getInformes() {
+    public function getInformes()
+    {
         return $this->informes;
     }
 
     /**
      * @return string
      */
-    public function getSerie() {
+    public function getSerie()
+    {
         return $this->serie;
     }
 
     /**
      * @param string $serie
      */
-    public function setSerie($serie) {
+    public function setSerie($serie)
+    {
         $this->serie = $serie;
     }
 
     /**
      * @return string
      */
-    public function getModelo() {
+    public function getModelo()
+    {
         return $this->modelo;
     }
 
     /**
      * @param string $modelo
      */
-    public function setModelo($modelo) {
+    public function setModelo($modelo)
+    {
         $this->modelo = $modelo;
     }
 
     /**
      * @return string
      */
-    public function getPaisProcedencia() {
+    public function getPaisProcedencia()
+    {
         return $this->paisProcedencia;
     }
 
     /**
      * @param string $paisProcedencia
      */
-    public function setPaisProcedencia($paisProcedencia) {
+    public function setPaisProcedencia($paisProcedencia)
+    {
         $this->paisProcedencia = $paisProcedencia;
     }
 
     /**
      * @return \DateTime
      */
-    public function getFechaProduccion() {
+    public function getFechaProduccion()
+    {
         return $this->fechaProduccion;
     }
 
     /**
      * @param \DateTime $fechaProduccion
      */
-    public function setFechaProduccion($fechaProduccion) {
+    public function setFechaProduccion($fechaProduccion)
+    {
         $this->fechaProduccion = $fechaProduccion;
     }
 
     /**
      * @return string
      */
-    public function getMarca() {
+    public function getMarca()
+    {
         return $this->marca;
     }
 
     /**
      * @param string $marca
      */
-    public function setMarca($marca) {
+    public function setMarca($marca)
+    {
         $this->marca = $marca;
+    }
+
+    public function toArray()
+    {
+        $array = array();
+        $array[] = 1;
+        $array[] = $this->getDescripcion();
+        $array[] = $this->getRotulo();
+        $array[] = $this->getSerie();
+        $array[] = $this->getModelo();
+        $array[] = $this->getFechaAlta();
+        $array[] = $this->getPaisProcedencia();
+        $array[] = "No se";
+        $array[] = "No se";
+        $array[] = $this->getFechaEstadoActual();
+        $array[] = "código del centro";
+
+        return $array;
     }
 }
