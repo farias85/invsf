@@ -41,11 +41,14 @@ class ActivoFijoRepository extends EntityRepository {
         return $query->getArrayResult()[0];
     }
 
+    //Estados: 1 roto, 2 ok, 3 Prestamo
+    //Equipos: 2 monitor, 3 pc, 6 laptop, 7 backup,  8 telefono, 9 aire  acondicionado, 10 teclado, 11 impresora, 12 otros informáticos, 15 ventilador, 16 tv, 17 equipo
+
     public function findByRevisionActivaOK($hidrate = false) {
         $dql = "";
         $dql .= 'SELECT a FROM ' . Entity::ACTIVO_FIJO . ' a 
         JOIN a.revision r
-        WHERE r.activo = 1 AND a.estado = 2 
+        WHERE r.activo = 1 AND (a.estado = 2 OR a.estado = 3)
         AND (a.tipoActivo = 2 OR a.tipoActivo = 3 OR a.tipoActivo = 6 OR a.tipoActivo = 7 OR a.tipoActivo = 8 OR a.tipoActivo = 9
          OR a.tipoActivo = 10 OR a.tipoActivo = 11 OR a.tipoActivo = 12 OR a.tipoActivo = 15 OR a.tipoActivo = 16 OR a.tipoActivo = 17) 
         ORDER BY a.id ASC';

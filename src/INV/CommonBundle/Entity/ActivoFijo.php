@@ -724,6 +724,7 @@ class ActivoFijo {
 
     public function toArray() {
         $array = array();
+        $array[] = 1;
         $array[] = $this->getDescripcion();
         $array[] = $this->getRotulo();
         $array[] = $this->getSerie();
@@ -740,6 +741,7 @@ class ActivoFijo {
 
     public function toArray2() {
         $array = array();
+        $array[] = 1;
         $array[] = $this->getDescripcion();
         $array[] = $this->getRotulo();
         $array[] = $this->getSerie();

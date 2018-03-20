@@ -134,15 +134,19 @@ class DefaultController extends Controller {
             //    we want to set these values (default is A1)
             );
         $i = 2;
+        $no = (int)1;
         foreach ($activoFijos as $entidad) {
+            $array = $entidad->toArray();
+            $array[0] = $no;
             $celda = "A" . $i++;
             $phpExcelObject->getActiveSheet()
                 ->fromArray(
-                    $entidad->toArray(), // The data to set
+                    $array, // The data to set
                     NULL, // Array values with this value will not be set
                     $celda // Top left coordinate of the worksheet range where
 
                 );
+            $no++;
         }
         $phpExcelObject->getActiveSheet()->setTitle('Simple');
         // Set active sheet index to the first sheet, so Excel opens this as the first sheet
@@ -254,15 +258,19 @@ class DefaultController extends Controller {
             //    we want to set these values (default is A1)
             );
         $i = 2;
+        $no = (int)1;
         foreach ($activoFijos as $entidad) {
+            $array = $entidad->toArray2();
+            $array[0] = $no;
             $celda = "A" . $i++;
             $phpExcelObject->getActiveSheet()
                 ->fromArray(
-                    $entidad->toArray2(), // The data to set
+                    $array, // The data to set
                     NULL, // Array values with this value will not be set
                     $celda // Top left coordinate of the worksheet range where
 
                 );
+            $no++;
         }
         $phpExcelObject->getActiveSheet()->setTitle('Simple');
         // Set active sheet index to the first sheet, so Excel opens this as the first sheet
@@ -292,6 +300,7 @@ class DefaultController extends Controller {
 
     public function cabeceraExcelAction() {
         $arrayCabecera = array();
+        $arrayCabecera[] = "No.";
         $arrayCabecera[] = "Equipo";
         $arrayCabecera[] = "No de Inventario";
         $arrayCabecera[] = "No de Serie";
@@ -309,6 +318,7 @@ class DefaultController extends Controller {
 
     public function cabeceraExcel2Action() {
         $arrayCabecera = array();
+        $arrayCabecera[] = "No.";
         $arrayCabecera[] = "Equipo";
         $arrayCabecera[] = "No de Inventario";
         $arrayCabecera[] = "No de Serie";
