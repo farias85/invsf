@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+<<<<<<< HEAD
+            <file>file:/C:/xampp7.1/htdocs/invsf/bd/java/inv-dao/src/cu/cenpis/gps/inv/main/Main1.java</file>
+=======
+            <file>file:/C:/xampp/htdocs/invsf/bd/java/inv-dao/src/cu/cenpis/gps/inv/data/entity/RevisionMedioUso.java</file>
+            <file>file:/C:/xampp/htdocs/invsf/bd/java/inv-dao/src/cu/cenpis/gps/inv/data/entity/Revision.java</file>
+            <file>file:/C:/xampp/htdocs/invsf/bd/java/inv-dao/src/cu/cenpis/gps/inv/data/entity/MetadataMedioUso.java</file>
+            <file>file:/C:/xampp/htdocs/invsf/bd/java/inv-dao/src/cu/cenpis/gps/inv/main/Main1.java</file>
+>>>>>>> ee6b5f74d333e9237013ba8eb4c8c88275cc7a9d
+        </group>
+    </open-files>
+</project-private>

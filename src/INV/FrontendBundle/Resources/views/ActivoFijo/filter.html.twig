@@ -130,6 +130,8 @@
                         <th>Estado</th>
                         <th>Local</th>
                         <th>Tipo</th>
+                        <th>Marca</th>
+                        <th>Prod.</th>
                         <th>&nbsp;&nbsp;&nbsp;Acciones&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
                     </tr>
                     </thead>
@@ -142,6 +144,8 @@
                         <td>{| activoFijo.estado |}</td>
                         <td>{| activoFijo.local |}</td>
                         <td>{| activoFijo.tipoActivo |}</td>
+                        <td>{| activoFijo.marca |}</td>
+                        <td>{| activoFijo.fabricacion |}</td>
                         <td>
                             <div class="btn-toolbar" role="toolbar">
                                 <div class="btn-group-sm">
@@ -193,6 +197,8 @@
         estado: '{{ activoFijo.estado }}',
         local: '{{ activoFijo.local }}',
         tipoActivo: '{{ activoFijo.tipoActivo }}',
+        marca: '{{ activoFijo.marca }}',
+        fabricacion: '{% if activoFijo.fechaProduccion %} {{ activoFijo.fechaProduccion | date('Y-m-d') }} {% endif %}',
       })
       {% endfor %}
     </script>

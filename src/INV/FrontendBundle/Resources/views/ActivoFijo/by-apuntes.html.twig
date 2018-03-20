@@ -18,7 +18,8 @@
                 <form action="{{ path('activo_fijo_by_apuntes') }}" method="post">
                     <label for="nombre">Nombre del Informe</label>
                     <input type="text" id="nombre" name="nombre" class="form-control" required="required">
-                    <input type="text" id="selected" name="selected" class="form-control" ng-model="sValue" required="required">
+                    <input type="text" id="selected" name="selected" class="form-control" ng-model="sValue"
+                           required="required">
                     <input type="submit" ng-disabled="selected.length < 2" value="Informe" class="btn btn-success">
                 </form>
             </div>
@@ -49,7 +50,12 @@
                 </td>
                 <td>{| activoFijo.descripcion |}</td>
                 <td>{| activoFijo.ultimo |}</td>
-                <td><span class="badge {| activoFijo.badge |}">{| activoFijo.cantidad |}</span></td>
+                <td>
+                    <a title="Control"
+                       href="{|getUrlControl(activoFijo)|}">
+                        <span class="badge {| activoFijo.badge |}">{| activoFijo.cantidad |}</span>
+                    </a>
+                </td>
                 <td>{| activoFijo.alta |}</td>
                 <td>{| activoFijo.responsable |}</td>
                 <td>{| activoFijo.estado |}</td>
@@ -86,8 +92,6 @@
     </script>
 
     <script src="{{ asset('bundles/frontend/js/iApp/controller/ByApunteController.js') }}"></script>
-
-    ng-scope odd
 
     <style>
         .tabletr.odd {

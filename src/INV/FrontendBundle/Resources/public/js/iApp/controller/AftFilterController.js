@@ -16,7 +16,7 @@ iApp.controller('AftFilterController',
     }
 
     $scope.getUrlControl = (activo) => {
-      return Routing.generate('apunte_new_control', {'getUrlShow(activoFijo)': activo.id})
+      return Routing.generate('apunte_new_control', {'idActivo': activo.id})
     }
 
     $scope.getRowColor = (index) => {
