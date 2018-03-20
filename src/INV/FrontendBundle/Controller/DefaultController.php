@@ -114,7 +114,7 @@ class DefaultController extends Controller {
         $activoFijos = $em->getRepository(Entity::ACTIVO_FIJO)->findByRevisionActivaOK();
 
         //return $this->render('FrontendBundle:Default:show.html.twig', array(
-            //'activoFijos' => $activoFijos,));
+        //'activoFijos' => $activoFijos,));
         $titulo = "Título por defecto";
         $titulos = $this->cabeceraExcelAction();
         // ask the service for a Excel5
@@ -134,11 +134,7 @@ class DefaultController extends Controller {
             //    we want to set these values (default is A1)
             );
         $i = 2;
-        $no = 1;
         foreach ($activoFijos as $entidad) {
-            $array = $entidad->toArray();
-            $array[0] = $no++;
-
             $celda = "A" . $i++;
             $phpExcelObject->getActiveSheet()
                 ->fromArray(
@@ -236,19 +232,19 @@ class DefaultController extends Controller {
     }
 
 
-    public function cabeceraExcelAction(){
-        $arrayCabecera=array();
-        $arrayCabecera[]="No";
-        $arrayCabecera[]="Equipo";
-        $arrayCabecera[]="No de Inventario";
-        $arrayCabecera[]="No de Serie";
-        $arrayCabecera[]="Modelo";
-        $arrayCabecera[]="Fecha de Fabric";
-        $arrayCabecera[]="País de Proce";
-        $arrayCabecera[]="V inicial";
-        $arrayCabecera[]="Función";
-        $arrayCabecera[]="F de explot";
-        $arrayCabecera[]="Código";
+    public function cabeceraExcelAction() {
+        $arrayCabecera = array();
+        $arrayCabecera[] = "Equipo";
+        $arrayCabecera[] = "No de Inventario";
+        $arrayCabecera[] = "No de Serie";
+        $arrayCabecera[] = "Modelo";
+        $arrayCabecera[] = "Fecha de Fabricación";
+        $arrayCabecera[] = "País de Procedencia";
+        $arrayCabecera[] = "Valor inicial CUC";
+        $arrayCabecera[] = "Valor inicial MN";
+        $arrayCabecera[] = "Función";
+        $arrayCabecera[] = "Fecha de explotación";
+        $arrayCabecera[] = "Código";
 
         return $arrayCabecera;
     }
