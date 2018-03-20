@@ -227,6 +227,64 @@ class DefaultController extends Controller {
         return $response;*/
     }
 
+    public function excelEquiposRotosAction()
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $activoFijos = $em->getRepository(Entity::ACTIVO_FIJO)->findByRevisionActivaRotos();
+
+        //return $this->render('FrontendBundle:Default:show.html.twig', array(
+        //'activoFijos' => $activoFijos,));
+        $titulo = "Título por defecto";
+        $titulos = $this->cabeceraExcel2Action();
+        // ask the service for a Excel5
+        $phpExcelObject = $this->get('phpexcel')->createPHPExcelObject();
+        $phpExcelObject->getProperties()->setCreator($titulo)
+            ->setLastModifiedBy($titulo)
+            ->setTitle($titulo)
+            ->setSubject($titulo)
+            ->setDescription($titulo)
+            ->setKeywords($titulo)
+            ->setCategory($titulo);
+        $phpExcelObject->getActiveSheet()
+            ->fromArray(
+                $titulos, // The data to set
+                NULL, // Array values with this value will not be set
+                'A1' // Top left coordinate of the worksheet range where
+            //    we want to set these values (default is A1)
+            );
+        $i = 2;
+        foreach ($activoFijos as $entidad) {
+            $celda = "A" . $i++;
+            $phpExcelObject->getActiveSheet()
+                ->fromArray(
+                    $entidad->toArray2(), // The data to set
+                    NULL, // Array values with this value will not be set
+                    $celda // Top left coordinate of the worksheet range where
+
+                );
+        }
+        $phpExcelObject->getActiveSheet()->setTitle('Simple');
+        // Set active sheet index to the first sheet, so Excel opens this as the first sheet
+        $phpExcelObject->setActiveSheetIndex(0);
+
+        // create the writer
+        $writer = $this->get('phpexcel')->createWriter($phpExcelObject, 'Excel2007');
+        // create the response
+        $response = $this->get('phpexcel')->createStreamedResponse($writer);
+        // adding headers
+        $dispositionHeader = $response->headers->makeDisposition(
+            ResponseHeaderBag::DISPOSITION_ATTACHMENT,
+            'PhpExcelFileSample2.xlsx'
+        );
+        $response->headers->set('Content-Type', 'text/vnd.ms-excel; charset=utf-8');
+        $response->headers->set('Pragma', 'public');
+        $response->headers->set('Cache-Control', 'maxage=1');
+        $response->headers->set('Content-Disposition', $dispositionHeader);
+
+        return $response;
+    }
+
     public function angularAction() {
         return $this->render('FrontendBundle:Default:index2.html.twig');
     }
@@ -245,6 +303,18 @@ class DefaultController extends Controller {
         $arrayCabecera[] = "Función";
         $arrayCabecera[] = "Fecha de explotación";
         $arrayCabecera[] = "Código";
+
+        return $arrayCabecera;
+    }
+
+    public function cabeceraExcel2Action() {
+        $arrayCabecera = array();
+        $arrayCabecera[] = "Equipo";
+        $arrayCabecera[] = "No de Inventario";
+        $arrayCabecera[] = "No de Serie";
+        $arrayCabecera[] = "Marca";
+        $arrayCabecera[] = "Modelo";
+        $arrayCabecera[] = "Local o área";
 
         return $arrayCabecera;
     }

@@ -737,4 +737,15 @@ class ActivoFijo {
         $array[] = "2094034";
         return $array;
     }
+
+    public function toArray2() {
+        $array = array();
+        $array[] = $this->getDescripcion();
+        $array[] = $this->getRotulo();
+        $array[] = $this->getSerie();
+        $array[] = $this->getMarca();
+        $array[] = $this->getModelo();
+        $array[] = $this->getLocal()->getNombre();
+        return $array;
+    }
 }

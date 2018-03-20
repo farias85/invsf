@@ -53,4 +53,17 @@ class ActivoFijoRepository extends EntityRepository {
         $query = $em->createQuery($dql);
         return $hidrate ? $query->getArrayResult() : $query->getResult();
     }
+
+    public function findByRevisionActivaRotos($hidrate = false) {
+        $dql = "";
+        $dql .= 'SELECT a FROM ' . Entity::ACTIVO_FIJO . ' a 
+        JOIN a.revision r
+        WHERE r.activo = 1 AND a.estado = 1 
+        AND (a.tipoActivo = 2 OR a.tipoActivo = 3 OR a.tipoActivo = 6 OR a.tipoActivo = 7 OR a.tipoActivo = 8 OR a.tipoActivo = 9
+         OR a.tipoActivo = 10 OR a.tipoActivo = 11 OR a.tipoActivo = 12 OR a.tipoActivo = 15 OR a.tipoActivo = 16 OR a.tipoActivo = 17) 
+        ORDER BY a.id ASC';
+        $em = $this->getEntityManager();
+        $query = $em->createQuery($dql);
+        return $hidrate ? $query->getArrayResult() : $query->getResult();
+    }
 }

@@ -18,6 +18,10 @@ frontend_homepage_excel_at1:
     path:     /excel-at1
     defaults: { _controller: FrontendBundle:Default:excelAT1 }
 
+frontend_homepage_excel_rotos:
+    path:     /excel-rotos
+    defaults: { _controller: FrontendBundle:Default:excelEquiposRotos }
+
 frontend_homepage_angular:
     path:     /angular
     defaults: { _controller: FrontendBundle:Default:angular }
