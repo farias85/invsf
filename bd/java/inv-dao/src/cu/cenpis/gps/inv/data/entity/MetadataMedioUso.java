@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Felipe
  */
 @Entity
-@Table(name = "metadata_medio_uso", catalog = "invsf57", schema = "")
+@Table(name = "metadata_medio_uso", catalog = "invsf", schema = "")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "MetadataMedioUso.findAll", query = "SELECT m FROM MetadataMedioUso m")
@@ -68,7 +68,7 @@ public class MetadataMedioUso implements Serializable {
         //this.id = id;
         this.totalMedioUso = totalMedioUso;
         this.importeTotalCuc = importeTotalCuc;
-        this.importeTotalCup = importeTotalCup;
+        this.importeTotalCup = importeTotalCup;        
     }
 
     public Long getId() {

@@ -14,6 +14,10 @@ frontend_homepage_excel2:
     path:     /excel2
     defaults: { _controller: FrontendBundle:Default:excel2 }
 
+frontend_homepage_excel_at1:
+    path:     /excel-at1
+    defaults: { _controller: FrontendBundle:Default:excelAT1 }
+
 frontend_homepage_angular:
     path:     /angular
     defaults: { _controller: FrontendBundle:Default:angular }

@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Felipe
  */
 @Entity
-@Table(name = "medio_uso", catalog = "invsf57", schema = "")
+@Table(name = "medio_uso", catalog = "invsf", schema = "")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "MedioUso.findAll", query = "SELECT m FROM MedioUso m")
@@ -115,8 +115,9 @@ public class MedioUso implements Serializable {
         this.id = id;
     }
 
-    public MedioUso(Long id, String rotulo, String descripcion, String responsableText, String responsableNomina, int cantidad, int cantidadSubTotalUtil, double precioCup, double importeCup, double importeCupSubtotalUtil, double precioCuc, double importeCuc, double importeCucSubtotalUtil) {
-        this.id = id;
+    public MedioUso(/*Long id,*/ String rotulo, String descripcion, String responsableText, String responsableNomina, int cantidad, int cantidadSubTotalUtil,
+            double precioCup, double importeCup, double importeCupSubtotalUtil, double precioCuc, double importeCuc, double importeCucSubtotalUtil, RevisionMedioUso revisionMedioUso) {
+        //this.id = id;
         this.rotulo = rotulo;
         this.descripcion = descripcion;
         this.responsableText = responsableText;
@@ -129,6 +130,7 @@ public class MedioUso implements Serializable {
         this.precioCuc = precioCuc;
         this.importeCuc = importeCuc;
         this.importeCucSubtotalUtil = importeCucSubtotalUtil;
+        this.revisionMedioUso = revisionMedioUso;
     }
 
     public Long getId() {

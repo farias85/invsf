@@ -6,10 +6,10 @@
     <class>cu.cenpis.gps.inv.data.entity.MedioUso</class>
     <class>cu.cenpis.gps.inv.data.entity.RevisionMedioUso</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/invsf57?zeroDateTimeBehavior=convertToNull"/>
-      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://10.30.125.18:3306/invsf?zeroDateTimeBehavior=convertToNull"/>
+      <property name="javax.persistence.jdbc.user" value="invsf"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-      <property name="javax.persistence.jdbc.password" value=""/>
+      <property name="javax.persistence.jdbc.password" value="123456789"/>
     </properties>
   </persistence-unit>
 </persistence>

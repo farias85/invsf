@@ -1,0 +1,53 @@
+{% extends 'FrontendBundle:Layout:frontend-basic.html.twig' %}
+
+
+{% block wrapper %}
+    <table class="table data-tbl-boxy responsive stable">
+        <thead>
+        <tr>
+            <th>Rótulo</th>
+            <th>Descripción</th>
+            <th>Responsable</th>
+            <th>Estado</th>
+            <th>Local</th>
+            <th>Tipo</th>
+            <th>&nbsp;&nbsp;&nbsp;Acciones&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for activoFijo in activoFijos %}
+            <tr style="{{ cycle(['background-color: aliceblue', 'background-color: inherit'], loop.index) }}">
+                <td>{{ activoFijo.rotulo }}</td>
+                <td>{{ activoFijo.descripcion }}</td>
+                <td>{{ activoFijo.responsable }}</td>
+                <td>{{ activoFijo.estado }}</td>
+                <td>{{ activoFijo.local }}</td>
+                <td>{{ activoFijo.tipoActivo }}</td>
+                <td>
+                    <div class="btn-toolbar" role="toolbar">
+                        <div class="btn-group-sm">
+                            <a class="btn btn-small show-tooltip" title="Ver"
+                               href="{{ path('activo_fijo_show', { 'id': activoFijo.id }) }}">
+                                <i class="icon-zoom-in"></i>
+                            </a>
+                            {% if app.user is not empty %}
+                                <a class="btn btn-small show-tooltip btn-warning"
+                                   title="Chequeo"
+                                   href="{{ path('informe_new_chequeo', {'idActivo': activoFijo.id, 'idInforme': informe.id}) }}">
+                                    <i class="icon-barcode"></i>
+                                </a>
+                                <a class="btn btn-small btn-success show-tooltip" title="Control"
+                                   onclick="return confirm('¿Desea crear un apunte de control para el AFT {{ activoFijo.rotulo }}?')"
+                                   href="{{ path('apunte_new_control', { 'idActivo': activoFijo.id }) }}">
+                                    <i class="icon-plus-sign"></i>
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

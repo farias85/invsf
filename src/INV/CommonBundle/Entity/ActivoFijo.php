@@ -721,4 +721,20 @@ class ActivoFijo {
     public function setMarca($marca) {
         $this->marca = $marca;
     }
+
+    public function toArray() {
+        $array = array();
+        $array[] = $this->getDescripcion();
+        $array[] = $this->getRotulo();
+        $array[] = $this->getSerie();
+        $array[] = $this->getModelo();
+        $array[] = $this->getFechaAlta()->format('Y-m-d');
+        $array[] = $this->getPaisProcedencia();
+        $array[] = $this->getValorActualCuc();
+        $array[] = $this->getValorActualMn();
+        $array[] = "Docencia-Investigación";
+        $array[] = $this->getFechaEstadoActual()->format('Y-m-d');
+        $array[] = "2094034";
+        return $array;
+    }
 }
