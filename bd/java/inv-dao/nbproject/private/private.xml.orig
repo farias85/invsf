@@ -8,9 +8,12 @@
 =======
             <file>file:/C:/xampp/htdocs/invsf/bd/java/inv-dao/src/cu/cenpis/gps/inv/data/entity/RevisionMedioUso.java</file>
             <file>file:/C:/xampp/htdocs/invsf/bd/java/inv-dao/src/cu/cenpis/gps/inv/data/entity/Revision.java</file>
+            <file>file:/C:/xampp/htdocs/invsf/bd/java/inv-dao/src/cu/cenpis/gps/inv/data/entity/Metadata.java</file>
+            <file>file:/C:/xampp/htdocs/invsf/bd/java/inv-dao/src/cu/cenpis/gps/inv/data/entity/MedioUso.java</file>
+            <file>file:/C:/xampp/htdocs/invsf/bd/java/inv-dao/src/cu/cenpis/gps/inv/config/application.properties</file>
+            <file>file:/C:/xampp/htdocs/invsf/bd/java/inv-dao/src/META-INF/persistence.xml</file>
             <file>file:/C:/xampp/htdocs/invsf/bd/java/inv-dao/src/cu/cenpis/gps/inv/data/entity/MetadataMedioUso.java</file>
-            <file>file:/C:/xampp/htdocs/invsf/bd/java/inv-dao/src/cu/cenpis/gps/inv/main/Main1.java</file>
->>>>>>> ee6b5f74d333e9237013ba8eb4c8c88275cc7a9d
+>>>>>>> 5336bac1d995b9fcd6ab8490e94ea40adeea546b
         </group>
     </open-files>
 </project-private>

@@ -72,8 +72,8 @@
     {{ parent() }}
 
     <script type="text/javascript">
-      let TwigParams = {}
-      TwigParams.activos = []
+      let TwigParams = {};
+      TwigParams.activos = [];
 
       {% for activoFijo in activoFijos %}
       TwigParams.activos.push({
@@ -87,7 +87,7 @@
         cantidad: '{{ countApuntes[loop.index0] }}',
         alta: '{% if activoFijo.fechaAlta %}{{ activoFijo.fechaAlta | date('Y-m-d') }}{% endif %}',
         actual: '{% if activoFijo.fechaEstadoActual %}{{ activoFijo.fechaAlta | date('Y-m-d') }}{% endif %}',
-      })
+      });
       {% endfor %}
     </script>
 
