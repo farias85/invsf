@@ -736,6 +736,7 @@ class ActivoFijo {
         $array[] = "Docencia-Investigación";
         $array[] = $this->getFechaEstadoActual()->format('Y-m-d');
         $array[] = "2094034";
+        $array[] = $this->getTipoActivo()->getNombre();
         return $array;
     }
 

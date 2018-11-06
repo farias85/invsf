@@ -22,6 +22,10 @@ frontend_homepage_excel_rotos:
     path:     /excel-rotos
     defaults: { _controller: FrontendBundle:Default:excelEquiposRotos }
 
+frontend_excel_baja:
+    path:     /excel-baja
+    defaults: { _controller: FrontendBundle:Default:excelBaja }
+
 frontend_homepage_angular:
     path:     /angular
     defaults: { _controller: FrontendBundle:Default:angular }

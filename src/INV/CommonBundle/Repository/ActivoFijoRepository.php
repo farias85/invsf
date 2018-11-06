@@ -61,9 +61,26 @@ class ActivoFijoRepository extends EntityRepository {
         $dql = "";
         $dql .= 'SELECT a FROM ' . Entity::ACTIVO_FIJO . ' a 
         JOIN a.revision r
-        WHERE r.activo = 1 AND a.estado = 1 
+        WHERE r.activo = 1 AND (a.estado = 1 OR a.estado = 4) 
         AND (a.tipoActivo = 2 OR a.tipoActivo = 3 OR a.tipoActivo = 6 OR a.tipoActivo = 7 OR a.tipoActivo = 8 OR a.tipoActivo = 9
          OR a.tipoActivo = 10 OR a.tipoActivo = 11 OR a.tipoActivo = 12 OR a.tipoActivo = 15 OR a.tipoActivo = 16 OR a.tipoActivo = 17) 
+        ORDER BY a.id ASC';
+        $em = $this->getEntityManager();
+        $query = $em->createQuery($dql);
+        return $hidrate ? $query->getArrayResult() : $query->getResult();
+    }
+
+    /**
+     * El estado = 4 es, en proceso de baja
+     * @param bool $hidrate
+     * @return array|mixed
+     *
+     */
+    public function findByBaja($hidrate = false) {
+        $dql = "";
+        $dql .= 'SELECT a FROM ' . Entity::ACTIVO_FIJO . ' a 
+        JOIN a.revision r
+        WHERE r.activo = 1 AND a.estado = 4 
         ORDER BY a.id ASC';
         $em = $this->getEntityManager();
         $query = $em->createQuery($dql);
