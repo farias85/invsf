@@ -31,6 +31,7 @@ class DefaultController extends Controller {
         // If you are not in a controller, retrieve of some way the service container and then retrieve it
         //$pdf = $this->container->get("white_october.tcpdf")->create('vertical', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
         //if you are in a controlller use :
+
         $pdf = $this->get("white_october.tcpdf")->create('vertical', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
         $pdf->SetAuthor('Our Code World');
         $pdf->SetTitle(('Our Code World Title'));
@@ -48,9 +49,12 @@ class DefaultController extends Controller {
 //        VarDumper::dump($location);
 //        die();
 
+        //dest = I -> Send PDF to the standard output
+        //dest = D -> download PDF as file
+        //dest = F, FI, FD -> save PDF to a local file
+        //dest = E -> return PDF as base64 mime multi-part email attachment (RFC 2045)
+        //dest = S -> returns PDF as a string
         $pdf->Output("{$location}/{$filename}.pdf", 'F'); // This will output the PDF as a response directly
-
-
     }
 
     public function excelAction() {
