@@ -1,37 +1,83 @@
 {% extends 'FrontendBundle:Layout:frontend.html.twig' %}
 
 {% block wrapper %}
-    Hello World!
 
-    <!-- List group -->
-    <div class="list-group" id="myList" role="tablist">
-        <a class="list-group-item list-group-item-action active" data-toggle="list" href="#home" role="tab">Home</a>
-        <a class="list-group-item list-group-item-action" data-toggle="list" href="#profile" role="tab">Profile</a>
-        <a class="list-group-item list-group-item-action" data-toggle="list" href="#messages" role="tab">Messages</a>
-        <a class="list-group-item list-group-item-action" data-toggle="list" href="#settings" role="tab">Settings</a>
-    </div>
+    <section id="services">
+        <div class="container wow fadeIn">
+            <div class="section-header">
+                <h3 class="section-title">Menú</h3>
+                <p class="section-description">Seleccione la opción de se preferencia</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="box">
+                        <div class="icon"><a href="{{ path('activo_fijo_index') }}"><i class="fa fa-desktop"></i></a></div>
+                        <h4 class="title"><a href="{{ path('activo_fijo_index') }}">Activos Fijos</a></h4>
+                        <p class="description">Detalles de los activos fijos tangibles en un lista</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="box">
+                        <div class="icon"><a href="{{ path('apunte_index') }}"><i class="fa fa-bar-chart"></i></a></div>
+                        <h4 class="title"><a href="{{ path('apunte_index') }}">Apuntes</a></h4>
+                        <p class="description">Buscar activos fijos según los apuntes. Si el activo no tiene apuntes es
+                            porque nunca lo has visto en tu área</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+                    <div class="box">
+                        <div class="icon"><a href="{{ path('medio_uso_index') }}"><i class="fa fa-paper-plane"></i></a></div>
+                        <h4 class="title"><a href="{{ path('medio_uso_index') }}">Medios en uso</a></h4>
+                        <p class="description">Vamos a ver los medios en uso de tu área de responsabilidad material</p>
+                    </div>
+                </div>
 
-    <!-- Tab panes -->
-    <div class="tab-content">
-        <div class="tab-pane active" id="home" role="tabpanel">.111..</div>
-        <div class="tab-pane" id="profile" role="tabpanel">.222..</div>
-        <div class="tab-pane" id="messages" role="tabpanel">.333..</div>
-        <div class="tab-pane" id="settings" role="tabpanel">.4444..</div>
-    </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="box">
+                        <div class="icon"><a href="{{ path('sobrante_index') }}"><i class="fa fa-photo"></i></a></div>
+                        <h4 class="title"><a href="{{ path('sobrante_index') }}">Sobrantes</a></h4>
+                        <p class="description">¿Tienes medios sobrantes? Aquí aparecerán...</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="box">
+                        <div class="icon"><a href="{{ path('activo_fijo_filter') }}"><i class="fa fa-road"></i></a></div>
+                        <h4 class="title"><a href="{{ path('activo_fijo_filter') }}">Filtro de AFT</a></h4>
+                        <p class="description">Aquí podrá filtrar y buscar activos con mayor precisión</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+                    <div class="box">
+                        <div class="icon"><a href="{{ path('activo_fijo_by_apuntes') }}"><i class="fa fa-shopping-bag"></i></a></div>
+                        <h4 class="title"><a href="{{ path('activo_fijo_by_apuntes') }}">Filtro por Apuntes</a></h4>
+                        <p class="description">La cantidad de apuntes que tenga tu activo fijo tangible representa
+                            cuánto lo tienes a mano</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
 
 {% endblock %}
 
-{% block javascripts %}
-    {{ parent() }}
-    <script type="text/javascript">
-      $(function () {
-        $('#myList a').on('click', function (e) {
-          e.preventDefault()
-          $(this).tab('show')
-        })
-      })
-    </script>
-{% endblock %}
+{% block content_facts %} {% endblock %}
+{% block content_services %} {% endblock %}
+{% block content_action %} {% endblock %}
+{% block content_portafolio %} {% endblock %}
+{% block content_team %} {% endblock %}
+
+{#{% block javascripts %}#}
+    {#{{ parent() }}#}
+    {#<script type="text/javascript">#}
+      {#$(function () {#}
+        {#$('#myList a').on('click', function (e) {#}
+          {#e.preventDefault()#}
+          {#$(this).tab('show')#}
+        {#})#}
+      {#})#}
+    {#</script>#}
+{#{% endblock %}#}
 
 
 

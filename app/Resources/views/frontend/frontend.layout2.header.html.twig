@@ -5,8 +5,7 @@
         <div class="container">
 
             <div id="logo" class="pull-left">
-                <a href="{{ path('frontend_homepage') }}"><img src="{{ asset('bundles/frontend/regna/img/logo.png') }}"
-                                                               alt="" title=""/></a>
+                <a href="{{ path('frontend_homepage') }}"><img alt="INV CENPIS 2.0" title=""/></a>
                 <!-- Uncomment below if you prefer to use a text logo -->
                 <!--<h1><a href="#hero">Regna</a></h1>-->
             </div>
@@ -20,15 +19,18 @@
                     {#<li><a href="#team">Team</a></li>#}
 
                     <li><a href="{{ path('activo_fijo_index') }}">Activos</a></li>
-                    <li><a href="#">Medios en Uso</a></li>
-                    <li><a href="#">Sobrantes</a></li>
+                    <li><a href="{{ path('medio_uso_index') }}">Medios en Uso</a></li>
+                    <li><a href="{{ path('sobrante_index') }}">Sobrantes</a></li>
                     <li><a href="{{ path('apunte_index') }}">Apuntes</a></li>
                     <li class="menu-has-children">
                         <a href="#"> Informes </a>
                         <ul>
                             <li><a href="{{ path('activo_fijo_filter') }}">Filtro</a></li>
                             <li><a href="{{ path('activo_fijo_by_apuntes') }}">Por apuntes</a></li>
-                            <li><a href="#">Informes</a></li>
+                            <li><a href="{{ path('frontend_homepage_excel_at1') }}">Existencia de Equipos (AT-1)</a></li>
+                            <li><a href="{{ path('frontend_homepage_excel_rotos') }}">Equipos rotos (Excel)</a></li>
+                            <li><a href="{{ path('frontend_excel_baja') }}">AFT para baja (Excel)</a></li>
+                            <li><a href="{{ path('frontend_excel_todos') }}">Todos los AFT (Excel)</a></li>
                         </ul>
                     </li>
 
@@ -38,9 +40,9 @@
                                 {{ app.user [:25] }}
                             </a>
                             <ul>
-                                <li><a href="#">Deep Drop Down 2</a></li>
-                                <li><a href="#">Deep Drop Down 3</a></li>
-                                <li><a href="#">Deep Drop Down 4</a></li>
+                                {#<li><a href="#">Deep Drop Down 2</a></li>#}
+                                {#<li><a href="#">Deep Drop Down 3</a></li>#}
+                                {#<li><a href="#">Deep Drop Down 4</a></li>#}
                                 <li><a href="{{ path('frontend_security_logut') }}">Salir</a></li>
                             </ul>
                         </li>

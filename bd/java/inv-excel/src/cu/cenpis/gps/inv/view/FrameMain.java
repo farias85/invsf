@@ -31,6 +31,7 @@ public class FrameMain extends javax.swing.JFrame {
         controllerExcel = new ControllerExcel();
         jLabel13.setText("");
         jLabel17.setText("");
+        this.setTitle("INV Loader");
     }
     private ControllerExcel controllerExcel;
 

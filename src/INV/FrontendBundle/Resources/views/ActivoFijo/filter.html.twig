@@ -181,12 +181,12 @@
     {{ parent() }}
 
     <script type="text/javascript">
-      let TwigParams = {}
-      TwigParams.responsables = JSON.parse('{{ responsables | raw }}')
-      TwigParams.estados = JSON.parse('{{ estados | raw }}')
-      TwigParams.locales = JSON.parse('{{ locales | raw }}')
-      TwigParams.tipos = JSON.parse('{{ tipos | raw }}')
-      TwigParams.activos = []
+      let TwigParams = {};
+      TwigParams.responsables = JSON.parse('{{ responsables | raw }}');
+      TwigParams.estados = JSON.parse('{{ estados | raw }}');
+      TwigParams.locales = JSON.parse('{{ locales | raw }}');
+      TwigParams.tipos = JSON.parse('{{ tipos | raw }}');
+      TwigParams.activos = [];
 
       {% for activoFijo in activoFijos %}
       TwigParams.activos.push({
@@ -199,7 +199,7 @@
         tipoActivo: '{{ activoFijo.tipoActivo }}',
         marca: '{{ activoFijo.marca }}',
         fabricacion: '{% if activoFijo.fechaProduccion %} {{ activoFijo.fechaProduccion | date('Y-m-d') }} {% endif %}',
-      })
+      });
       {% endfor %}
     </script>
 

@@ -1,0 +1,29 @@
+{% extends 'FrontendBundle:Layout:frontend-basic.html.twig' %}
+
+{#{% block wrapper_header %} {% endblock %}#}
+
+{% block wrapper %}
+
+    <section id="services">
+        <div class="container wow fadeIn">
+            <div class="section-header">
+                <h3 class="section-title">Sobrantes ({{ medios | length }})</h3>
+                <p class="section-description"></p>
+            </div>
+            <div class="row">
+                {% for mu in medios %}
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="box">
+                            <div class="icon"><a href="#"><i class="fa fa-paper-plane"></i></a>
+                            </div>
+                            <h4 class="title"><a href="#">{{ mu.rotulo }}</a></h4>
+                            <p class="description">{{ mu.descripcion }}, Responsable: {{ mu.responsable }},
+                                Local: {{ mu.local }}, Estado: {{ mu.estado }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

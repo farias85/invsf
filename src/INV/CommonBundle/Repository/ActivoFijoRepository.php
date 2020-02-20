@@ -70,6 +70,17 @@ class ActivoFijoRepository extends EntityRepository {
         return $hidrate ? $query->getArrayResult() : $query->getResult();
     }
 
+    public function findByRevisionTodos($hidrate = false) {
+        $dql = "";
+        $dql .= 'SELECT a FROM ' . Entity::ACTIVO_FIJO . ' a 
+        JOIN a.revision r
+        WHERE r.activo = 1 
+        ORDER BY a.rotulo ASC';
+        $em = $this->getEntityManager();
+        $query = $em->createQuery($dql);
+        return $hidrate ? $query->getArrayResult() : $query->getResult();
+    }
+
     /**
      * El estado = 4 es, en proceso de baja
      * @param bool $hidrate

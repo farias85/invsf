@@ -21,9 +21,12 @@ class Entity {
     const ESTADO = "CommonBundle:Estado";
     const INFORME = "CommonBundle:Informe";
     const LOCAL = "CommonBundle:Local";
+    const MEDIO_USO = "CommonBundle:MedioUso";
     const METADATA = "CommonBundle:Metadata";
+    const METADATA_MEDIO_USO = "CommonBundle:MetadataMedioUso";
     const RESPONSABLE = "CommonBundle:Responsable";
     const REVISION = "CommonBundle:Revision";
+    const REVISION_MEDIO_USO = "CommonBundle:RevisionMedioUso";
     const ROL = "CommonBundle:Rol";
     const SOBRANTE = "CommonBundle:Sobrante";
     const TIPO_ACTIVO = "CommonBundle:TipoActivo";

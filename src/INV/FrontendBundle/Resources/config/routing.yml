@@ -26,6 +26,10 @@ frontend_excel_baja:
     path:     /excel-baja
     defaults: { _controller: FrontendBundle:Default:excelBaja }
 
+frontend_excel_todos:
+    path:     /excel-todos
+    defaults: { _controller: FrontendBundle:Default:excelTodos }
+
 frontend_homepage_angular:
     path:     /angular
     defaults: { _controller: FrontendBundle:Default:angular }
@@ -48,3 +52,11 @@ frontend_activo_fijo:
 frontend_informe:
     resource: "@FrontendBundle/Resources/config/routing/informe.yml"
     prefix:   /informe
+
+frontend_medio_uso:
+    resource: "@FrontendBundle/Resources/config/routing/medio-uso.yml"
+    prefix:   /medio-uso
+
+frontend_sobrante:
+    resource: "@FrontendBundle/Resources/config/routing/sobrante.yml"
+    prefix:   /sobrante

@@ -1,0 +1,4 @@
+medio_uso_index:
+    path:     /
+    defaults: { _controller: "FrontendBundle:MedioUso:index" }
+
